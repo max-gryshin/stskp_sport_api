@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  db:
+    image: "bitnami/postgresql:10"
+    shm_size: 2GB
+      volumes:
+        - /opt/back/database:/bitnami/postgresql/data
+    healthcheck:
+      test:
+        [
+            "CMD-SHELL",
+            "export PGPASSWORD=${POSTGRESQL_POSTGRES_PASSWORD}; pg_isready -U postgres && psql -U postgres -lqt | cut -d \\| -f 1 | grep -wq ${POSTGRESQL_DATABASE}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    environment:
+      - elk_type=postgres
+      - POSTGRESQL_POSTGRES_PASSWORD=${POSTGRESQL_POSTGRES_PASSWORD}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
+      - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME}
+    ports:
+      - "5432:5432"
