@@ -19,9 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da8b65c5-f317-42ab-9a14-6ad6bdb5d2b1" name="Default Changelist" comment="basic code organization">
-      <change beforePath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" afterDir="false" />
+    <list default="true" id="da8b65c5-f317-42ab-9a14-6ad6bdb5d2b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +53,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -99,6 +105,10 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="984" y="532" width="582" height="346" key="#Notifications/0.27.2560.1361@0.27.2560.1361" timestamp="1597997159205" />
+    <state x="655" y="300" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598438679861">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="655" y="300" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598438679861" />
     <state x="984" y="509" width="705" height="392" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598363645144">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
@@ -107,10 +117,10 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="947" y="396" width="655" height="618" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598368758438" />
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1598368968534">
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1598369651484">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1598368968534" />
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1598369651484" />
     <state x="835" y="449" width="723" height="260" key="EnvironmentVariablesDialog" timestamp="1597999495053">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
@@ -123,10 +133,14 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="621" y="180" width="1457" height="903" key="SettingsEditor/0.27.2560.1361@0.27.2560.1361" timestamp="1598360897089" />
-    <state width="623" height="502" key="SwitcherDM" timestamp="1598368933197">
+    <state width="623" height="504" key="SwitcherDM" timestamp="1598437474053">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="623" height="502" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1598368933197" />
+    <state width="623" height="504" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1598437474053" />
+    <state x="285" y="332" width="1987" height="885" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598435676032">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="285" y="332" width="1987" height="885" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598435676032" />
     <state x="100" y="127" width="1239" height="1153" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598368586552">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>

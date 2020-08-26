@@ -2,25 +2,17 @@ version: "3.7"
 
 services:
   db:
-    image: "bitnami/postgresql:10"
-    shm_size: 2GB
-      volumes:
-        - /opt/back/database:/bitnami/postgresql/data
-    healthcheck:
-      test:
-        [
-            "CMD-SHELL",
-            "export PGPASSWORD=${POSTGRESQL_POSTGRES_PASSWORD}; pg_isready -U postgres && psql -U postgres -lqt | cut -d \\| -f 1 | grep -wq ${POSTGRESQL_DATABASE}",
-        ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
+    image: postgres:10-alpine # "bitnami/postgresql:10"
+    container_name: stskp_api_db
+    volumes:
+      - backend-db-volume:/var/lib/postgresql/data
     environment:
-      - elk_type=postgres
-      - POSTGRESQL_POSTGRES_PASSWORD=${POSTGRESQL_POSTGRES_PASSWORD}
-      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASSWORD}
-      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
-      - POSTGRESQL_USERNAME=${POSTGRESQL_USERNAME}
+      - POSTGRES_PASSWORD=POSTGRES_PASSWORD
+      - DATABASE_URL
+      - POSTGRES_PASSWORD
     ports:
       - "5432:5432"
+
+volumes:
+  backend-db-volume:
+    name: db-volume

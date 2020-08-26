@@ -10,6 +10,7 @@ type DbConfig struct {
 	Username         string
 	Password         string
 	PostgresPassword string
+	Url              string
 }
 
 // ServerConfig is a structure for storage server configuration
@@ -33,6 +34,7 @@ func LoadConfiguration() *Config {
 			Username:         getEnv("POSTGRESQL_USERNAME", ""),
 			Password:         getEnv("POSTGRESQL_PASSWORD", ""),
 			PostgresPassword: getEnv("POSTGRESQL_POSTGRES_PASSWORD", ""),
+			Url:              getEnv("DATABASE_URL", ""),
 		},
 	}
 }
