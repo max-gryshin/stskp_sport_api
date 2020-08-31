@@ -20,13 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8b65c5-f317-42ab-9a14-6ad6bdb5d2b1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/middleware/jwt/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/app/request.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/file/file.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logging/file.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/logging/log.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/util/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/util/md5.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/repository/repository.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/repository/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/api/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/auth_service/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker-start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/setting/setting.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/e/msg.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/e/msg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +61,9 @@
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="dummy://restClient/response99.json" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="1gOsn2P9ZNFLSnrsfi0PrfxsnJx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,13 +80,229 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pkg" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pkg" />
+      <recent name="$PROJECT_DIR$/services" />
+      <recent name="$PROJECT_DIR$/routers/api" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pkg/setting" />
       <recent name="$PROJECT_DIR$/routes" />
     </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="usernameyy" />
+                <option name="value" value="maxi" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxi" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="go build gitlab.com/ZmaximillianZ/stskp_sport_api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="stskp_sport_api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="gitlab.com/ZmaximillianZ/stskp_sport_api" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build gitlab.com/ZmaximillianZ/stskp_sport_api" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,7 +322,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic code organization" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic code organization" />
+    <MESSAGE value="postgres connection" />
+    <option name="LAST_COMMIT_MESSAGE" value="postgres connection" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -105,45 +339,85 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="984" y="532" width="582" height="346" key="#Notifications/0.27.2560.1361@0.27.2560.1361" timestamp="1597997159205" />
-    <state x="655" y="300" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598438679861">
+    <state x="807" y="368" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598877330975">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="655" y="300" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598438679861" />
-    <state x="984" y="509" width="705" height="392" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598363645144">
+    <state x="807" y="368" width="1325" height="931" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598877330975" />
+    <state x="984" y="509" width="705" height="392" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598864716970">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="984" y="509" width="705" height="392" key="#com.intellij.fileTypes.FileTypeChooser/0.27.2560.1361@0.27.2560.1361" timestamp="1598363645144" />
+    <state x="984" y="509" width="705" height="392" key="#com.intellij.fileTypes.FileTypeChooser/0.27.2560.1361@0.27.2560.1361" timestamp="1598864716970" />
     <state x="947" y="396" width="655" height="618" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598368758438">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="947" y="396" width="655" height="618" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598368758438" />
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1598369651484">
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1598440356410">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1598369651484" />
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1598440356410" />
     <state x="835" y="449" width="723" height="260" key="EnvironmentVariablesDialog" timestamp="1597999495053">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="835" y="449" width="723" height="260" key="EnvironmentVariablesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1597999495053" />
-    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl" timestamp="1598001399083">
+    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl" timestamp="1598513400978">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl/0.27.2560.1361@0.27.2560.1361" timestamp="1598001399083" />
+    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl/0.27.2560.1361@0.27.2560.1361" timestamp="1598513400978" />
+    <state width="867" height="361" key="GridCell.Tab.0.bottom" timestamp="1598877878968">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="867" height="361" key="GridCell.Tab.0.bottom/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878968" />
+    <state width="867" height="361" key="GridCell.Tab.0.center" timestamp="1598877878966">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="867" height="361" key="GridCell.Tab.0.center/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878966" />
+    <state width="867" height="361" key="GridCell.Tab.0.left" timestamp="1598877878965">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="867" height="361" key="GridCell.Tab.0.left/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878965" />
+    <state width="867" height="361" key="GridCell.Tab.0.right" timestamp="1598877878967">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="867" height="361" key="GridCell.Tab.0.right/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878967" />
     <state x="621" y="180" width="1457" height="903" key="SettingsEditor" timestamp="1598360897089">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="621" y="180" width="1457" height="903" key="SettingsEditor/0.27.2560.1361@0.27.2560.1361" timestamp="1598360897089" />
-    <state width="623" height="504" key="SwitcherDM" timestamp="1598437474053">
+    <state x="941" y="381" width="885" height="655" key="StructurePopup" timestamp="1598866774152">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="623" height="504" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1598437474053" />
-    <state x="285" y="332" width="1987" height="885" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598435676032">
+    <state x="941" y="381" width="885" height="655" key="StructurePopup/0.27.2560.1361@0.27.2560.1361" timestamp="1598866774152" />
+    <state width="623" height="510" key="SwitcherDM" timestamp="1598873822819">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="285" y="332" width="1987" height="885" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598435676032" />
+    <state width="623" height="510" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1598873822819" />
+    <state x="1137" y="568" width="430" height="300" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598453507388">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="1137" y="568" width="430" height="300" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.27.2560.1361@0.27.2560.1361" timestamp="1598453507388" />
+    <state x="488" y="476" width="570" height="446" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1598873183625">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="488" y="476" width="570" height="446" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598873183625" />
+    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598859608463">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598859608463" />
     <state x="100" y="127" width="1239" height="1153" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598368586552">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="100" y="127" width="1239" height="1153" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598368586552" />
+    <state x="794" y="226" width="962" height="959" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598518774833">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="794" y="226" width="962" height="959" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.2560.1361@0.27.2560.1361" timestamp="1598518774833" />
+    <state x="898" y="190" width="764" height="1035" key="find.popup" timestamp="1598872788205">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="898" y="190" width="764" height="1035" key="find.popup/0.27.2560.1361@0.27.2560.1361" timestamp="1598872788205" />
+    <state x="859" y="329" key="search.everywhere.popup" timestamp="1598516389228">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="859" y="329" key="search.everywhere.popup/0.27.2560.1361@0.27.2560.1361" timestamp="1598516389228" />
   </component>
 </project>
