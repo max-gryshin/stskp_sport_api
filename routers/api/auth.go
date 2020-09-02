@@ -1,6 +1,8 @@
 package api
 
 import (
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/repository"
 	"net/http"
 
 	"github.com/astaxie/beego/validation"
@@ -8,10 +10,9 @@ import (
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/app"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/e"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/util"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/service/auth_service"
 )
 
-type auth struct {
+type Auth struct {
 	Username string `json:"username" valid:"Required; MaxSize(50)"`
 	Password string `json:"password" valid:"Required; MaxSize(50)"`
 }
@@ -29,7 +30,7 @@ func GetAuth(c *gin.Context) {
 
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
-	a := auth{Username: username, Password: password}
+	a := Auth{Username: username, Password: password}
 	ok, _ := valid.Valid(&a)
 
 	if !ok {
@@ -39,16 +40,14 @@ func GetAuth(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
 		return
 	}
-
-	authService := auth_service.Auth{Username: a.Username, Password: a.Password}
-	isExist, err := authService.Check()
+	user, err := repository.FindUserByUsername(username)
 	if err != nil {
-		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_CHECK_TOKEN_FAIL, err.Error())
-		return
+		logging.Error(err)
 	}
+	invalid := user.InvalidPassword(password)
 
-	if !isExist {
-		appG.Response(http.StatusUnauthorized, e.ERROR_AUTH, nil)
+	if invalid {
+		appG.Response(http.StatusBadRequest, e.ERROR_AUTH_CHECK_CREDENTIALS_FAIL, nil)
 		return
 	}
 

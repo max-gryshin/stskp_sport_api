@@ -19,27 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da8b65c5-f317-42ab-9a14-6ad6bdb5d2b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/middleware/jwt/jwt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/app/request.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/file/file.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logging/file.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/logging/log.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/util/jwt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/util/md5.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repository/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/api/auth.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/auth_service/auth.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="da8b65c5-f317-42ab-9a14-6ad6bdb5d2b1" name="Default Changelist" comment="postgres connection">
       <change beforePath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/stskp_sport_api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/setting/setting.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/jwt/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/e/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/e/code.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/e/msg.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/e/msg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/util/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/util/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repository/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/repository/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/api/v1/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/api/v1/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +54,7 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response99.json" root0="SKIP_INSPECTION" />
+    <setting file="dummy://restClient/response125.json" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1gOsn2P9ZNFLSnrsfi0PrfxsnJx" />
   <component name="ProjectViewState">
@@ -80,7 +72,7 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pkg" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../photoprism" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -97,6 +89,790 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTU5OTA2NDY3NywiaXNzIjoic3Rza3AtYXBpIn0.nWvWvoXOhTHdtcz-Rli-k08MIMwXxBxv-54wPFmGUFE" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="lesha" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="lesha" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjQzNDZlMTE5MTZmYmRlMzMyZjkwZGM3ZDk5MTRiMDk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTU5OTA2NDYxMiwiaXNzIjoic3Rza3AtYXBpIn0._XiUFj7kOE-BpOfTtsaTVyIoYG869pW_BL6UiH8hhtY" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="sonya" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="sonys" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="sonya" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk1YWMzYzU0NWZhM2Y5YzgxOTM5ZjhmYTRkMDUxMWNhIiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTU5OTA2MDYxMSwiaXNzIjoic3Rza3AtYXBpIn0.s7YUP6IIff2vHKHfUAwfc-M0ccv3MDPtWXC7WGEUfIw" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk1YWMzYzU0NWZhM2Y5YzgxOTM5ZjhmYTRkMDUxMWNhIiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTU5OTA2MDUzNiwiaXNzIjoic3Rza3AtYXBpIn0.PD5IOEbsJ5Q1xSs00Ng315u23rZem6SqW4gSQApizdY" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk1YWMzYzU0NWZhM2Y5YzgxOTM5ZjhmYTRkMDUxMWNhIiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTU5OTA2MDUzNiwiaXNzIjoic3Rza3AtYXBpIn0.PD5IOEbsJ5Q1xSs00Ng315u23rZem6SqW4gSQApizdY" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="sdfsdf23" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="asdf23" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="token" />
+                <option name="value" value="asdas23" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/auth" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123456" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maaama" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="1234" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maama" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="1234" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="mama" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="1234" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/create" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="lesha" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="1234" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/create" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="1234" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/create" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="maxim" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://localhost:8080" />
@@ -288,7 +1064,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="HTTP Request.rest-api_1#3">
     <configuration name="go build gitlab.com/ZmaximillianZ/stskp_sport_api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="stskp_sport_api" />
       <working_directory value="$PROJECT_DIR$" />
@@ -298,8 +1074,20 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="rest-api_1#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api_1#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="rest-api_1#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.rest-api_1#3" />
+        <item itemvalue="HTTP Request.rest-api_1#2" />
+        <item itemvalue="HTTP Request.rest-api_1#1" />
         <item itemvalue="Go Build.go build gitlab.com/ZmaximillianZ/stskp_sport_api" />
       </list>
     </recent_temporary>
@@ -351,58 +1139,78 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="947" y="396" width="655" height="618" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598368758438" />
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1598440356410">
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2" timestamp="1599049178533">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1598440356410" />
+    <state x="750" y="164" width="1049" height="1082" key="CommitChangelistDialog2/0.27.2560.1361@0.27.2560.1361" timestamp="1599049178533" />
     <state x="835" y="449" width="723" height="260" key="EnvironmentVariablesDialog" timestamp="1597999495053">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="835" y="449" width="723" height="260" key="EnvironmentVariablesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1597999495053" />
-    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl" timestamp="1598513400978">
+    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl" timestamp="1599049618553">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl/0.27.2560.1361@0.27.2560.1361" timestamp="1598513400978" />
-    <state width="867" height="361" key="GridCell.Tab.0.bottom" timestamp="1598877878968">
+    <state x="1063" y="465" width="424" height="480" key="FileChooserDialogImpl/0.27.2560.1361@0.27.2560.1361" timestamp="1599049618553" />
+    <state width="2498" height="323" key="GridCell.Tab.0.bottom" timestamp="1599061091491">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="867" height="361" key="GridCell.Tab.0.bottom/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878968" />
-    <state width="867" height="361" key="GridCell.Tab.0.center" timestamp="1598877878966">
+    <state width="2498" height="323" key="GridCell.Tab.0.bottom/0.27.2560.1361@0.27.2560.1361" timestamp="1599061091491" />
+    <state width="2498" height="323" key="GridCell.Tab.0.center" timestamp="1599061091489">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="867" height="361" key="GridCell.Tab.0.center/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878966" />
-    <state width="867" height="361" key="GridCell.Tab.0.left" timestamp="1598877878965">
+    <state width="2498" height="323" key="GridCell.Tab.0.center/0.27.2560.1361@0.27.2560.1361" timestamp="1599061091489" />
+    <state width="2498" height="323" key="GridCell.Tab.0.left" timestamp="1599061091487">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="867" height="361" key="GridCell.Tab.0.left/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878965" />
-    <state width="867" height="361" key="GridCell.Tab.0.right" timestamp="1598877878967">
+    <state width="2498" height="323" key="GridCell.Tab.0.left/0.27.2560.1361@0.27.2560.1361" timestamp="1599061091487" />
+    <state width="2498" height="323" key="GridCell.Tab.0.right" timestamp="1599061091490">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="867" height="361" key="GridCell.Tab.0.right/0.27.2560.1361@0.27.2560.1361" timestamp="1598877878967" />
+    <state width="2498" height="323" key="GridCell.Tab.0.right/0.27.2560.1361@0.27.2560.1361" timestamp="1599061091490" />
+    <state width="2498" height="393" key="GridCell.Tab.1.bottom" timestamp="1599054958237">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="2498" height="393" key="GridCell.Tab.1.bottom/0.27.2560.1361@0.27.2560.1361" timestamp="1599054958237" />
+    <state width="2498" height="393" key="GridCell.Tab.1.center" timestamp="1599054958236">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="2498" height="393" key="GridCell.Tab.1.center/0.27.2560.1361@0.27.2560.1361" timestamp="1599054958236" />
+    <state width="2498" height="393" key="GridCell.Tab.1.left" timestamp="1599054958235">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="2498" height="393" key="GridCell.Tab.1.left/0.27.2560.1361@0.27.2560.1361" timestamp="1599054958235" />
+    <state width="2498" height="393" key="GridCell.Tab.1.right" timestamp="1599054958237">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state width="2498" height="393" key="GridCell.Tab.1.right/0.27.2560.1361@0.27.2560.1361" timestamp="1599054958237" />
+    <state x="1012" y="310" width="526" height="791" key="RollbackChangesDialog" timestamp="1599049181540">
+      <screen x="0" y="27" width="2560" height="1361" />
+    </state>
+    <state x="1012" y="310" width="526" height="791" key="RollbackChangesDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1599049181540" />
     <state x="621" y="180" width="1457" height="903" key="SettingsEditor" timestamp="1598360897089">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="621" y="180" width="1457" height="903" key="SettingsEditor/0.27.2560.1361@0.27.2560.1361" timestamp="1598360897089" />
-    <state x="941" y="381" width="885" height="655" key="StructurePopup" timestamp="1598866774152">
+    <state x="941" y="381" width="885" height="655" key="StructurePopup" timestamp="1599052361827">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="941" y="381" width="885" height="655" key="StructurePopup/0.27.2560.1361@0.27.2560.1361" timestamp="1598866774152" />
-    <state width="623" height="510" key="SwitcherDM" timestamp="1598873822819">
+    <state x="941" y="381" width="885" height="655" key="StructurePopup/0.27.2560.1361@0.27.2560.1361" timestamp="1599052361827" />
+    <state width="623" height="519" key="SwitcherDM" timestamp="1599049670290">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state width="623" height="510" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1598873822819" />
+    <state width="623" height="519" key="SwitcherDM/0.27.2560.1361@0.27.2560.1361" timestamp="1599049670290" />
     <state x="1137" y="568" width="430" height="300" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1598453507388">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="1137" y="568" width="430" height="300" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.27.2560.1361@0.27.2560.1361" timestamp="1598453507388" />
-    <state x="488" y="476" width="570" height="446" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1598873183625">
+    <state x="488" y="476" width="570" height="456" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1599060914319">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="488" y="476" width="570" height="446" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598873183625" />
-    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1598859608463">
+    <state x="488" y="476" width="570" height="456" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1599060914319" />
+    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1599060984327">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1598859608463" />
+    <state x="789" y="241" width="1401" height="1008" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.27.2560.1361@0.27.2560.1361" timestamp="1599060984327" />
     <state x="100" y="127" width="1239" height="1153" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598368586552">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
@@ -411,10 +1219,10 @@
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
     <state x="794" y="226" width="962" height="959" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.2560.1361@0.27.2560.1361" timestamp="1598518774833" />
-    <state x="898" y="190" width="764" height="1035" key="find.popup" timestamp="1598872788205">
+    <state x="421" y="190" width="1241" height="1035" key="find.popup" timestamp="1599060088070">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>
-    <state x="898" y="190" width="764" height="1035" key="find.popup/0.27.2560.1361@0.27.2560.1361" timestamp="1598872788205" />
+    <state x="421" y="190" width="1241" height="1035" key="find.popup/0.27.2560.1361@0.27.2560.1361" timestamp="1599060088070" />
     <state x="859" y="329" key="search.everywhere.popup" timestamp="1598516389228">
       <screen x="0" y="27" width="2560" height="1361" />
     </state>

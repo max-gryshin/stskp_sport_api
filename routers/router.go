@@ -15,7 +15,8 @@ func InitRouter() *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 
-	router.POST("/auth", api.GetAuth)
+	router.POST("/api/user/auth", api.GetAuth)
+	router.POST("/api/user/create", v1.CreateUser)
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiv1 := router.Group("/api/v1")

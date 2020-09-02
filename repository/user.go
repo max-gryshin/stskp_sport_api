@@ -15,3 +15,19 @@ func FindUserByUsername(username string) (models.User, error) {
 
 	return user, nil
 }
+
+func CreateUser(user models.User) error {
+	if _, err := db.Exec(
+		context.Background(),
+		"insert into \"user\"(user_name, password_hash, state, created_at, email) values ($1, $2, $3, $4, $5)",
+		user.Username,
+		user.Password,
+		user.State,
+		user.CreatedAt,
+		user.Email,
+	); err != nil {
+		return err
+	}
+
+	return nil
+}
