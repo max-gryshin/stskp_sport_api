@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/joho/godotenv"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/setting"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/repository"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/routers"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"log"
 )
 

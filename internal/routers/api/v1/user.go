@@ -3,12 +3,12 @@ package v1
 import (
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/models"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/repository"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/routers/api"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"net/http"
 	"time"
 )

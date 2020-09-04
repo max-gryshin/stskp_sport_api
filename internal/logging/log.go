@@ -2,7 +2,7 @@ package logging
 
 import (
 	"fmt"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/file"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/file"
 	"log"
 	"os"
 	"path/filepath"

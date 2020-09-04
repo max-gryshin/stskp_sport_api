@@ -1,15 +1,15 @@
 package api
 
 import (
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/repository"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"net/http"
 
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/util"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
 )
 
 type Auth struct {

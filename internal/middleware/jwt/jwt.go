@@ -3,8 +3,8 @@ package jwt
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/util"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
 	"net/http"
 )
 

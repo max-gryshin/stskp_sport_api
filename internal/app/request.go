@@ -3,7 +3,7 @@ package app
 import (
 	"github.com/astaxie/beego/validation"
 
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 )
 
 // MarkErrors logs error logs

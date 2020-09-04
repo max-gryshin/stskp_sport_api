@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/jackc/pgx/v4"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/setting"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"log"
 	"os"
 )

@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/models"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
 )
 
 func FindUserByUsername(username string) (models.User, error) {

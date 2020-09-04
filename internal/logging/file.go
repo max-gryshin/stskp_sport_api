@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/pkg/setting"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 )
 
 // getLogFilePath get the log file save path

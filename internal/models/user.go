@@ -28,6 +28,7 @@ func (u *User) SetPassword(password string) error {
 		return err
 	} else {
 		u.Password = string(bytes)
+
 		return nil
 	}
 }
@@ -39,5 +40,6 @@ func (u *User) InvalidPassword(password string) bool {
 	}
 
 	err := bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(password))
+
 	return err != nil
 }
