@@ -17,7 +17,8 @@ func InitRouter() *gin.Engine {
 
 	router.POST("/api/user/auth", api.GetAuth)
 	router.POST("/api/user/create", v1.CreateUser)
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	apiv1 := router.Group("/api/v1")
 	apiv1.Use(jwt.JWT())
