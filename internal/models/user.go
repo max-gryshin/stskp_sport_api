@@ -13,6 +13,8 @@ const (
 	StateDeleted          = 5
 )
 
+type Users []User
+
 type User struct {
 	ID        int       `json:"id"`
 	Username  string    `json:"username" valid:"Required; MaxSize(50)"`
