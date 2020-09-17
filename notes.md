@@ -69,3 +69,9 @@
         - delete
         - order by
         - filter
+    - algorithm
+        - create route
+        - create method in repository
+        - test it
+        - create annotation
+        - generate swagger
