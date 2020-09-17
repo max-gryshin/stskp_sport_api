@@ -16,11 +16,11 @@ const (
 type Users []User
 
 type User struct {
-	ID        int       `json:"id"`
-	Username  string    `json:"username" valid:"Required; MaxSize(50)"`
-	Password  string    `json:"password" valid:"Required; MaxSize(50)"`
+	ID        int       `json:"id" db:"id"`
+	Username  string    `json:"username" valid:"Required; MaxSize(50)" db:"user_name"`
+	Password  string    `json:"password" valid:"Required; MaxSize(50)" db:"password_hash"`
 	State     int8      `json:"state"`
-	CreatedAt time.Time `json:"created_at"`
+	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	Email     string    `json:"email"`
 }
 

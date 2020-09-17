@@ -13,10 +13,14 @@ import (
 	"time"
 )
 
-func GetUser(c *gin.Context) {
+func GetUsers(c *gin.Context) {
 	appG := app.Gin{C: c}
-	article := "Username"
-	appG.Response(http.StatusOK, e.SUCCESS, article)
+	users, err := repository.UserAll()
+	if err != nil {
+		appG.Response(http.StatusBadGateway, e.ERROR, err)
+		return
+	}
+	appG.Response(http.StatusOK, e.SUCCESS, users)
 }
 
 func CreateUser(c *gin.Context) {

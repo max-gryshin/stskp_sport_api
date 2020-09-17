@@ -7,12 +7,16 @@ require (
 	github.com/astaxie/beego v1.12.2
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/fatih/structs v1.1.0
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-openapi/spec v0.19.9 // indirect
 	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/go-playground/validator/v10 v10.3.0 // indirect
+	github.com/jackc/pgx v3.6.2+incompatible
 	github.com/jackc/pgx/v4 v4.8.1
+	github.com/jmoiron/sqlx v1.2.0
 	github.com/joho/godotenv v1.3.0
+	github.com/lib/pq v1.3.0
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.7

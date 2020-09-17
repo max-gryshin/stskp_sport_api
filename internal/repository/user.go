@@ -1,33 +1,51 @@
 package repository
 
 import (
-	"context"
+	"github.com/fatih/structs"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
 )
 
 func FindUserByUsername(username string) (models.User, error) {
-	row := db.QueryRow(context.Background(), "select * from \"user\" where user_name=$1", username)
-	var user models.User
-	err := row.Scan(&user.ID, &user.Username, &user.Password, &user.State, &user.CreatedAt, &user.Email)
+	user := models.User{}
+	err := db.Get(&user, "select * from \"user\" where user_name=$1", username)
 	if err != nil {
-		return *new(models.User), err
+		logging.Error(err)
+		return user, err
 	}
 
 	return user, nil
 }
 
 func CreateUser(user models.User) error {
-	if _, err := db.Exec(
-		context.Background(),
-		"insert into \"user\"(user_name, password_hash, state, created_at, email) values ($1, $2, $3, $4, $5)",
-		user.Username,
-		user.Password,
-		user.State,
-		user.CreatedAt,
-		user.Email,
-	); err != nil {
+	userMap := structs.Map(user)
+	_, err := db.NamedExec(
+		"INSERT INTO \"user\" (user_name, password_hash, state, created_at, email) VALUES (:Username,:Password,:State,:CreatedAt,:Email)",
+		userMap,
+	)
+	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func UserAll() (models.Users, error) {
+	users := models.Users{}
+	err := db.Select(&users, "select * from \"user\"")
+	if err != nil {
+		logging.Error(err)
+	}
+	return users, err
+}
+
+func GetUserByID(id int) (models.User, error) {
+	user := models.User{}
+	err := db.Get(&user, "select * from \"user\" where id=$1", id)
+	if err != nil {
+		logging.Error(err)
+		return user, err
+	}
+
+	return user, nil
 }

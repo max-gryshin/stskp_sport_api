@@ -9,6 +9,8 @@
 # project layout
 [project layout](https://github.com/golang-standards/project-layout)
 
+# sqlx
+[sqlx](https://github.com/jmoiron/sqlx)
 # Plane
 ## Todo 	
 - API
@@ -25,7 +27,8 @@
     - authorization
     - model of user, workout, workout_type, workout_value
     - password checking
-- Swagger documentation: installed, configured and set basic realization 
+- Swagger documentation: installed, configured and set basic realization
+- sqlx: extension of database/sql for better life
 
 #Business logic
 ### basic entities
@@ -50,4 +53,19 @@
  - http 2.0
  
 # In progress
- 
+ - Business logic
+    - CRUD user, workout, workout_type, workout_value
+    - create routes post, get, patch, delete for user, workout, workout_type, workout_value
+    - create methods to handle crud with db
+    - describe a thing like DTO in symfony (to hide private fields as password)
+    - describe methods for basic api functional 
+        - look at work project
+        - getById, update, sort, filter, per page (offset),        
+        - get all
+        - get by id
+        - get by a field ?
+        - post
+        - patch
+        - delete
+        - order by
+        - filter
