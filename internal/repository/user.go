@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"github.com/fatih/structs"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
@@ -30,16 +31,23 @@ func CreateUser(user models.User) error {
 	return nil
 }
 
-func UserAll() (models.Users, error) {
-	users := models.Users{}
-	err := db.Select(&users, "select * from \"user\"")
-	if err != nil {
+// get user by conditions
+func FindBy(criteria map[string][2]string, order map[string]string, limit int, offset int) (models.Users, error) {
+	var (
+		sql   = "select * from \"user\""
+		users = models.Users{}
+		err   error
+	)
+	query, args := queryBuilder(criteria, order, limit, offset)
+	sql += query
+	fmt.Printf(sql + "\n") // debug
+	if err = db.Select(&users, sql, args...); err != nil {
 		logging.Error(err)
 	}
 	return users, err
 }
 
-func GetUserByID(id int) (models.User, error) {
+func GetUserByID(id string) (models.User, error) {
 	user := models.User{}
 	err := db.Get(&user, "select * from \"user\" where id=$1", id)
 	if err != nil {
