@@ -24,6 +24,7 @@ func InitRouter() *gin.Engine {
 	apiv1.Use(jwt.JWT())
 	{
 		apiv1.GET("/users", v1.GetUsers)
+		apiv1.GET("/users/:id", v1.GetUser)
 	}
 
 	return router

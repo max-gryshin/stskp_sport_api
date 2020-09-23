@@ -9,6 +9,9 @@
 # project layout
 [project layout](https://github.com/golang-standards/project-layout)
 
+# awesome go
+[awesome go](https://awesome-go.com/)
+
 # sqlx
 [sqlx](https://github.com/jmoiron/sqlx)
 # Plane
@@ -29,7 +32,9 @@
     - password checking
 - Swagger documentation: installed, configured and set basic realization
 - sqlx: extension of database/sql for better life
-
+- basic query builder (find, orderBy, offsetRows, andWhere, maxResult method in repository)
+- in FindBy - set flexible field selection
+- parser query parameters
 #Business logic
 ### basic entities
  - workout

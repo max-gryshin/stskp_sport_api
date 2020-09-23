@@ -15,12 +15,28 @@ import (
 
 func GetUsers(c *gin.Context) {
 	appG := app.Gin{C: c}
-	users, err := repository.UserAll()
+	criteria, order, limit, offset, ok := api.ParseQueryParams(models.GetUserFields(), c)
+	if !ok {
+		appG.Response(http.StatusBadGateway, e.ERROR, "invalid query params")
+		return
+	}
+	users, err := repository.FindBy(criteria, order, limit, offset)
 	if err != nil {
 		appG.Response(http.StatusBadGateway, e.ERROR, err)
 		return
 	}
 	appG.Response(http.StatusOK, e.SUCCESS, users)
+}
+
+func GetUser(c *gin.Context) {
+	id := c.Param("id")
+	appG := app.Gin{C: c}
+	user, err := repository.GetUserByID(id)
+	if err != nil {
+		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
+		return
+	}
+	appG.Response(http.StatusOK, e.SUCCESS, user)
 }
 
 func CreateUser(c *gin.Context) {
