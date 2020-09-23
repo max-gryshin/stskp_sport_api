@@ -8,6 +8,21 @@ definitions:
       msg:
         type: string
     type: object
+  models.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      state:
+        type: integer
+      username:
+        type: string
+    type: object
 host: localhost:8080
 info:
   contact:
@@ -48,4 +63,111 @@ paths:
           schema:
             $ref: '#/definitions/app.Response'
       summary: Get Auth
+  /api/user/create:
+    post:
+      description: user authorization
+      parameters:
+      - description: userName
+        in: query
+        name: username
+        required: true
+        type: string
+      - description: password
+        in: query
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/app.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Get Auth
+  /api/v1/users:
+    get:
+      description: Get users with params
+      parameters:
+      - description: state[=]=name
+        in: query
+        items:
+          type: string
+        name: user_name
+        type: array
+      - description: state[> | < | >= | <= | =]=1
+        in: query
+        items:
+          type: integer
+        name: state
+        type: array
+      - description: email[=]=email@mail.com
+        in: query
+        items:
+          type: string
+        name: email
+        type: array
+      - description: created_at[> | < | >= | <= | =]=2020-09-01
+        in: query
+        items:
+          type: string
+        name: created_at
+        type: array
+      - description: order[fieldName]=ASC|DESC
+        in: query
+        items:
+          type: string
+        name: order
+        type: array
+      - description: "1"
+        in: query
+        name: limit
+        type: integer
+      - description: "2"
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: List users
+  /api/v1/users/{id}/:
+    get:
+      description: Get user by id
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-AUTH-TOKEN:
+              description: qwerty
+              type: string
+          schema:
+            $ref: '#/definitions/models.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      summary: Show a user
 swagger: "2.0"

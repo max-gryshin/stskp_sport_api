@@ -32,7 +32,7 @@ func CreateUser(user models.User) error {
 }
 
 // get user by conditions
-func FindBy(criteria map[string][2]string, order map[string]string, limit int, offset int) (models.Users, error) {
+func FindUserBy(criteria map[string][2]string, order map[string]string, limit int, offset int) (models.Users, error) {
 	var (
 		sql   = "select * from \"user\""
 		users = models.Users{}

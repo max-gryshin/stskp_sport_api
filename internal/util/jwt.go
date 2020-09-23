@@ -16,7 +16,7 @@ type Claims struct {
 // GenerateToken generate tokens used for auth
 func GenerateToken(username, password string) (string, error) {
 	nowTime := time.Now()
-	expireTime := nowTime.Add(time.Hour)
+	expireTime := nowTime.Add(time.Hour * 24 * 30) // 1 month by develop
 
 	claims := Claims{
 		EncodeMD5(username),

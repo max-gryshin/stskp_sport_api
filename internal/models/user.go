@@ -47,5 +47,5 @@ func (u *User) InvalidPassword(password string) bool {
 }
 
 func GetUserFields() []string {
-	return []string{"id", "username", "state", "created_at", "email"}
+	return []string{"id", "user_name", "state", "created_at", "email"}
 }

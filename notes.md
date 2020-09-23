@@ -79,4 +79,4 @@
         - create method in repository
         - test it
         - create annotation
-        - generate swagger
+        - generate swagger (swag init)
