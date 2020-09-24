@@ -22,6 +22,7 @@ type Auth struct {
 // @Produce  json
 // @Param username query string true "userName"
 // @Param password query string true "password"
+// @Header 200 {string} Access-Control-Allow_origin "*"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]

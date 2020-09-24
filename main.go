@@ -24,8 +24,10 @@ var conf *setting.Setting
 
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-
-// @host localhost:8080
+// @securityDefinitions.apikey JWT
+// @in header
+// @name X-AUTH-TOKEN
+// @host localhost:8081
 func init() {
 	if err := godotenv.Load(); err != nil {
 		log.Print("No .env file found")

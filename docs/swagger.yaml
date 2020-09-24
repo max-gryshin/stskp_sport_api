@@ -23,7 +23,7 @@ definitions:
       username:
         type: string
     type: object
-host: localhost:8080
+host: localhost:8081
 info:
   contact:
     email: support@swagger.io
@@ -65,7 +65,7 @@ paths:
       summary: Get Auth
   /api/user/create:
     post:
-      description: user authorization
+      description: Create user
       parameters:
       - description: userName
         in: query
@@ -88,12 +88,12 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
-      summary: Get Auth
+      summary: Create user
   /api/v1/users:
     get:
       description: Get users with params
       parameters:
-      - description: state[=]=name
+      - description: user_name[=]=name
         in: query
         items:
           type: string
@@ -119,10 +119,8 @@ paths:
         type: array
       - description: order[fieldName]=ASC|DESC
         in: query
-        items:
-          type: string
         name: order
-        type: array
+        type: string
       - description: "1"
         in: query
         name: limit
@@ -144,6 +142,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - JWT: []
       summary: List users
   /api/v1/users/{id}/:
     get:
@@ -169,5 +169,51 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/app.Response'
+      security:
+      - JWT: []
       summary: Show a user
+  /api/v1/users/{id}/update:
+    patch:
+      description: Update user
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: user_name=name
+        in: query
+        name: user_name
+        type: string
+      - description: state=1
+        in: query
+        name: state
+        type: integer
+      - description: mailname@mail.com
+        in: query
+        name: email
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-AUTH-TOKEN:
+              description: qwerty
+              type: string
+          schema:
+            $ref: '#/definitions/models.User'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/app.Response'
+      security:
+      - JWT: []
+      summary: Update user
+securityDefinitions:
+  JWT:
+    in: header
+    name: X-AUTH-TOKEN
+    type: apiKey
 swagger: "2.0"

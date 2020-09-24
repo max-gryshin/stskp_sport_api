@@ -15,7 +15,7 @@
         },
         "version": "1.0"
     },
-    "host": "localhost:8080",
+    "host": "localhost:8081",
     "paths": {
         "/api/user/auth": {
             "post": {
@@ -58,11 +58,11 @@
         },
         "/api/user/create": {
             "post": {
-                "description": "user authorization",
+                "description": "Create user",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get Auth",
+                "summary": "Create user",
                 "parameters": [
                     {
                         "type": "string",
@@ -97,6 +97,11 @@
         },
         "/api/v1/users": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Get users with params",
                 "produces": [
                     "application/json"
@@ -108,7 +113,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "state[=]=name",
+                        "description": "user_name[=]=name",
                         "name": "user_name",
                         "in": "query"
                     },
@@ -140,10 +145,7 @@
                         "in": "query"
                     },
                     {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
+                        "type": "string",
                         "description": "order[fieldName]=ASC|DESC",
                         "name": "order",
                         "in": "query"
@@ -182,6 +184,11 @@
         },
         "/api/v1/users/{id}/": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Get user by id",
                 "produces": [
                     "application/json"
@@ -194,6 +201,67 @@
                         "name": "id",
                         "in": "path",
                         "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        },
+                        "headers": {
+                            "X-AUTH-TOKEN": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/update": {
+            "patch": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "Update user",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "user_name=name",
+                        "name": "user_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "state=1",
+                        "name": "state",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "mailname@mail.com",
+                        "name": "email",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -256,6 +324,13 @@
                     "type": "string"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "name": "X-AUTH-TOKEN",
+            "in": "header"
         }
     }
 }

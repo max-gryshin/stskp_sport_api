@@ -74,11 +74,11 @@ var doc = `{
         },
         "/api/user/create": {
             "post": {
-                "description": "user authorization",
+                "description": "Create user",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get Auth",
+                "summary": "Create user",
                 "parameters": [
                     {
                         "type": "string",
@@ -113,6 +113,11 @@ var doc = `{
         },
         "/api/v1/users": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Get users with params",
                 "produces": [
                     "application/json"
@@ -124,7 +129,7 @@ var doc = `{
                         "items": {
                             "type": "string"
                         },
-                        "description": "state[=]=name",
+                        "description": "user_name[=]=name",
                         "name": "user_name",
                         "in": "query"
                     },
@@ -156,10 +161,7 @@ var doc = `{
                         "in": "query"
                     },
                     {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
+                        "type": "string",
                         "description": "order[fieldName]=ASC|DESC",
                         "name": "order",
                         "in": "query"
@@ -198,6 +200,11 @@ var doc = `{
         },
         "/api/v1/users/{id}/": {
             "get": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
                 "description": "Get user by id",
                 "produces": [
                     "application/json"
@@ -210,6 +217,67 @@ var doc = `{
                         "name": "id",
                         "in": "path",
                         "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        },
+                        "headers": {
+                            "X-AUTH-TOKEN": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}/update": {
+            "patch": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "Update user",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Update user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "user_name=name",
+                        "name": "user_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "state=1",
+                        "name": "state",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "mailname@mail.com",
+                        "name": "email",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -273,6 +341,13 @@ var doc = `{
                 }
             }
         }
+    },
+    "securityDefinitions": {
+        "JWT": {
+            "type": "apiKey",
+            "name": "X-AUTH-TOKEN",
+            "in": "header"
+        }
     }
 }`
 
@@ -288,7 +363,7 @@ type swaggerInfo struct {
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
-	Host:        "localhost:8080",
+	Host:        "localhost:8081",
 	BasePath:    "",
 	Schemes:     []string{},
 	Title:       "Swagger Example API",
