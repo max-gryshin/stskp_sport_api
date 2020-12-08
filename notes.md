@@ -22,6 +22,7 @@
 - Business logic
 - Migrations
 - Basic role system
+- swag docs can't set query params with string\[string]=string
 
 ## Resolved
 - routes: create, login

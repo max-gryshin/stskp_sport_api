@@ -15,13 +15,18 @@ const (
 
 type Users []User
 
+var userFields = map[string][]string{
+	"get":    {"id", "user_name", "state", "created_at", "email"},
+	"update": {"user_name", "state", "email"},
+}
+
 type User struct {
-	ID        int       `json:"id" db:"id"`
-	Username  string    `json:"username" valid:"Required; MaxSize(50)" db:"user_name"`
-	Password  string    `json:"password" valid:"Required; MaxSize(50)" db:"password_hash"`
-	State     int8      `json:"state"`
+	ID        int       `json:"id" db:"id" binding:"required"`
+	Username  string    `json:"username"   form:"username" valid:"MaxSize(50)" db:"user_name"`
+	Password  string    `json:"password"   valid:"MaxSize(50)" db:"password_hash"`
+	State     int8      `json:"state"      form:"state" valid:"Range(1, 5)"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	Email     string    `json:"email"`
+	Email     string    `json:"email"      form:"email" valid:"Email"`
 }
 
 // SetPassword sets a new password stored as hash.
@@ -46,6 +51,6 @@ func (u *User) InvalidPassword(password string) bool {
 	return err != nil
 }
 
-func GetUserFields() []string {
-	return []string{"id", "user_name", "state", "created_at", "email"}
+func GetAllowedUserFieldsByMethod(method string) []string {
+	return userFields[method]
 }

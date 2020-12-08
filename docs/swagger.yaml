@@ -22,6 +22,8 @@ definitions:
         type: integer
       username:
         type: string
+    required:
+    - id
     type: object
 host: localhost:8081
 info:
@@ -174,6 +176,8 @@ paths:
       summary: Show a user
   /api/v1/users/{id}/update:
     patch:
+      consumes:
+      - application/json
       description: Update user
       parameters:
       - description: User ID
@@ -181,18 +185,12 @@ paths:
         name: id
         required: true
         type: integer
-      - description: user_name=name
-        in: query
-        name: user_name
-        type: string
-      - description: state=1
-        in: query
-        name: state
-        type: integer
-      - description: mailname@mail.com
-        in: query
-        name: email
-        type: string
+      - description: update user_name, state, email
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
       produces:
       - application/json
       responses:

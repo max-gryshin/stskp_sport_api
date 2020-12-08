@@ -47,7 +47,7 @@ func FindUserBy(criteria map[string][2]string, order map[string]string, limit in
 	return users, err
 }
 
-func GetUserByID(id string) (models.User, error) {
+func GetUserByID(id int) (models.User, error) {
 	user := models.User{}
 	err := db.Get(&user, "select * from \"user\" where id=$1", id)
 	if err != nil {
@@ -56,4 +56,18 @@ func GetUserByID(id string) (models.User, error) {
 	}
 
 	return user, nil
+}
+
+// todo: do more flexible query
+func UpdateUser(user models.User) error {
+	userMap := structs.Map(user)
+	_, err := db.NamedExec(
+		"UPDATE \"user\" SET user_name=:Username, state=:State, created_at=:CreatedAt, email=:Email WHERE id=:ID",
+		userMap,
+	)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

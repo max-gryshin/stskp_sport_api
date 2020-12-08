@@ -249,6 +249,9 @@ var doc = `{
                     }
                 ],
                 "description": "Update user",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -262,22 +265,13 @@ var doc = `{
                         "required": true
                     },
                     {
-                        "type": "string",
-                        "description": "user_name=name",
-                        "name": "user_name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "state=1",
-                        "name": "state",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "mailname@mail.com",
-                        "name": "email",
-                        "in": "query"
+                        "description": "update user_name, state, email",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
                     }
                 ],
                 "responses": {
@@ -320,6 +314,9 @@ var doc = `{
         },
         "models.User": {
             "type": "object",
+            "required": [
+                "id"
+            ],
             "properties": {
                 "created_at": {
                     "type": "string"
