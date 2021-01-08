@@ -1,15 +1,16 @@
-POST http://localhost:8081/api/user/auth?username=lesha&password=12345
+POST http://localhost:8081/api/user/auth?username=qwe&password=123123
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
+
 ###
 
-GET http://localhost:8081/api/v1/users?user_name[=]=Max
+POST http://localhost:8081/api/user/create?username=dimm&password=123123
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjQzNDZlMTE5MTZmYmRlMzMyZjkwZGM3ZDk5MTRiMDk4IiwicGFzc3dvcmQiOiIyMDJjYjk2MmFjNTkwNzViOTY0YjA3MTUyZDIzNGI3MCIsImV4cCI6MTYwOTkzMzM2OCwiaXNzIjoic3Rza3AtYXBpIn0.pVi1mWz3W0NVFStpCgjXFSv2lVyrGuolfJ7G81Sk-W8
-###
+
+####
 
 PATCH http://localhost:8081/api/v1/users/12/update
 Accept: */*
@@ -18,13 +19,26 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E
 
 {
-  "state": 2
+  "email": "mail@ama.com",
+  "state": 5,
+  "username": "dimm"
 }
 ###
 
-POST http://localhost:8081/api/user/create?username=name&password=123123
+GET http://localhost:8081/api/v1/users
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E
 
-####
+{
+  "criteria": {
+   "state": [">", "1"]
+  },
+  "limit": 0,
+  "offset": 0,
+  "order": {"id": "DESC"}
+}
+
+###"id": [">", "4"],
+###"state": [">=", "1"]
