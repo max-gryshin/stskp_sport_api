@@ -12,8 +12,14 @@ import (
 var db *sqlx.DB
 
 const (
-	ORDER_ASC  = "ASC"
-	ORDER_DESC = "DESC"
+	OrderAsc   = "ASC"
+	OrderDesc  = "DESC"
+	Equal      = "="
+	NotEqual   = "!="
+	Great      = ">"
+	GreatEqual = ">="
+	Less       = "<"
+	LessEqual  = "<="
 )
 
 func Setup() {
@@ -23,6 +29,28 @@ func Setup() {
 		log.Fatalln("postgres.Setup err: %v", err)
 		os.Exit(1)
 	}
+}
+
+func Select(selectFields []string) string {
+	if len(selectFields) == 0 {
+		return "*"
+	}
+	var (
+		s          = ""
+		lastSelect = len(selectFields)
+		count      int
+		comma      = ", "
+	)
+	for _, field := range selectFields {
+		count++
+		if count == lastSelect {
+			s += field
+			break
+		}
+		s += field + comma
+	}
+
+	return s
 }
 
 func andWhere(criteria map[string][2]string, argsCount *int) (string, []interface{}) {
@@ -61,15 +89,15 @@ func orderBy(orderBy map[string]string) string {
 		comma     = ", "
 		lastEl    = len(orderBy)
 		count     int
-		o         = ORDER_ASC
+		o         = OrderAsc
 	)
 	for field, order := range orderBy {
 		count++
 		if count == lastEl {
 			comma = " "
 		}
-		if order == ORDER_DESC {
-			o = ORDER_DESC
+		if order == OrderDesc {
+			o = OrderDesc
 		}
 		orderCond += field + " " + o + comma
 	}
@@ -97,4 +125,8 @@ func queryBuilder(criteria map[string][2]string, order map[string]string, limit 
 	sql += andWhere + orderBy(order) + maxResult(limit) + offsetRows(offset)
 
 	return sql, args
+}
+
+func IsComparisonOperator(o string) bool {
+	return o == Equal || o == NotEqual || o == Great || o == GreatEqual || o == Less || o == LessEqual
 }

@@ -1,40 +1,39 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
-	"strconv"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 )
 
-func ParseQueryParams(fields []string, c *gin.Context) (map[string][2]string, map[string]string, int, int, bool) {
-	var (
-		criteriaValue [2]string
-	)
+type QueryParams struct {
+	Criteria map[string][2]string `json:"criteria"`
+	Order    map[string]string    `json:"order"`
+	Limit    int                  `json:"limit"`
+	Offset   int                  `json:"offset"`
+}
+
+func ParseQueryParams(AllowedFields []string, qp *QueryParams) (map[string][2]string, map[string]string, int, int, bool) {
+	isComparisonOperator := true
 	criteria := make(map[string][2]string)
-	order, orderOk := c.GetQueryMap("order")
-	if !orderOk {
-		order = nil
-	}
-	limit, err := strconv.Atoi(c.Query("limit"))
-	if err != nil {
-		limit = 0
-	}
-	offset, err := strconv.Atoi(c.Query("offset"))
-	if err != nil {
-		offset = 0
-	}
-	for _, value := range fields {
-		queryVal, okQuery := c.GetQueryMap(value)
-		if !okQuery {
-			continue
-		}
-		// only one query for one field
-		for k, v := range queryVal {
-			criteriaValue[0] = k
-			criteriaValue[1] = v
+	order := make(map[string]string)
+	for _, value := range AllowedFields {
+		queryVal, okVal := qp.Criteria[value]
+		orderVal, okOrder := qp.Order[value]
+		if !okOrder {
+			logging.Error("user doesn't have this field for order")
 			break
 		}
-		criteria[value] = criteriaValue
+		order[value] = orderVal
+		if !okVal {
+			continue
+		}
+		isComparisonOperator = repository.IsComparisonOperator(queryVal[0])
+		if !isComparisonOperator {
+			logging.Error("last element must be comparison operator")
+			break
+		}
+		criteria[value] = queryVal
 	}
 
-	return criteria, order, limit, offset, true
+	return criteria, qp.Order, qp.Limit, qp.Offset, isComparisonOperator
 }

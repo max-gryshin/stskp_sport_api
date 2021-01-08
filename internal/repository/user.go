@@ -32,9 +32,9 @@ func CreateUser(user models.User) error {
 }
 
 // get user by conditions
-func FindUserBy(criteria map[string][2]string, order map[string]string, limit int, offset int) (models.Users, error) {
+func FindUserBy(criteria map[string][2]string, order map[string]string, limit int, offset int, selectFields []string) (models.Users, error) {
 	var (
-		sql   = "select * from \"user\""
+		sql   = "select " + Select(selectFields) + " from \"user\""
 		users = models.Users{}
 		err   error
 	)
@@ -47,9 +47,9 @@ func FindUserBy(criteria map[string][2]string, order map[string]string, limit in
 	return users, err
 }
 
-func GetUserByID(id int) (models.User, error) {
+func GetUserByID(id int, selectFields []string) (models.User, error) {
 	user := models.User{}
-	err := db.Get(&user, "select * from \"user\" where id=$1", id)
+	err := db.Get(&user, "select "+Select(selectFields)+" from \"user\" where id=$1", id)
 	if err != nil {
 		logging.Error(err)
 		return user, err
@@ -62,7 +62,7 @@ func GetUserByID(id int) (models.User, error) {
 func UpdateUser(user models.User) error {
 	userMap := structs.Map(user)
 	_, err := db.NamedExec(
-		"UPDATE \"user\" SET user_name=:Username, state=:State, created_at=:CreatedAt, email=:Email WHERE id=:ID",
+		"UPDATE \"user\" SET user_name=:Username, state=:State, email=:Email WHERE id=:ID",
 		userMap,
 	)
 	if err != nil {

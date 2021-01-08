@@ -64,7 +64,7 @@ func GetUser(c *gin.Context) {
 	if idError != nil {
 		appG.Response(http.StatusBadGateway, e.ERROR, idError)
 	}
-	user, err := repository.GetUserByID(id)
+	user, err := repository.GetUserByID(id, models.GetAllowedUserFieldsByMethod("get"))
 	if err != nil {
 		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
 		return
@@ -72,28 +72,38 @@ func GetUser(c *gin.Context) {
 	appG.Response(http.StatusOK, e.SUCCESS, user)
 }
 
+//{
+//    \"criteria\": {
+//        \"state\": [\">\", \"1\"]
+//    },
+//    \"limit\": 1,
+//    \"offset\": 0,
+//    \"order\": {\"id\": \"DESC\"}
+//}
 // @Summary List users
 // @Description Get users with params
 // @Produce  json
 // @Security JWT
-// @Param user_name query []string false "user_name[=]=name"
-// @Param state query []int false "state[> | < | >= | <= | =]=1"
-// @Param email query []string false "email[=]=email@mail.com"
-// @Param created_at query []string false "created_at[> | < | >= | <= | =]=2020-09-01"
-// @Param order query string false "order[fieldName]=ASC|DESC"
-// @Param limit query int false "1"
-// @Param offset query int false "2"
 // @Success 200 {array} models.User
 // @Failure 500 {object} app.Response
 // @Router /api/v1/users [get]
 func GetUsers(c *gin.Context) {
 	appG := app.Gin{C: c}
-	criteria, order, limit, offset, ok := api.ParseQueryParams(models.GetAllowedUserFieldsByMethod("get"), c)
+	var queryParams api.QueryParams
+	if err := c.ShouldBindJSON(&queryParams); err != nil {
+		logging.Error(err)
+		appG.Response(http.StatusNotFound, e.ERROR, err)
+		return
+	}
+	criteria, order, limit, offset, ok := api.ParseQueryParams(
+		models.GetAllowedUserFieldsByMethod("get"),
+		&queryParams,
+	)
 	if !ok {
 		appG.Response(http.StatusBadGateway, e.ERROR, "invalid query params")
 		return
 	}
-	users, err := repository.FindUserBy(criteria, order, limit, offset)
+	users, err := repository.FindUserBy(criteria, order, limit, offset, models.GetAllowedUserFieldsByMethod("get"))
 	if err != nil {
 		appG.Response(http.StatusBadGateway, e.ERROR, err)
 		return
@@ -120,7 +130,7 @@ func UpdateUser(c *gin.Context) {
 		appG.Response(http.StatusBadGateway, e.ERROR, idError)
 		return
 	}
-	user, err := repository.GetUserByID(id)
+	user, err := repository.GetUserByID(id, []string{})
 	if err != nil {
 		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
 		return
