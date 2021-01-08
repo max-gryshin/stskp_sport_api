@@ -124,33 +124,26 @@ func GetUsers(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/users/{id}/update [patch]
 func UpdateUser(c *gin.Context) {
-	idParam := c.Param("id")
 	appG := app.Gin{C: c}
-	var user models.User
-	id, idError := strconv.Atoi(idParam)
+	id, idError := strconv.Atoi(c.Param("id"))
 	if idError != nil {
 		appG.Response(http.StatusBadGateway, e.ERROR, idError)
 		return
 	}
-	user.ID = id
+	user, err := repository.GetUserByID(id, []string{})
+	if err != nil {
+		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
+		return
+	}
 	if err := c.ShouldBindJSON(&user); err != nil {
 		logging.Error(err)
 		appG.Response(http.StatusNotFound, e.ERROR, err)
 		return
 	}
-	_, err := repository.GetUserByID(id, []string{})
-	if err != nil {
-		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
-		return
-	}
 	valid := validation.Validation{}
 	b, err := valid.Valid(user)
-	if err != nil {
+	if err != nil || !b {
 		app.MarkErrors(valid.Errors)
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, valid.Errors)
-		return
-	}
-	if !b {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, valid.Errors)
 		return
 	}
