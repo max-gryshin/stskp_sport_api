@@ -47,6 +47,7 @@ var AppSetting = &Setting{}
 
 // LoadSetting loads configuration from env variables
 func LoadSetting() *Setting {
+	// TODO: Try use go-env for easy unmarshalling https://github.com/Netflix/go-env
 	AppSetting = &Setting{
 		ServerConfig: ServerSetting{
 			Host: getEnv("HOST", ""),

@@ -1,6 +1,10 @@
 package v1
 
 import (
+	"net/http"
+	"strconv"
+	"time"
+
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
@@ -9,9 +13,6 @@ import (
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
-	"net/http"
-	"strconv"
-	"time"
 )
 
 // @Summary Create user
@@ -23,7 +24,10 @@ import (
 // @Failure 500 {object} app.Response
 // @Router /api/user/create [post]
 func CreateUser(c *gin.Context) {
-	appG := app.Gin{C: c}
+	appG := app.Gin{C: c} // FIXME: this construction is bed solution, if you very very very want create own Response method
+	// define new context interface extend of gin.Context and add handler wrapper
+	// OR: create meddelware to expend error information
+	// OR: use c.AbortWithError() and c.AbortWithStatus() method
 	valid := validation.Validation{}
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
@@ -39,8 +43,10 @@ func CreateUser(c *gin.Context) {
 	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
 	if err := user.SetPassword(a.Password); err != nil {
 		logging.Error(err)
+		// FIXME: need Return
 	}
-	if errSave := repository.CreateUser(user); errSave != nil {
+	if errSave := repository.CreateUser(user); errSave != nil { // err = repository.CreateUser(user); err != nil
+		//                                                             /\ '=' not ':='
 		appG.Response(http.StatusBadGateway, e.ERROR, errSave)
 		logging.Error(errSave)
 		return
@@ -63,6 +69,7 @@ func GetUser(c *gin.Context) {
 	id, idError := strconv.Atoi(idParam)
 	if idError != nil {
 		appG.Response(http.StatusBadGateway, e.ERROR, idError)
+		// FIXME: need Return
 	}
 	user, err := repository.GetUserByID(id, models.GetAllowedUserFieldsByMethod("get"))
 	if err != nil {
@@ -95,6 +102,7 @@ func GetUsers(c *gin.Context) {
 		appG.Response(http.StatusNotFound, e.ERROR, err)
 		return
 	}
+	// TODO: code after commit is was be repeated very often try export it to middelware
 	criteria, order, limit, offset, ok := api.ParseQueryParams(
 		models.GetAllowedUserFieldsByMethod("get"),
 		&queryParams,

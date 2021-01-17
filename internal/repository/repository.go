@@ -1,12 +1,13 @@
 package repository
 
 import (
-	_ "github.com/jackc/pgx/stdlib"
-	"github.com/jmoiron/sqlx"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"log"
 	"os"
 	"strconv"
+
+	_ "github.com/jackc/pgx/stdlib"
+	"github.com/jmoiron/sqlx"
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 )
 
 var db *sqlx.DB
@@ -35,6 +36,8 @@ func Select(selectFields []string) string {
 	if len(selectFields) == 0 {
 		return "*"
 	}
+
+	// FIXME: Use strings.Join(selectFields, ", ") instead following
 	var (
 		s          = ""
 		lastSelect = len(selectFields)
@@ -116,6 +119,10 @@ func maxResult(maxResult int) string {
 	return " limit " + strconv.Itoa(maxResult)
 }
 
+// TODO:
+// https://github.com/didi/gendry
+// http://doug-martin.github.io/goqu/
+// https://github.com/huandu/go-sqlbuilder
 func queryBuilder(criteria map[string][2]string, order map[string]string, limit int, offset int) (string, []interface{}) {
 	var (
 		sql       string

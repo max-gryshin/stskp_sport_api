@@ -1,9 +1,10 @@
 package api
 
 import (
+	"net/http"
+
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"net/http"
 
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
@@ -27,7 +28,7 @@ type Auth struct {
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]
 func GetAuth(c *gin.Context) {
-	appG := app.Gin{C: c}
+	appG := app.Gin{C: c} // TODO: Do not wrap git contex. use method directly
 	valid := validation.Validation{}
 
 	username, _ := c.GetQuery("username")
@@ -37,8 +38,10 @@ func GetAuth(c *gin.Context) {
 
 	if !ok {
 		if valid.HasErrors() {
+			// maybe c.Error(valid.Errors)
 			app.MarkErrors(valid.Errors)
 		}
+		// FIXME c c.AbortWithStatus(http.StatusBadRequest)
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
 		return
 	}
@@ -49,16 +52,22 @@ func GetAuth(c *gin.Context) {
 	invalid := user.InvalidPassword(password)
 
 	if invalid {
+		// FIXME c c.AbortWithStatus(http.StatusBadRequest)
 		appG.Response(http.StatusBadRequest, e.ERROR_AUTH_CHECK_CREDENTIALS_FAIL, nil)
 		return
 	}
 
 	token, err := util.GenerateToken(a.Username, a.Password)
 	if err != nil {
+		// FIXME c c.AbortWithStatus(http.StatusInternalServerError)
 		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_TOKEN, nil)
 		return
 	}
 
+	// FIXME: This looks better:
+	// c.JSON(e.SUCCESS, map[string]string{
+	// 	"token": token,
+	// })
 	appG.Response(http.StatusOK, e.SUCCESS, map[string]string{
 		"token": token,
 	})

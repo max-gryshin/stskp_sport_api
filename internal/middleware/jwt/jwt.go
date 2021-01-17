@@ -1,11 +1,12 @@
 package jwt
 
 import (
+	"net/http"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
-	"net/http"
 )
 
 // JWT is jwt middleware
@@ -14,7 +15,7 @@ func JWT() gin.HandlerFunc {
 		var code int
 		var data interface{}
 		code = e.SUCCESS
-		token := c.GetHeader("X-AUTH-TOKEN")
+		token := c.GetHeader("X-AUTH-TOKEN") // TODO: recommended use Authentication: Bearer ... https://swagger.io/docs/specification/authentication/bearer-authentication/
 		if token == "" {
 			code = e.INVALID_PARAMS
 		} else {

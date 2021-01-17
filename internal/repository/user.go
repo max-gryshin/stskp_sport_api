@@ -2,6 +2,7 @@ package repository
 
 import (
 	"fmt"
+
 	"github.com/fatih/structs"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
@@ -19,7 +20,7 @@ func FindUserByUsername(username string) (models.User, error) {
 }
 
 func CreateUser(user models.User) error {
-	userMap := structs.Map(user)
+	userMap := structs.Map(user) // FIXME: This line doesn't matter: https://jmoiron.github.io/sqlx/#namedParams
 	_, err := db.NamedExec(
 		"INSERT INTO \"user\" (user_name, password_hash, state, created_at, email) VALUES (:Username,:Password,:State,:CreatedAt,:Email)",
 		userMap,

@@ -2,11 +2,12 @@ package logging
 
 import (
 	"fmt"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/file"
 	"log"
 	"os"
 	"path/filepath"
 	"runtime"
+
+	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/file"
 )
 
 type Level int
