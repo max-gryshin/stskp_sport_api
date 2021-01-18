@@ -112,7 +112,7 @@ var doc = `{
             }
         },
         "/api/v1/users": {
-            "get": {
+            "post": {
                 "security": [
                     {
                         "JWT": []
@@ -125,68 +125,20 @@ var doc = `{
                 "summary": "List users",
                 "parameters": [
                     {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "user_name[=]=name",
-                        "name": "user_name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "state[\u003e | \u003c | \u003e= | \u003c= | =]=1",
-                        "name": "state",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "email[=]=email@mail.com",
-                        "name": "email",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "created_at[\u003e | \u003c | \u003e= | \u003c= | =]=2020-09-01",
-                        "name": "created_at",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "order[fieldName]=ASC|DESC",
-                        "name": "order",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "1",
-                        "name": "limit",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "2",
-                        "name": "offset",
-                        "in": "query"
+                        "description": "{",
+                        "name": "criteria",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/api.QueryParams"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/models.User"
-                            }
+                            "$ref": "#/definitions/app.Response"
                         }
                     },
                     "500": {
@@ -298,6 +250,32 @@ var doc = `{
         }
     },
     "definitions": {
+        "api.QueryParams": {
+            "type": "object",
+            "properties": {
+                "criteria": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "order": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "app.Response": {
             "type": "object",
             "properties": {
@@ -322,15 +300,18 @@ var doc = `{
                     "type": "string"
                 },
                 "email": {
+                    "description": "valid email",
                     "type": "string"
                 },
                 "id": {
                     "type": "integer"
                 },
                 "password": {
+                    "description": "valid:\"MaxSize(50)\"",
                     "type": "string"
                 },
                 "state": {
+                    "description": "Range from 1 to 5",
                     "type": "integer"
                 },
                 "username": {

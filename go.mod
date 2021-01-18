@@ -12,6 +12,7 @@ require (
 	github.com/go-openapi/spec v0.19.9 // indirect
 	github.com/go-openapi/swag v0.19.9 // indirect
 	github.com/go-playground/validator/v10 v10.3.0 // indirect
+	github.com/hetiansu5/urlquery v1.2.3
 	github.com/jackc/pgx v3.6.2+incompatible
 	github.com/jackc/pgx/v4 v4.8.1
 	github.com/jmoiron/sqlx v1.2.0

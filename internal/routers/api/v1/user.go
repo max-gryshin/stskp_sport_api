@@ -3,6 +3,7 @@ package v1
 import (
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
+	"github.com/hetiansu5/urlquery"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
 	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
@@ -72,43 +73,59 @@ func GetUser(c *gin.Context) {
 	appG.Response(http.StatusOK, e.SUCCESS, user)
 }
 
-//{
-//    \"criteria\": {
-//        \"state\": [\">\", \"1\"]
-//    },
-//    \"limit\": 1,
-//    \"offset\": 0,
-//    \"order\": {\"id\": \"DESC\"}
-//}
 // @Summary List users
 // @Description Get users with params
 // @Produce  json
 // @Security JWT
-// @Success 200 {array} models.User
+// @Param criteria body api.QueryParams true "{"criteria": {"state": [">", "1"]},"limit": 0,"offset": 0,"order": {"id": "DESC"}}"
+// @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
-// @Router /api/v1/users [get]
+// @Router /api/v1/users [post]
 func GetUsers(c *gin.Context) {
 	appG := app.Gin{C: c}
 	var queryParams api.QueryParams
-	if err := c.ShouldBindJSON(&queryParams); err != nil {
-		logging.Error(err)
-		appG.Response(http.StatusNotFound, e.ERROR, err)
-		return
-	}
-	criteria, order, limit, offset, ok := api.ParseQueryParams(
-		models.GetAllowedUserFieldsByMethod("get"),
-		&queryParams,
-	)
-	if !ok {
-		appG.Response(http.StatusBadGateway, e.ERROR, "invalid query params")
-		return
-	}
-	users, err := repository.FindUserBy(criteria, order, limit, offset, models.GetAllowedUserFieldsByMethod("get"))
+
+	//test := api.QueryParams{
+	//	[]api.CriteriaParam{
+	//		{
+	//			Field: "state",
+	//			Value: "1",
+	//			Condition: ">",
+	//		},
+	//	},
+	//	map[string]string{"id":"DESC"},
+	//	0,
+	//	0,
+	//}
+	//testValueUrlString, _ := urlquery.Marshal(test)
+	err := urlquery.Unmarshal([]byte(c.Request.URL.RawQuery), &queryParams)
 	if err != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, err)
-		return
+		panic(err)
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, users)
+	//if err := c.Bind(&queryParams); err != nil {
+	//	panic(err)
+	//}
+	appG.Response(http.StatusOK, e.SUCCESS, queryParams.Offset)
+
+	//if err := c.ShouldBindJSON(&queryParams); err != nil {
+	//	logging.Error(err)
+	//	appG.Response(http.StatusNotFound, e.ERROR, err)
+	//	return
+	//}
+	//criteria, order, limit, offset, ok := api.ParseQueryParams(
+	//	models.GetAllowedUserFieldsByMethod("get"),
+	//	&queryParams,
+	//)
+	//if !ok {
+	//	appG.Response(http.StatusBadGateway, e.ERROR, "invalid query params")
+	//	return
+	//}
+	//users, err := repository.FindUserBy(criteria, order, limit, offset, models.GetAllowedUserFieldsByMethod("get"))
+	//if err != nil {
+	//	appG.Response(http.StatusBadGateway, e.ERROR, err)
+	//	return
+	//}
+	//appG.Response(http.StatusOK, e.SUCCESS, users)
 }
 
 //"{\"user_name\":\"name\", \"state:1\", \"email\":\"mailname@mail.com\"}"

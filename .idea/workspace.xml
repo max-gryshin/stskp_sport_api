@@ -1,6 +1,1630 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="268429e5-267d-4aee-8b63-5ccea5f37b77" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/api/v1/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/v1/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rest-api.http" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Criteria[0][field]" />
+                <option name="value" value="state" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Criteria[0][Value]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Criteria[0][Condition]" />
+                <option name="value" value="&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][]" />
+                <option name="value" value="&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Criteria[state][]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Criteria[state][]" />
+                <option name="value" value="&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@ama.com&quot;,&#10;  &quot;state&quot;: 5,&#10;  &quot;username&quot;: &quot;dimm&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][0]" />
+                <option name="value" value="&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][1]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="limit" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="offset" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;],&#10;   &quot;field&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][0]" />
+                <option name="value" value="&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][1]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="limit" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="offset" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="query" />
+                <option name="value" value="criteria[state][0]=&gt;" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="criteria[state][1]" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="limit" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="offset" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="order[id]" />
+                <option name="value" value="DESC" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;state&quot;: 4&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/13/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@ama.com&quot;,&#10;  &quot;state&quot;: 5,&#10;  &quot;username&quot;: &quot;dimm&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8081/api/user/create" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="dimm" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 5,&#10;  &quot;username&quot;: &quot;qwe&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8081/api/user/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="qwe" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="123123" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8081/api/user/auth" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="username" />
+                <option name="value" value="DIMMM" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="password" />
+                <option name="value" value="12345" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;dec&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;asc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 4,&#10;  &quot;username&quot;: &quot;qwe&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 4,&#10;  &quot;username&quot;: &quot;&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;state&quot;: 4,&#10;  &quot;username&quot;: &quot;&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 1,&#10;  &quot;username&quot;: &quot;&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 1,&#10;  &quot;username&quot;: &quot;deeeen&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;,&#10;  &quot;state&quot;: 1&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;email&quot;: &quot;mail@am.com&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PATCH" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/update" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;state&quot;: 1&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/3" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/111" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/1" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;DESC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;ASC&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;state&quot;: [&quot;&gt;&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 1,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;=&quot;, &quot;Max&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;Max&quot;, &quot;=&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;=&quot;, &quot;Artsiom&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;=&quot;, &quot;artsiom&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;qwe&quot;: [&quot;=&quot;, &quot;Max&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;id&quot;: [&quot;=&quot;, &quot;12&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 0,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;id&quot;: [&quot;=&quot;, &quot;12&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;=&quot;, &quot;Max&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;Max&quot;, &quot;=&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;username&quot;: [&quot;Max&quot;, &quot;=&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;   &quot;user_name&quot;: [&quot;Max&quot;, &quot;=&quot;] &#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;&gt;&quot;, &quot;4&quot;],&#10;    &quot;state&quot;: [&quot;&gt;=&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;&gt;&quot;, &quot;4&quot;],&#10;    &quot;state&quot;: [&quot;=&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 0,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;&gt;&quot;, &quot;4&quot;],&#10;    &quot;state&quot;: [&quot;=&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;&gt;&quot;, &quot;7&quot;],&#10;    &quot;state&quot;: [&quot;=&quot;, &quot;1&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;7&quot;, &quot;&gt;&quot;],&#10;    &quot;state&quot;: [&quot;1&quot;, &quot;=&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8081/api/v1/users/12/" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="X-AUTH-TOKEN" />
+                <option name="value" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImE3ZjJlOTg4MzVjMWZiNjdlOWFhOWYxZmJhYWU1ZTk4IiwicGFzc3dvcmQiOiI4MjdjY2IwZWVhOGE3MDZjNGMzNGExNjg5MWY4NGU3YiIsImV4cCI6MTYxMjUxODcyNywiaXNzIjoic3Rza3AtYXBpIn0.RKw6YlNbiZjaaZ9LL-591bqJR6FMFDOi8wCWWGiCD3E" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;criteria&quot;: {&#10;    &quot;id&quot;: [&quot;7&quot;, &quot;&gt;&quot;],&#10;    &quot;state&quot;: [&quot;1&quot;, &quot;=&quot;]&#10;  },&#10;  &quot;limit&quot;: 2,&#10;  &quot;offset&quot;: 1,&#10;  &quot;order&quot;: {&quot;id&quot;: &quot;desc&quot;}&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="HTTP Request.rest-api#4">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="stskp_sport_api" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/EDDYCJY/go-gin-example" />
+      <directory value="$PROJECT_DIR$/../go-gin-example" />
+      <method v="2" />
+    </configuration>
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -13,17 +1637,26 @@
     <configuration name="rest-api#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="5" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.rest-api#4" />
+        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="HTTP Request.rest-api#3" />
         <item itemvalue="HTTP Request.rest-api#2" />
         <item itemvalue="HTTP Request.rest-api#1" />
-        <item itemvalue="HTTP Request.rest-api#5" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="#2-filter-user-by-json user can filtered by json. Added Select function in repository" />
+    <MESSAGE value="Merge branch 'master' into 2-filter-user-by-json&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;internal/models/user.go&#10;#&#9;internal/routers/api/v1/user.go&#10;#&#9;tests/rest-api.http" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into 2-filter-user-by-json&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;internal/models/user.go&#10;#&#9;internal/routers/api/v1/user.go&#10;#&#9;tests/rest-api.http" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
   </component>
 </project>
