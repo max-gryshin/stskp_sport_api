@@ -3,10 +3,10 @@ package jwt
 import (
 	"net/http"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
 )
 
 // JWT is jwt middleware

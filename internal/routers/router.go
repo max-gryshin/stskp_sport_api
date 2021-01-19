@@ -1,12 +1,12 @@
 package routers
 
 import (
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/middleware/jwt"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api/v1"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/middleware/jwt"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api/v1"
 )
 
 // InitRouter initialize routing information

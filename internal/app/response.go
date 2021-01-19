@@ -1,8 +1,8 @@
 package app
 
 import (
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
 )
 
 type Gin struct {

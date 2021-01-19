@@ -1,18 +1,19 @@
 package v1
 
 import (
+	"github.com/fatih/structs"
 	"net/http"
 	"strconv"
 	"time"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 )
 
 // @Summary Create user
@@ -24,10 +25,6 @@ import (
 // @Failure 500 {object} app.Response
 // @Router /api/user/create [post]
 func CreateUser(c *gin.Context) {
-	appG := app.Gin{C: c} // FIXME: this construction is bed solution, if you very very very want create own Response method
-	// define new context interface extend of gin.Context and add handler wrapper
-	// OR: create meddelware to expend error information
-	// OR: use c.AbortWithError() and c.AbortWithStatus() method
 	valid := validation.Validation{}
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
@@ -37,21 +34,20 @@ func CreateUser(c *gin.Context) {
 		if valid.HasErrors() {
 			app.MarkErrors(valid.Errors)
 		}
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
 	if err := user.SetPassword(a.Password); err != nil {
 		logging.Error(err)
-		// FIXME: need Return
+		c.AbortWithStatus(http.StatusBadRequest) // OR: use c.AbortWithError()
 	}
-	if errSave := repository.CreateUser(user); errSave != nil { // err = repository.CreateUser(user); err != nil
-		//                                                             /\ '=' not ':='
-		appG.Response(http.StatusBadGateway, e.ERROR, errSave)
+	if errSave := repository.CreateUser(user); errSave != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
 		logging.Error(errSave)
 		return
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, user.Username)
+	c.JSON(e.SUCCESS, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
 }
 
 // @Summary Show a user
@@ -65,18 +61,16 @@ func CreateUser(c *gin.Context) {
 // @Router /api/v1/users/{id}/ [get]
 func GetUser(c *gin.Context) {
 	idParam := c.Param("id")
-	appG := app.Gin{C: c}
 	id, idError := strconv.Atoi(idParam)
 	if idError != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, idError)
-		// FIXME: need Return
+		c.AbortWithStatus(http.StatusBadRequest)
 	}
 	user, err := repository.GetUserByID(id, models.GetAllowedUserFieldsByMethod("get"))
 	if err != nil {
-		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
+		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 		return
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, user)
+	c.JSON(http.StatusOK, structs.Map(user)) // FIXME: may be just struct
 }
 
 //{

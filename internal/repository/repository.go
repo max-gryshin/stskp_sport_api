@@ -4,10 +4,11 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	_ "github.com/jackc/pgx/stdlib"
 	"github.com/jmoiron/sqlx"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 )
 
 var db *sqlx.DB
@@ -37,23 +38,7 @@ func Select(selectFields []string) string {
 		return "*"
 	}
 
-	// FIXME: Use strings.Join(selectFields, ", ") instead following
-	var (
-		s          = ""
-		lastSelect = len(selectFields)
-		count      int
-		comma      = ", "
-	)
-	for _, field := range selectFields {
-		count++
-		if count == lastSelect {
-			s += field
-			break
-		}
-		s += field + comma
-	}
-
-	return s
+	return strings.Join(selectFields, ", ")
 }
 
 func andWhere(criteria map[string][2]string, argsCount *int) (string, []interface{}) {
@@ -74,7 +59,7 @@ func andWhere(criteria map[string][2]string, argsCount *int) (string, []interfac
 			and = " "
 		}
 		argNumb = "$" + strconv.Itoa(*argsCount)
-		conditions += field + cond[0] + argNumb + and
+		conditions += strings.Join([]string{field, cond[0], argNumb, and}, "")
 		args = append(args, cond[1])
 		argNumb = ""
 		*argsCount++
@@ -123,6 +108,7 @@ func maxResult(maxResult int) string {
 // https://github.com/didi/gendry
 // http://doug-martin.github.io/goqu/
 // https://github.com/huandu/go-sqlbuilder
+// https://github.com/Masterminds/squirrel
 func queryBuilder(criteria map[string][2]string, order map[string]string, limit int, offset int) (string, []interface{}) {
 	var (
 		sql       string

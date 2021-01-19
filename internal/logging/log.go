@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/file"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/file"
 )
 
 type Level int

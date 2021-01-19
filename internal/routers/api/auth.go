@@ -3,14 +3,14 @@ package api
 import (
 	"net/http"
 
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
 )
 
 type Auth struct {
@@ -28,7 +28,6 @@ type Auth struct {
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]
 func GetAuth(c *gin.Context) {
-	appG := app.Gin{C: c} // TODO: Do not wrap git contex. use method directly
 	valid := validation.Validation{}
 
 	username, _ := c.GetQuery("username")
@@ -41,8 +40,7 @@ func GetAuth(c *gin.Context) {
 			// maybe c.Error(valid.Errors)
 			app.MarkErrors(valid.Errors)
 		}
-		// FIXME c c.AbortWithStatus(http.StatusBadRequest)
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 	user, err := repository.FindUserByUsername(username)
@@ -52,23 +50,15 @@ func GetAuth(c *gin.Context) {
 	invalid := user.InvalidPassword(password)
 
 	if invalid {
-		// FIXME c c.AbortWithStatus(http.StatusBadRequest)
-		appG.Response(http.StatusBadRequest, e.ERROR_AUTH_CHECK_CREDENTIALS_FAIL, nil)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 
 	token, err := util.GenerateToken(a.Username, a.Password)
 	if err != nil {
-		// FIXME c c.AbortWithStatus(http.StatusInternalServerError)
-		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_TOKEN, nil)
+		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
 
-	// FIXME: This looks better:
-	// c.JSON(e.SUCCESS, map[string]string{
-	// 	"token": token,
-	// })
-	appG.Response(http.StatusOK, e.SUCCESS, map[string]string{
-		"token": token,
-	})
+	c.JSON(e.SUCCESS, map[string]string{"token": token})
 }
