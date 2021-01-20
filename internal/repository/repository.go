@@ -28,7 +28,7 @@ func Setup() {
 	var err error
 	db, err = sqlx.Connect("pgx", setting.AppSetting.DbConfig.Url)
 	if err != nil {
-		log.Fatalln("postgres.Setup err: %v", err)
+		log.Fatalf("postgres.Setup err: %v\n", err)
 		os.Exit(1)
 	}
 }
@@ -42,26 +42,24 @@ func Select(selectFields []string) string {
 }
 
 func andWhere(criteria map[string][2]string, argsCount *int) (string, []interface{}) {
-	if len(criteria) == 0 {
+	lenCriteria := len(criteria)
+	if lenCriteria == 0 {
 		return "", nil
 	}
 	var (
 		conditions = " where "
-		lastEl     = len(criteria)
+		lastEl     = lenCriteria
 		count      int
 		and        = " and "
 		args       []interface{}
-		argNumb    string
 	)
 	for field, cond := range criteria {
 		count++
 		if count == lastEl {
 			and = " "
 		}
-		argNumb = "$" + strconv.Itoa(*argsCount)
-		conditions += strings.Join([]string{field, cond[0], argNumb, and}, "")
+		conditions += strings.Join([]string{field, cond[0], "$", strconv.Itoa(*argsCount), and}, "")
 		args = append(args, cond[1])
-		argNumb = ""
 		*argsCount++
 	}
 

@@ -39,5 +39,7 @@ func init() {
 
 func main() {
 	routersInit := routers.InitRouter()
-	routersInit.Run(":" + conf.ServerConfig.Port)
+	if err := routersInit.Run(":" + conf.ServerConfig.Port); err != nil {
+		logging.Error(err)
+	}
 }
