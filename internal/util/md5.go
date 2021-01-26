@@ -3,6 +3,7 @@ package util
 import (
 	"crypto/md5"
 	"encoding/hex"
+
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 )
 

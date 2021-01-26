@@ -2,15 +2,15 @@ package file
 
 import (
 	"fmt"
+	"io"
 	"io/ioutil"
-	"mime/multipart"
 	"os"
 	"path"
 	"path/filepath"
 )
 
 // GetSize get the file size
-func GetSize(f multipart.File) (int, error) {
+func GetSize(f io.Reader) (int, error) {
 	content, err := ioutil.ReadAll(f)
 
 	return len(content), err
@@ -85,7 +85,7 @@ func MustOpen(fileName, filePath string) (*os.File, error) {
 
 	f, err := Open(filepath.Join(src, fileName), os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
-		return nil, fmt.Errorf("Fail to OpenFile :%v", err)
+		return nil, fmt.Errorf("fail to OpenFile :%v", err)
 	}
 
 	return f, nil

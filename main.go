@@ -6,7 +6,9 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+
 	"github.com/joho/godotenv"
+
 	"log"
 )
 
@@ -28,16 +30,13 @@ var conf *setting.Setting
 // @in header
 // @name X-AUTH-TOKEN
 // @host localhost:8081
-func init() {
+func main() {
 	if err := godotenv.Load(); err != nil {
 		log.Print("No .env file found")
 	}
 	conf = setting.LoadSetting()
 	logging.Setup()
 	repository.Setup()
-}
-
-func main() {
 	routersInit := routers.InitRouter()
 	if err := routersInit.Run(":" + conf.ServerConfig.Port); err != nil {
 		logging.Error(err)

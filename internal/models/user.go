@@ -2,6 +2,7 @@ package models
 
 import (
 	"golang.org/x/crypto/bcrypt"
+
 	"time"
 )
 
@@ -31,13 +32,13 @@ type User struct {
 
 // SetPassword sets a new password stored as hash.
 func (u *User) SetPassword(password string) error {
-	if bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14); err != nil {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	if err != nil {
 		return err
-	} else {
-		u.Password = string(bytes)
-
-		return nil
 	}
+	u.Password = string(bytes)
+
+	return nil
 }
 
 // InvalidPassword returns true if the given password does not match the hash.

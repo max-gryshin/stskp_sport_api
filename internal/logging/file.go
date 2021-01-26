@@ -2,6 +2,7 @@ package logging
 
 import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+
 	"path/filepath"
 	"strings"
 )

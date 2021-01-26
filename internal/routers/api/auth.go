@@ -50,7 +50,7 @@ func GetAuth(c *gin.Context) {
 	invalid := user.InvalidPassword(password)
 
 	if invalid {
-		c.AbortWithStatus(http.StatusBadRequest)
+		c.AbortWithStatusJSON(http.StatusBadRequest, "invalid password")
 		return
 	}
 
@@ -60,5 +60,5 @@ func GetAuth(c *gin.Context) {
 		return
 	}
 
-	c.JSON(e.SUCCESS, map[string]string{"token": token})
+	c.JSON(e.Success, map[string]string{"token": token})
 }

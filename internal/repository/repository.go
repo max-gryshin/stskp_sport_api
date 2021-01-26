@@ -26,7 +26,7 @@ const (
 
 func Setup() {
 	var err error
-	db, err = sqlx.Connect("pgx", setting.AppSetting.DbConfig.Url)
+	db, err = sqlx.Connect("pgx", setting.AppSetting.DBConfig.URL)
 	if err != nil {
 		log.Fatalf("postgres.Setup err: %v\n", err)
 		os.Exit(1)
@@ -41,18 +41,17 @@ func Select(selectFields []string) string {
 	return strings.Join(selectFields, ", ")
 }
 
-func andWhere(criteria map[string][2]string, argsCount *int) (string, []interface{}) {
+func andWhere(criteria map[string][2]string, argsCount *int) (conditions string, args []interface{}) {
 	lenCriteria := len(criteria)
 	if lenCriteria == 0 {
 		return "", nil
 	}
 	var (
-		conditions = " where "
-		lastEl     = lenCriteria
-		count      int
-		and        = " and "
-		args       []interface{}
+		lastEl = lenCriteria
+		count  int
+		and    = " and "
 	)
+	conditions = " where "
 	for field, cond := range criteria {
 		count++
 		if count == lastEl {
@@ -107,11 +106,8 @@ func maxResult(maxResult int) string {
 // http://doug-martin.github.io/goqu/
 // https://github.com/huandu/go-sqlbuilder
 // https://github.com/Masterminds/squirrel
-func queryBuilder(criteria map[string][2]string, order map[string]string, limit int, offset int) (string, []interface{}) {
-	var (
-		sql       string
-		argsCount = 1
-	)
+func queryBuilder(criteria map[string][2]string, order map[string]string, limit, offset int) (sql string, arguments []interface{}) {
+	var argsCount = 1
 	andWhere, args := andWhere(criteria, &argsCount)
 	sql += andWhere + orderBy(order) + maxResult(limit) + offsetRows(offset)
 

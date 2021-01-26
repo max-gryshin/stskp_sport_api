@@ -14,10 +14,15 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
+const (
+	hoursInDay  = 24
+	daysInMonth = 30
+)
+
 // GenerateToken generate tokens used for auth
 func GenerateToken(username, password string) (string, error) {
 	nowTime := time.Now()
-	expireTime := nowTime.Add(time.Hour * 24 * 30) // 1 month by develop
+	expireTime := nowTime.Add(time.Hour * hoursInDay * daysInMonth) // 1 month by develop
 
 	claims := Claims{
 		EncodeMD5(username), // It doesn't make sense to encrypt data in JWT token. This is contrary to JWT paradigm.

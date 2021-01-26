@@ -20,7 +20,7 @@ func FindUserByUsername(username string) (models.User, error) {
 	return user, nil
 }
 
-func CreateUser(user models.User) error {
+func CreateUser(user *models.User) error {
 	_, err := db.NamedExec(
 		"INSERT INTO \"user\" (user_name, password_hash, state, created_at, email) VALUES (:Username,:Password,:State,:CreatedAt,:Email)",
 		structs.Map(user), // FIXME: think about how to user struct instead map
@@ -33,7 +33,7 @@ func CreateUser(user models.User) error {
 }
 
 // get user by conditions
-func FindUserBy(criteria map[string][2]string, order map[string]string, limit int, offset int, selectFields []string) (models.Users, error) {
+func FindUserBy(criteria map[string][2]string, order map[string]string, limit, offset int, selectFields []string) (models.Users, error) {
 	var (
 		sql   = "select " + Select(selectFields) + " from \"user\""
 		users = models.Users{}
@@ -64,7 +64,7 @@ func GetUserByID(id int, selectFields []string) (models.User, error) {
 }
 
 // todo: do more flexible query
-func UpdateUser(user models.User) error {
+func UpdateUser(user *models.User) error {
 	userMap := structs.Map(user)
 	_, err := db.NamedExec(
 		"UPDATE \"user\" SET user_name=:Username, state=:State, email=:Email WHERE id=:ID",
