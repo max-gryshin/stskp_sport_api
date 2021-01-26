@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
-	_ "github.com/jackc/pgx/stdlib"
+	_ "github.com/jackc/pgx/stdlib" // need to connect with db
 	"github.com/jmoiron/sqlx"
 )
 

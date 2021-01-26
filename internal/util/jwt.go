@@ -1,8 +1,11 @@
 package util
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"time"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -25,8 +28,8 @@ func GenerateToken(username, password string) (string, error) {
 	expireTime := nowTime.Add(time.Hour * hoursInDay * daysInMonth) // 1 month by develop
 
 	claims := Claims{
-		EncodeMD5(username), // It doesn't make sense to encrypt data in JWT token. This is contrary to JWT paradigm.
-		EncodeMD5(password), // FIXME: MD5 IS NOT SECURE. Password should not be transferred to frontend part.
+		encodeSHA256(username), // It doesn't make sense to encrypt data in JWT token. This is contrary to JWT paradigm.
+		encodeSHA256(password), // FIXME: MD5 IS NOT SECURE. Password should not be transferred to frontend part.
 		jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    "stskp-api",
@@ -54,4 +57,18 @@ func ParseToken(token string) (*Claims, error) {
 	}
 
 	return nil, err
+}
+
+// EncodeSHA256 md5 encryption
+func encodeSHA256(value string) string {
+	m := sha256.New()
+	n, err := m.Write([]byte(value))
+	if err != nil {
+		logging.Error(err)
+	}
+	if n == 0 {
+		logging.Error("no any bytes written")
+	}
+
+	return hex.EncodeToString(m.Sum(nil))
 }
