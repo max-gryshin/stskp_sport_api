@@ -2,15 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="268429e5-267d-4aee-8b63-5ccea5f37b77" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.golangci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Taskfile.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-start.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/response.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/e/code.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/e/code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/e/msg.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/e/msg.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/file/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/file/file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/logging/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/logging/file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/logging/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/logging/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/middleware/cors/cors.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/middleware/cors/cors.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/middleware/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/middleware/jwt/jwt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/workout_type.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/workout_type.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/repository/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/routers/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/api/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/auth.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/routers/api/v1/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/v1/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/auth_service/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/auth_service/auth.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/setting/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/setting/setting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/util/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/util/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/util/md5.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rest-api.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +38,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" url="file:///usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1neF6H91QOQCe2uo5ZhewejDAsb" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,12 +51,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable..is.expanded" value="false" />
+    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="go.sdk" />
   </component>
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
@@ -1650,6 +1677,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#2-filter-user-by-json user can filtered by json. Added Select function in repository" />

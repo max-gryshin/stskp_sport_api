@@ -2,18 +2,18 @@ package api
 
 type QueryParams struct {
 	Criteria []CriteriaParam
-	Order    map[string]string    `query:"order"`
-	Limit    int                  `query:"limit"`
-	Offset   int                  `query:"offset"`
+	Order    map[string]string `query:"order"`
+	Limit    int               `query:"limit"`
+	Offset   int               `query:"offset"`
 }
 
 type CriteriaParam struct {
-	Field string     `query:"field"`
-	Value string     `value:"field"`
+	Field     string `query:"field"`
+	Value     string `value:"field"`
 	Condition string `condition:"field"`
 }
 
-//func ParseQueryParams(AllowedFields []string, qp *QueryParams) (map[string][2]string, map[string]string, int, int, bool) {
+// func ParseQueryParams(AllowedFields []string, qp *QueryParams) (map[string][2]string, map[string]string, int, int, bool) {
 //	isComparisonOperator := true
 //	criteria := make(map[string][2]string)
 //	order := make(map[string]string)
@@ -37,4 +37,4 @@ type CriteriaParam struct {
 //	}
 //
 //	return criteria, qp.Order, qp.Limit, qp.Offset, isComparisonOperator
-//}
+// }

@@ -1,18 +1,20 @@
 package v1
 
 import (
-	"github.com/astaxie/beego/validation"
-	"github.com/gin-gonic/gin"
-	"github.com/hetiansu5/urlquery"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
+	"github.com/astaxie/beego/validation"
+	"github.com/fatih/structs"
+	"github.com/gin-gonic/gin"
+	"github.com/hetiansu5/urlquery"
 )
 
 // @Summary Create user
@@ -24,7 +26,6 @@ import (
 // @Failure 500 {object} app.Response
 // @Router /api/user/create [post]
 func CreateUser(c *gin.Context) {
-	appG := app.Gin{C: c}
 	valid := validation.Validation{}
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
@@ -34,19 +35,21 @@ func CreateUser(c *gin.Context) {
 		if valid.HasErrors() {
 			app.MarkErrors(valid.Errors)
 		}
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
 	if err := user.SetPassword(a.Password); err != nil {
 		logging.Error(err)
+		c.AbortWithStatus(http.StatusBadRequest) // OR: use c.AbortWithError()
+		return
 	}
-	if errSave := repository.CreateUser(user); errSave != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, errSave)
+	if errSave := repository.CreateUser(&user); errSave != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
 		logging.Error(errSave)
 		return
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, user.Username)
+	c.JSON(e.Success, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
 }
 
 // @Summary Show a user
@@ -60,17 +63,17 @@ func CreateUser(c *gin.Context) {
 // @Router /api/v1/users/{id}/ [get]
 func GetUser(c *gin.Context) {
 	idParam := c.Param("id")
-	appG := app.Gin{C: c}
 	id, idError := strconv.Atoi(idParam)
 	if idError != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, idError)
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
 	}
 	user, err := repository.GetUserByID(id, models.GetAllowedUserFieldsByMethod("get"))
 	if err != nil {
-		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
+		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 		return
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, user)
+	c.JSON(http.StatusOK, structs.Map(user)) // FIXME: may be just struct
 }
 
 // @Summary List users
@@ -84,8 +87,7 @@ func GetUser(c *gin.Context) {
 func GetUsers(c *gin.Context) {
 	appG := app.Gin{C: c}
 	var queryParams api.QueryParams
-
-	//test := api.QueryParams{
+	// test := api.QueryParams{
 	//	[]api.CriteriaParam{
 	//		{
 	//			Field: "state",
@@ -96,39 +98,38 @@ func GetUsers(c *gin.Context) {
 	//	map[string]string{"id":"DESC"},
 	//	0,
 	//	0,
-	//}
-	//testValueUrlString, _ := urlquery.Marshal(test)
+	// }
+	// testValueUrlString, _ := urlquery.Marshal(test)
 	err := urlquery.Unmarshal([]byte(c.Request.URL.RawQuery), &queryParams)
 	if err != nil {
 		panic(err)
 	}
-	//if err := c.Bind(&queryParams); err != nil {
+	// if err := c.Bind(&queryParams); err != nil {
 	//	panic(err)
-	//}
-	appG.Response(http.StatusOK, e.SUCCESS, queryParams.Offset)
+	// }
+	appG.Response(http.StatusOK, e.Success, queryParams.Offset)
 
-	//if err := c.ShouldBindJSON(&queryParams); err != nil {
+	// if err := c.ShouldBindJSON(&queryParams); err != nil {
 	//	logging.Error(err)
 	//	appG.Response(http.StatusNotFound, e.ERROR, err)
 	//	return
-	//}
-	//criteria, order, limit, offset, ok := api.ParseQueryParams(
+	// }
+	// criteria, order, limit, offset, ok := api.ParseQueryParams(
 	//	models.GetAllowedUserFieldsByMethod("get"),
 	//	&queryParams,
-	//)
-	//if !ok {
+	// )
+	// if !ok {
 	//	appG.Response(http.StatusBadGateway, e.ERROR, "invalid query params")
 	//	return
-	//}
-	//users, err := repository.FindUserBy(criteria, order, limit, offset, models.GetAllowedUserFieldsByMethod("get"))
-	//if err != nil {
+	// }
+	// users, err := repository.FindUserBy(criteria, order, limit, offset, models.GetAllowedUserFieldsByMethod("get"))
+	// if err != nil {
 	//	appG.Response(http.StatusBadGateway, e.ERROR, err)
 	//	return
-	//}
-	//appG.Response(http.StatusOK, e.SUCCESS, users)
+	// }
+	// appG.Response(http.StatusOK, e.SUCCESS, users)
 }
 
-//"{\"user_name\":\"name\", \"state:1\", \"email\":\"mailname@mail.com\"}"
 // @Summary Update user
 // @Description Update user
 // @Accept  json
@@ -144,30 +145,30 @@ func UpdateUser(c *gin.Context) {
 	appG := app.Gin{C: c}
 	id, idError := strconv.Atoi(c.Param("id"))
 	if idError != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, idError)
+		appG.Response(http.StatusBadGateway, e.Error, idError)
 		return
 	}
 	user, err := repository.GetUserByID(id, []string{})
 	if err != nil {
-		appG.Response(http.StatusNotFound, e.ERROR, "resource not found")
+		appG.Response(http.StatusNotFound, e.Error, "resource not found")
 		return
 	}
-	if err := c.ShouldBindJSON(&user); err != nil {
-		logging.Error(err)
-		appG.Response(http.StatusNotFound, e.ERROR, err)
+	if errBindingUserToJSON := c.ShouldBindJSON(&user); errBindingUserToJSON != nil {
+		logging.Error(errBindingUserToJSON)
+		appG.Response(http.StatusNotFound, e.Error, errBindingUserToJSON)
 		return
 	}
 	valid := validation.Validation{}
 	b, err := valid.Valid(user)
 	if err != nil || !b {
 		app.MarkErrors(valid.Errors)
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, valid.Errors)
+		appG.Response(http.StatusBadRequest, e.InvalidParams, valid.Errors)
 		return
 	}
-	if errUpdate := repository.UpdateUser(user); errUpdate != nil {
-		appG.Response(http.StatusBadGateway, e.ERROR, errUpdate)
+	if errUpdate := repository.UpdateUser(&user); errUpdate != nil {
+		appG.Response(http.StatusBadGateway, e.Error, errUpdate)
 		logging.Error(errUpdate)
 		return
 	}
-	appG.Response(http.StatusOK, e.SUCCESS, user.Username)
+	appG.Response(http.StatusOK, e.Success, user.Username)
 }

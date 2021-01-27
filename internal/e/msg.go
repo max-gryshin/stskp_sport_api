@@ -1,17 +1,17 @@
 package e
 
 var MsgFlags = map[int]string{
-	SUCCESS:                           "ok",
-	ERROR:                             "fail",
-	INVALID_PARAMS:                    "invalid params",
-	ERROR_AUTH_CHECK_TOKEN_FAIL:       "Token Authentication failed",
-	ERROR_AUTH_CHECK_TOKEN_TIMEOUT:    "Token Timed out",
-	ERROR_AUTH_TOKEN:                  "Token authentication failed",
-	ERROR_AUTH:                        "Token error",
-	ERROR_AUTH_CHECK_CREDENTIALS_FAIL: "Credentials authentication failed",
-	ERROR_UPLOAD_SAVE_IMAGE_FAIL:      "Failed to save picture",
-	ERROR_UPLOAD_CHECK_IMAGE_FAIL:     "Check image failed",
-	ERROR_UPLOAD_CHECK_IMAGE_FORMAT:   "Check picture error, picture format or size problem",
+	Success:                       "ok",
+	Error:                         "fail",
+	InvalidParams:                 "invalid params",
+	ErrorAuthCheckTokenFail:       "Token Authentication failed",
+	ErrorAuthCheckTokenTimeout:    "Token Timed out",
+	ErrorAuthToken:                "Token authentication failed",
+	ErrorAuth:                     "Token error",
+	ErrorAuthCheckCredentialsFail: "Credentials authentication failed",
+	ErrorUploadSaveImageFail:      "Failed to save picture",
+	ErrorUploadCheckImageFail:     "Check image failed",
+	ErrorUploadCheckImageFormat:   "Check picture error, picture format or size problem",
 }
 
 // GetMsg get error information based on Code
@@ -21,5 +21,5 @@ func GetMsg(code int) string {
 		return msg
 	}
 
-	return MsgFlags[ERROR]
+	return MsgFlags[Error]
 }

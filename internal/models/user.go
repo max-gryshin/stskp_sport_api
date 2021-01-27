@@ -1,8 +1,9 @@
 package models
 
 import (
-	"golang.org/x/crypto/bcrypt"
 	"time"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 const (
@@ -23,21 +24,21 @@ var userFields = map[string][]string{
 type User struct {
 	ID        int       `json:"id" db:"id" binding:"required"`
 	Username  string    `json:"username"   valid:"MaxSize(50)" db:"user_name"`
-	Password  string    `json:"password"   db:"password_hash"` // valid:"MaxSize(50)"
-	State     int8      `json:"state"      valid:"Range(1, 5)"` // Range from 1 to 5
+	Password  string    `json:"password"   db:"password_hash"`
+	State     int8      `json:"state"      valid:"Range(1, 5)"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	Email     string    `json:"email"      valid:"Email"` // valid email
+	Email     string    `json:"email"      valid:"Email"`
 }
 
 // SetPassword sets a new password stored as hash.
 func (u *User) SetPassword(password string) error {
-	if bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14); err != nil {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	if err != nil {
 		return err
-	} else {
-		u.Password = string(bytes)
-
-		return nil
 	}
+	u.Password = string(bytes)
+
+	return nil
 }
 
 // InvalidPassword returns true if the given password does not match the hash.

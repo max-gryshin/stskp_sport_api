@@ -2,11 +2,12 @@ package logging
 
 import (
 	"fmt"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/file"
 	"log"
 	"os"
 	"path/filepath"
 	"runtime"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/file"
 )
 
 type Level int
@@ -46,38 +47,38 @@ func Setup() {
 // Debug output logs at debug level
 func Debug(v ...interface{}) {
 	setPrefix(DEBUG)
-	logger.Println(v)
+	logger.Println(v...)
 }
 
 // Info output logs at info level
 func Info(v ...interface{}) {
 	setPrefix(INFO)
-	logger.Println(v)
+	logger.Println(v...)
 }
 
 // Warn output logs at warn level
 func Warn(v ...interface{}) {
 	setPrefix(WARNING)
-	logger.Println(v)
+	logger.Println(v...)
 }
 
 // Error output logs at error level
 func Error(v ...interface{}) {
 	setPrefix(ERROR)
-	logger.Println(v)
+	logger.Println(v...)
 }
 
 // Fatal output logs at fatal level
 func Fatal(v ...interface{}) {
 	setPrefix(FATAL)
-	logger.Fatalln(v)
+	logger.Fatalln(v...)
 }
 
 // setPrefix set the prefix of the log output
 func setPrefix(level Level) {
-	_, file, line, ok := runtime.Caller(DefaultCallerDepth)
+	_, fileName, line, ok := runtime.Caller(DefaultCallerDepth)
 	if ok {
-		logPrefix = fmt.Sprintf("[%s][%s:%d]", levelFlags[level], filepath.Base(file), line)
+		logPrefix = fmt.Sprintf("[%s][%s:%d]", levelFlags[level], filepath.Base(fileName), line)
 	} else {
 		logPrefix = fmt.Sprintf("[%s]", levelFlags[level])
 	}
