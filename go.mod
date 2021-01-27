@@ -1,4 +1,4 @@
-module gitlab.com/ZmaximillianZ/stskp_sport_api
+module github.com/ZmaximillianZ/stskp_sport_api
 
 go 1.15
 

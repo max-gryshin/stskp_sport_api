@@ -1,0 +1,12 @@
+version: '3' # https://taskfile.dev/#/usage
+
+tasks:
+  pre-commit:
+    cmds:
+      - golangci-lint run
+  run-db:
+    - docker-compose -f docker/docker-compose.yml up -d
+  build:
+    deps: [pre-commit]
+    cmds:
+      - go build -v -i main.go

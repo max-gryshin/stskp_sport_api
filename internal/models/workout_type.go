@@ -13,7 +13,7 @@ type WorkoutTypes []WorkoutType
 
 type WorkoutType struct {
 	ID       int    `json:"id"`
-	ParentId int    `json:"parent_id"`
+	ParentID int    `json:"parent_id"`
 	Name     string `json:"name"`
 	Type     uint16 `json:"type"`
 }

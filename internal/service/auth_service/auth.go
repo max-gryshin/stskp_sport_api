@@ -1,7 +1,7 @@
-package auth_service
+package authservice
 
 import (
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 )
 
 type Auth struct {

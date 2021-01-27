@@ -1,15 +1,16 @@
 package api
 
 import (
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"net/http"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/app"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
 )
 
 type Auth struct {
@@ -27,7 +28,6 @@ type Auth struct {
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]
 func GetAuth(c *gin.Context) {
-	appG := app.Gin{C: c}
 	valid := validation.Validation{}
 
 	username, _ := c.GetQuery("username")
@@ -37,9 +37,10 @@ func GetAuth(c *gin.Context) {
 
 	if !ok {
 		if valid.HasErrors() {
+			// maybe c.Error(valid.Errors)
 			app.MarkErrors(valid.Errors)
 		}
-		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, nil)
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 	user, err := repository.FindUserByUsername(username)
@@ -49,17 +50,15 @@ func GetAuth(c *gin.Context) {
 	invalid := user.InvalidPassword(password)
 
 	if invalid {
-		appG.Response(http.StatusBadRequest, e.ERROR_AUTH_CHECK_CREDENTIALS_FAIL, nil)
+		c.AbortWithStatusJSON(http.StatusBadRequest, "invalid password")
 		return
 	}
 
 	token, err := util.GenerateToken(a.Username, a.Password)
 	if err != nil {
-		appG.Response(http.StatusInternalServerError, e.ERROR_AUTH_TOKEN, nil)
+		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
 
-	appG.Response(http.StatusOK, e.SUCCESS, map[string]string{
-		"token": token,
-	})
+	c.JSON(e.Success, map[string]string{"token": token})
 }

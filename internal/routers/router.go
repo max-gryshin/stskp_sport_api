@@ -1,12 +1,12 @@
 package routers
 
 import (
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/middleware/jwt"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
+	v1 "github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api/v1"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/middleware/jwt"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/routers/api/v1"
 )
 
 // InitRouter initialize routing information
@@ -22,11 +22,9 @@ func InitRouter() *gin.Engine {
 
 	apiv1 := router.Group("/api/v1")
 	apiv1.Use(jwt.JWT())
-	{
-		apiv1.GET("/users", v1.GetUsers)
-		apiv1.GET("/users/:id", v1.GetUser)
-		apiv1.PATCH("/users/:id/update", v1.UpdateUser)
-	}
+	apiv1.GET("/users", v1.GetUsers)
+	apiv1.GET("/users/:id", v1.GetUser)
+	apiv1.PATCH("/users/:id/update", v1.UpdateUser)
 
 	return router
 }

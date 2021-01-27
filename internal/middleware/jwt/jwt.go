@@ -1,11 +1,12 @@
 package jwt
 
 import (
+	"net/http"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/util"
-	"net/http"
 )
 
 // JWT is jwt middleware
@@ -13,23 +14,25 @@ func JWT() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var code int
 		var data interface{}
-		code = e.SUCCESS
+		code = e.Success
+		// TODO: recommended use Authentication: Bearer
+		// https://swagger.io/docs/specification/authentication/bearer-authentication/
 		token := c.GetHeader("X-AUTH-TOKEN")
 		if token == "" {
-			code = e.INVALID_PARAMS
+			code = e.InvalidParams
 		} else {
 			_, err := util.ParseToken(token)
 			if err != nil {
 				switch err.(*jwt.ValidationError).Errors {
 				case jwt.ValidationErrorExpired:
-					code = e.ERROR_AUTH_CHECK_TOKEN_TIMEOUT
+					code = e.ErrorAuthCheckTokenTimeout
 				default:
-					code = e.ERROR_AUTH_CHECK_TOKEN_FAIL
+					code = e.ErrorAuthCheckTokenFail
 				}
 			}
 		}
 
-		if code != e.SUCCESS {
+		if code != e.Success {
 			c.JSON(http.StatusUnauthorized, gin.H{
 				"code": code,
 				"msg":  e.GetMsg(code),

@@ -1,8 +1,8 @@
 package api
 
 import (
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 )
 
 type QueryParams struct {
@@ -12,11 +12,14 @@ type QueryParams struct {
 	Offset   int                  `json:"offset"`
 }
 
-func ParseQueryParams(AllowedFields []string, qp *QueryParams) (map[string][2]string, map[string]string, int, int, bool) {
-	isComparisonOperator := true
-	criteria := make(map[string][2]string)
-	order := make(map[string]string)
-	for _, value := range AllowedFields {
+func ParseQueryParams(
+	allowedFields []string,
+	qp *QueryParams,
+) (criteria map[string][2]string, order map[string]string, limit, offset int, isComparisonOperator bool) {
+	isComparisonOperator = true
+	criteria = make(map[string][2]string)
+	order = make(map[string]string)
+	for _, value := range allowedFields {
 		queryVal, okVal := qp.Criteria[value]
 		orderVal, okOrder := qp.Order[value]
 		if !okOrder {

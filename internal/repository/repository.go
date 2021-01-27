@@ -1,12 +1,14 @@
 package repository
 
 import (
-	_ "github.com/jackc/pgx/stdlib"
-	"github.com/jmoiron/sqlx"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"log"
 	"os"
 	"strconv"
+	"strings"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+	_ "github.com/jackc/pgx/stdlib" // need to connect with db
+	"github.com/jmoiron/sqlx"
 )
 
 var db *sqlx.DB
@@ -24,9 +26,9 @@ const (
 
 func Setup() {
 	var err error
-	db, err = sqlx.Connect("pgx", setting.AppSetting.DbConfig.Url)
+	db, err = sqlx.Connect("pgx", setting.AppSetting.DBConfig.URL)
 	if err != nil {
-		log.Fatalln("postgres.Setup err: %v", err)
+		log.Fatalf("postgres.Setup err: %v\n", err)
 		os.Exit(1)
 	}
 }
@@ -35,45 +37,28 @@ func Select(selectFields []string) string {
 	if len(selectFields) == 0 {
 		return "*"
 	}
-	var (
-		s          = ""
-		lastSelect = len(selectFields)
-		count      int
-		comma      = ", "
-	)
-	for _, field := range selectFields {
-		count++
-		if count == lastSelect {
-			s += field
-			break
-		}
-		s += field + comma
-	}
 
-	return s
+	return strings.Join(selectFields, ", ")
 }
 
-func andWhere(criteria map[string][2]string, argsCount *int) (string, []interface{}) {
-	if len(criteria) == 0 {
+func andWhere(criteria map[string][2]string, argsCount *int) (conditions string, args []interface{}) {
+	lenCriteria := len(criteria)
+	if lenCriteria == 0 {
 		return "", nil
 	}
 	var (
-		conditions = " where "
-		lastEl     = len(criteria)
-		count      int
-		and        = " and "
-		args       []interface{}
-		argNumb    string
+		lastEl = lenCriteria
+		count  int
+		and    = " and "
 	)
+	conditions = " where "
 	for field, cond := range criteria {
 		count++
 		if count == lastEl {
 			and = " "
 		}
-		argNumb = "$" + strconv.Itoa(*argsCount)
-		conditions += field + cond[0] + argNumb + and
+		conditions += strings.Join([]string{field, cond[0], "$", strconv.Itoa(*argsCount), and}, "")
 		args = append(args, cond[1])
-		argNumb = ""
 		*argsCount++
 	}
 
@@ -116,11 +101,13 @@ func maxResult(maxResult int) string {
 	return " limit " + strconv.Itoa(maxResult)
 }
 
-func queryBuilder(criteria map[string][2]string, order map[string]string, limit int, offset int) (string, []interface{}) {
-	var (
-		sql       string
-		argsCount = 1
-	)
+// TODO:
+// https://github.com/didi/gendry
+// http://doug-martin.github.io/goqu/
+// https://github.com/huandu/go-sqlbuilder
+// https://github.com/Masterminds/squirrel
+func queryBuilder(criteria map[string][2]string, order map[string]string, limit, offset int) (sql string, arguments []interface{}) {
+	var argsCount = 1
 	andWhere, args := andWhere(criteria, &argsCount)
 	sql += andWhere + orderBy(order) + maxResult(limit) + offsetRows(offset)
 

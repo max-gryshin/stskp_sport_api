@@ -2,9 +2,11 @@ package repository
 
 import (
 	"fmt"
+	"strings"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/fatih/structs"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"gitlab.com/ZmaximillianZ/stskp_sport_api/internal/models"
 )
 
 func FindUserByUsername(username string) (models.User, error) {
@@ -18,11 +20,10 @@ func FindUserByUsername(username string) (models.User, error) {
 	return user, nil
 }
 
-func CreateUser(user models.User) error {
-	userMap := structs.Map(user)
+func CreateUser(user *models.User) error {
 	_, err := db.NamedExec(
 		"INSERT INTO \"user\" (user_name, password_hash, state, created_at, email) VALUES (:Username,:Password,:State,:CreatedAt,:Email)",
-		userMap,
+		structs.Map(user), // FIXME: think about how to user struct instead map
 	)
 	if err != nil {
 		return err
@@ -32,7 +33,7 @@ func CreateUser(user models.User) error {
 }
 
 // get user by conditions
-func FindUserBy(criteria map[string][2]string, order map[string]string, limit int, offset int, selectFields []string) (models.Users, error) {
+func FindUserBy(criteria map[string][2]string, order map[string]string, limit, offset int, selectFields []string) (models.Users, error) {
 	var (
 		sql   = "select " + Select(selectFields) + " from \"user\""
 		users = models.Users{}
@@ -49,7 +50,11 @@ func FindUserBy(criteria map[string][2]string, order map[string]string, limit in
 
 func GetUserByID(id int, selectFields []string) (models.User, error) {
 	user := models.User{}
-	err := db.Get(&user, "select "+Select(selectFields)+" from \"user\" where id=$1", id)
+	err := db.Get(
+		&user,
+		strings.Join([]string{"select", Select(selectFields), "from \"user\" where id=$1"}, " "),
+		id,
+	)
 	if err != nil {
 		logging.Error(err)
 		return user, err
@@ -59,7 +64,7 @@ func GetUserByID(id int, selectFields []string) (models.User, error) {
 }
 
 // todo: do more flexible query
-func UpdateUser(user models.User) error {
+func UpdateUser(user *models.User) error {
 	userMap := structs.Map(user)
 	_, err := db.NamedExec(
 		"UPDATE \"user\" SET user_name=:Username, state=:State, email=:Email WHERE id=:ID",
