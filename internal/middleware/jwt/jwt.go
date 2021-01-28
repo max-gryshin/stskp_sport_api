@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
@@ -21,7 +21,7 @@ func JWT() gin.HandlerFunc {
 		if token == "" {
 			code = e.InvalidParams
 		} else {
-			_, err := util.ParseToken(token)
+			_, err := utils.ParseToken(token)
 			if err != nil {
 				switch err.(*jwt.ValidationError).Errors {
 				case jwt.ValidationErrorExpired:

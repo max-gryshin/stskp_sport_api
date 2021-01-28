@@ -8,7 +8,7 @@ import (
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/util"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 )
@@ -54,7 +54,7 @@ func GetAuth(c *gin.Context) {
 		return
 	}
 
-	token, err := util.GenerateToken(a.Username, a.Password)
+	token, err := utils.GenerateToken(a.Username, a.Password)
 	if err != nil {
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
