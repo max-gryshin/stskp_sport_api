@@ -14,6 +14,9 @@ import (
 	"log"
 )
 
+const maxIdleConns = 100
+const maxOpenConns = 10
+
 var conf *setting.Setting
 
 // init is invoked before main()
@@ -47,8 +50,8 @@ func main() {
 		log.Fatalf("postgres.Setup err: %v\n", err)
 	}
 
-	db.SetMaxIdleConns(100)
-	db.SetMaxOpenConns(10)
+	db.SetMaxIdleConns(maxIdleConns)
+	db.SetMaxOpenConns(maxOpenConns)
 
 	userRepo := repository.NewUserRepository(db)
 	userController := controllers.NewUserController(userRepo)
