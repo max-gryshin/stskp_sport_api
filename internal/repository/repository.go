@@ -7,11 +7,18 @@ import (
 	"strings"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+	"github.com/doug-martin/goqu/v9"
 	_ "github.com/jackc/pgx/stdlib" // need to connect with db
 	"github.com/jmoiron/sqlx"
 )
 
 var db *sqlx.DB
+
+type BaseRepository struct {
+	db        *sqlx.DB
+	table     string
+	baseQuery *goqu.SelectDataset
+}
 
 const (
 	OrderAsc   = "ASC"
