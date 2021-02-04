@@ -22,13 +22,14 @@ type UserRepository struct {
 
 // NewUserRepository creates new instance of UserRepository
 func NewUserRepository(db *sqlx.DB) *UserRepository {
-	table := "users"
+	table := `"\user\"`
 	fields := utils.GetTagValue(models.User{}, tagName)
+	query := goqu.From(table).Select(fields...).Prepared(true)
 
 	return &UserRepository{BaseRepository{
 		db:        db,
 		table:     table,
-		baseQuery: goqu.From(table).Select(fields).Prepared(true),
+		baseQuery: query,
 	}}
 }
 

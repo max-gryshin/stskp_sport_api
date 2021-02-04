@@ -3,6 +3,8 @@ version: '3' # https://taskfile.dev/#/usage
 tasks:
   lint: golangci-lint run
 
+  resolve-go-mod: go mod tidy
+
   up:
     dir: docker
     cmds:

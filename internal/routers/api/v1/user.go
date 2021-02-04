@@ -99,7 +99,7 @@ func GetUsers(c *gin.Context) {
 		appG.Response(http.StatusNotFound, e.Error, err)
 		return
 	}
-	// TODO: code after commit is was be repeated very often try export it to middelware
+	// TODO: code after commit is was be repeated very often try export it to middleware
 	criteria, order, limit, offset, ok := api.ParseQueryParams(
 		models.GetAllowedUserFieldsByMethod("get"),
 		&queryParams,
