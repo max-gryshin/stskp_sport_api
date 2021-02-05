@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+const notImplemented = "Not implemented"
+
 // UserController is HTTP controller for manage users
 type UserController struct {
 	repo contractions.UserRepository
@@ -60,4 +62,16 @@ func (ctr *UserController) GetUsers(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, users)
+}
+
+func (ctr *UserController) CreateUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
+}
+
+func (ctr *UserController) UpdateUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
+}
+
+func (ctr *UserController) DeleteUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
 }

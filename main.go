@@ -5,8 +5,12 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 
 	"log"
 )
@@ -37,8 +41,16 @@ func main() {
 	logging.Setup()
 	repository.Setup()
 
-	routersInit := routers.InitRouter(conf)
-	if err := routersInit.Run(":" + conf.ServerConfig.Port); err != nil {
+	app := gin.New()
+	app.Use(gin.Logger())
+	app.Use(gin.Recovery())
+	app.POST("/api/user/auth", api.GetAuth)
+	url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
+	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+
+	routers.RegisterAPIV1(app.Group("/api/v1"), conf)
+
+	if err := app.Run(":" + conf.ServerConfig.Port); err != nil {
 		logging.Error(err)
 	}
 }
