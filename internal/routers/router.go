@@ -6,9 +6,8 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/middleware/jwt"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	v1 "github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api/v1"
+	"github.com/doug-martin/goqu/v9"
 	"github.com/gin-gonic/gin"
-	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 // InitRouter initialize routing information
@@ -16,12 +15,11 @@ func InitRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-	userRepo := repository.NewUserRepository(&db.DB)
+	userRepo := repository.NewUserRepository(&db.DB, goqu.Dialect("postgres"))
 	userController := controllers.NewUserController(userRepo)
-	router.POST("/api/user/auth", userController.GetAuth)
-	router.POST("/api/user/create", v1.CreateUser)
-	url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+
+	//url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
+	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	apiv1 := router.Group("/api/v1")
 	apiv1.Use(jwt.JWT())

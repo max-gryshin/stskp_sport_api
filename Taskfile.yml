@@ -1,20 +1,23 @@
 version: '3' # https://taskfile.dev/#/usage
 
+dotenv: ['.env']
+
+vars:
+  MIGRATION_COMMAND: docker run --rm -v $PWD/internal/db/migrations:/migrations --network host migrate/migrate -path=/migrations/ -database $DATABASE_URL
+
 tasks:
-  lint: golangci-lint run
+  lint: docker run --rm -v $PWD:/app -w /app golangci/golangci-lint:v1.35.2 golangci-lint run -v --fix --timeout 5m
 
-  resolve-go-mod: go mod tidy
+  clean-deps: go mod tidy
 
-  up:
-    dir: docker
-    cmds:
-      - docker-compose up -d
+  up: docker-compose up -d
 
-  down:
-    dir: docker
-    cmds:
-      - docker-compose down
+  down: docker-compose down
 
   build: go build -v
 
   test: go test ./...
+
+  migration-up: '{{.MIGRATION_COMMAND}} up'
+
+  migration-down: '{{.MIGRATION_COMMAND}} down 1'

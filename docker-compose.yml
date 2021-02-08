@@ -7,9 +7,7 @@ services:
     volumes:
       - backend-db-volume:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=POSTGRES_PASSWORD
-      - DATABASE_URL
-      - POSTGRES_PASSWORD
+     - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
 

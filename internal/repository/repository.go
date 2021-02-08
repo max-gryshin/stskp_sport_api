@@ -4,17 +4,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/doug-martin/goqu/v9"
 	"github.com/jmoiron/sqlx"
 )
 
 var db *sqlx.DB
-
-type BaseRepository struct {
-	db        *sqlx.DB
-	table     string
-	baseQuery *goqu.SelectDataset
-}
 
 const (
 	OrderAsc   = "ASC"

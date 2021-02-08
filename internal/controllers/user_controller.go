@@ -6,11 +6,14 @@ import (
 	"github.com/astaxie/beego/validation"
 
 	"net/http"
+	"strconv"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/contractions"
 	"github.com/gin-gonic/gin"
 )
+
+const notImplemented = "Not implemented"
 
 // UserController is HTTP controller for manage users
 type UserController struct {
@@ -33,11 +36,18 @@ func NewUserController(repo contractions.UserRepository) *UserController {
 // @Failure 500 {object} app.Response
 // @Router /api/v1/users/{id}/ [get]
 func (ctr *UserController) GetUserByID(c *gin.Context) {
-	user, err := ctr.repo.GetByID(c.GetInt("id"))
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 		return
 	}
+
+	user, err := ctr.repo.GetByID(int(id))
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
+		return
+	}
+
 	c.JSON(http.StatusOK, user)
 }
 
@@ -85,4 +95,34 @@ func (ctr *UserController) GetAuth(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, map[string]string{"token": token})
+}
+
+// @Summary List users
+// @Description Get users with params
+// @Produce  json
+// @Security JWT
+// @Success 200 {array} models.User
+// @Failure 500 {object} app.Response
+// @Router /api/v1/users [get]
+func (ctr *UserController) GetUsers(c *gin.Context) {
+	users, err := ctr.repo.GetUsers()
+	if err != nil {
+		c.AbortWithStatus(http.StatusInternalServerError)
+
+		return
+	}
+
+	c.JSON(http.StatusOK, users)
+}
+
+func (ctr *UserController) CreateUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
+}
+
+func (ctr *UserController) UpdateUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
+}
+
+func (ctr *UserController) DeleteUser(c *gin.Context) {
+	c.String(http.StatusInternalServerError, notImplemented)
 }

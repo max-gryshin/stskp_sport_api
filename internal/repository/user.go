@@ -4,54 +4,17 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/doug-martin/goqu/v9/exp"
+
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
-	"github.com/doug-martin/goqu/v9"
+
 	_ "github.com/doug-martin/goqu/v9/dialect/postgres" // import the dialect
-	"github.com/doug-martin/goqu/v9/exp"
+
 	"github.com/fatih/structs"
-	"github.com/jmoiron/sqlx"
 )
 
 const tagName = "db"
-
-// UserRepository is repository implementation for models.User
-type UserRepository struct {
-	BaseRepository
-}
-
-// NewUserRepository creates new instance of UserRepository
-func NewUserRepository(db *sqlx.DB) *UserRepository {
-	table := `users`
-	fields := utils.GetTagValue(models.User{}, tagName)
-	query := goqu.From(table).Select(fields...).Prepared(true)
-
-	return &UserRepository{BaseRepository{
-		db:        db,
-		table:     table,
-		baseQuery: query,
-	}}
-}
-
-func (repo *UserRepository) GetByID(id int) (models.User, error) {
-	user := models.User{}
-	sql, _, err := repo.baseQuery.Where(exp.Ex{"id": id}).ToSQL()
-	if err != nil {
-		logging.Error(err)
-
-		return user, err
-	}
-
-	err = db.Get(&user, sql, id)
-	if err != nil {
-		logging.Error(err)
-
-		return user, err
-	}
-
-	return user, nil
-}
 
 func (repo *UserRepository) GetByUsername(username string) (models.User, error) {
 	user := models.User{}
