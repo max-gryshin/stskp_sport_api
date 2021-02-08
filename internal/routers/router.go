@@ -18,9 +18,6 @@ func InitRouter() *gin.Engine {
 	userRepo := repository.NewUserRepository(&db.DB, goqu.Dialect("postgres"))
 	userController := controllers.NewUserController(userRepo)
 
-	//url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
-	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
-
 	apiv1 := router.Group("/api/v1")
 	apiv1.Use(jwt.JWT())
 	apiv1.GET("/users", v1.GetUsers)
