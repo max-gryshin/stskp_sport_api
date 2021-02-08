@@ -2,7 +2,9 @@ package db
 
 import (
 	_ "github.com/jackc/pgx/stdlib" // need to connect with db
+
 	"github.com/jmoiron/sqlx"
+
 	"log"
 )
 
