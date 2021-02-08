@@ -1,14 +1,10 @@
 package repository
 
 import (
-	"log"
-	"os"
 	"strconv"
 	"strings"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"github.com/doug-martin/goqu/v9"
-	_ "github.com/jackc/pgx/stdlib" // need to connect with db
 	"github.com/jmoiron/sqlx"
 )
 
@@ -30,15 +26,6 @@ const (
 	Less       = "<"
 	LessEqual  = "<="
 )
-
-func Setup() {
-	var err error
-	db, err = sqlx.Connect("pgx", setting.AppSetting.DBConfig.URL)
-	if err != nil {
-		log.Fatalf("postgres.Setup err: %v\n", err)
-		os.Exit(1)
-	}
-}
 
 func Select(selectFields []string) string {
 	if len(selectFields) == 0 {
