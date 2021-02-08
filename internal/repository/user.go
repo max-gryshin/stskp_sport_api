@@ -8,6 +8,7 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/doug-martin/goqu/v9"
+	_ "github.com/doug-martin/goqu/v9/dialect/postgres" // import the dialect
 	"github.com/doug-martin/goqu/v9/exp"
 	"github.com/fatih/structs"
 	"github.com/jmoiron/sqlx"
@@ -22,7 +23,7 @@ type UserRepository struct {
 
 // NewUserRepository creates new instance of UserRepository
 func NewUserRepository(db *sqlx.DB) *UserRepository {
-	table := `"\user\"`
+	table := `users`
 	fields := utils.GetTagValue(models.User{}, tagName)
 	query := goqu.From(table).Select(fields...).Prepared(true)
 
@@ -52,9 +53,18 @@ func (repo *UserRepository) GetByID(id int) (models.User, error) {
 	return user, nil
 }
 
-func FindUserByUsername(username string) (models.User, error) {
+func (repo *UserRepository) GetByUsername(username string) (models.User, error) {
 	user := models.User{}
-	err := db.Get(&user, "select * from \"user\" where user_name=$1", username)
+	sql, _, err := repo.
+		baseQuery.
+		WithDialect("postgres").
+		Where(exp.Ex{"user_name": username}).
+		ToSQL()
+	if err != nil {
+		logging.Error(err)
+		return user, err
+	}
+	err = repo.db.Get(&user, sql, username) // "select * from users where user_name = $1"
 	if err != nil {
 		logging.Error(err)
 		return user, err
