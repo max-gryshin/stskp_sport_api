@@ -1,11 +1,8 @@
 package v1
 
 import (
-	"github.com/fatih/structs"
-
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
@@ -16,65 +13,6 @@ import (
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 )
-
-// @Summary Create user
-// @Description Create user
-// @Produce  json
-// @Param username query string true "userName"
-// @Param password query string true "password"
-// @Success 200 {object} app.Response
-// @Failure 500 {object} app.Response
-// @Router /api/user/create [post]
-func CreateUser(c *gin.Context) {
-	valid := validation.Validation{}
-	username, _ := c.GetQuery("username")
-	password, _ := c.GetQuery("password")
-	a := api.Auth{Username: username, Password: password}
-	ok, _ := valid.Valid(&a)
-	if !ok {
-		if valid.HasErrors() {
-			app.MarkErrors(valid.Errors)
-		}
-		c.AbortWithStatus(http.StatusBadRequest)
-		return
-	}
-	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
-	if err := user.SetPassword(a.Password); err != nil {
-		logging.Error(err)
-		c.AbortWithStatus(http.StatusBadRequest) // OR: use c.AbortWithError()
-		return
-	}
-	if errSave := repository.CreateUser(&user); errSave != nil {
-		c.AbortWithStatus(http.StatusBadRequest)
-		logging.Error(errSave)
-		return
-	}
-	c.JSON(e.Success, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
-}
-
-// @Summary Show a user
-// @Description Get user by id
-// @Produce  json
-// @Security JWT
-// @Param id path int true "User ID"
-// @Success 200 {object} models.User
-// @Header 200 {string} X-AUTH-TOKEN "qwerty"
-// @Failure 500 {object} app.Response
-// @Router /api/v1/users/{id}/ [get]
-func GetUser(c *gin.Context) {
-	idParam := c.Param("id")
-	id, idError := strconv.Atoi(idParam)
-	if idError != nil {
-		c.AbortWithStatus(http.StatusBadRequest)
-		return
-	}
-	user, err := repository.GetUserByID(id, models.GetAllowedUserFieldsByMethod("get"))
-	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
-		return
-	}
-	c.JSON(http.StatusOK, structs.Map(user)) // FIXME: may be just struct
-}
 
 //{
 //    \"criteria\": {

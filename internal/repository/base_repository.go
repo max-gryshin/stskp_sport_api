@@ -20,3 +20,14 @@ func (repo *BaseRepository) execSelect(dest interface{}, data *goqu.SelectDatase
 
 	return db.Select(dest, sql, params...)
 }
+
+func (repo *BaseRepository) execInsert(data *goqu.InsertDataset) error {
+	sql, params, err := data.ToSQL()
+	if err != nil {
+		return err
+	}
+
+	_ = repo.db.MustExec(sql, params...) // todo: solve the problem with duplicate keys
+
+	return nil
+}

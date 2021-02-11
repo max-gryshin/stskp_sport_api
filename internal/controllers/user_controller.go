@@ -1,12 +1,16 @@
 package controllers
 
 import (
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/astaxie/beego/validation"
 
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/app"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/contractions"
@@ -115,8 +119,39 @@ func (ctr *UserController) GetUsers(c *gin.Context) {
 	c.JSON(http.StatusOK, users)
 }
 
+// @Summary Create user
+// @Description Create user
+// @Produce  json
+// @Param username query string true "userName"
+// @Param password query string true "password"
+// @Success 200 {object} app.Response
+// @Failure 500 {object} app.Response
+// @Router /api/user/create [post]
 func (ctr *UserController) CreateUser(c *gin.Context) {
-	c.String(http.StatusInternalServerError, notImplemented)
+	valid := validation.Validation{}
+	username, _ := c.GetQuery("username")
+	password, _ := c.GetQuery("password")
+	a := api.Auth{Username: username, Password: password}
+	ok, _ := valid.Valid(&a)
+	if !ok {
+		if valid.HasErrors() {
+			app.MarkErrors(valid.Errors)
+		}
+		c.AbortWithStatus(http.StatusBadRequest)
+		return
+	}
+	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
+	if err := user.SetPassword(a.Password); err != nil {
+		logging.Error(err)
+		c.AbortWithStatus(http.StatusBadRequest) // OR: use c.AbortWithError()
+		return
+	}
+	if errSave := ctr.repo.CreateUser(&user); errSave != nil {
+		c.AbortWithStatus(http.StatusBadRequest)
+		logging.Error(errSave)
+		return
+	}
+	c.JSON(e.Success, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
 }
 
 func (ctr *UserController) UpdateUser(c *gin.Context) {

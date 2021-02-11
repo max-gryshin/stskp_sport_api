@@ -9,15 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// RegisterAPIV1 initialize routing information
-func RegisterAPIV1(router gin.IRoutes, conf *setting.Setting) {
+// RegisterCreateUser initialize routing information
+func RegisterCreateUser(router gin.IRoutes, conf *setting.Setting) {
 	queryBuilder := goqu.Dialect("postgres")
-	userRepo := repository.NewUserRepository(&db.DB, queryBuilder)
+	userRepo := repository.NewUserRepository(db.CreateDBConnection(setting.LoadSetting().DBConfig.URL), queryBuilder)
 	userController := controllers.NewUserController(userRepo)
-
-	router.GET("/users", userController.GetUsers)
-	router.POST("/users", userController.CreateUser)
-	router.GET("/users/:id", userController.GetUserByID)
-	router.PUT("/users/:id", userController.UpdateUser)
-	router.DELETE("/users/:id", userController.DeleteUser)
+	router.POST("/api/user/create", userController.CreateUser)
 }

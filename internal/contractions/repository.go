@@ -7,4 +7,5 @@ type UserRepository interface {
 	GetByID(id int) (models.User, error)
 	GetByUsername(username string) (models.User, error)
 	GetUsers() ([]models.User, error)
+	CreateUser(user *models.User) error
 }

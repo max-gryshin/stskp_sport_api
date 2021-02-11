@@ -43,6 +43,8 @@ func main() {
 	url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
 	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	routers.RegisterAPIV1(app.Group("/api/v1"), settings)
+	routers.RegisterAuth(app.Group("/"), settings)
+	routers.RegisterCreateUser(app.Group("/"), settings)
 	if err := app.Run(":" + settings.ServerConfig.Port); err != nil {
 		logging.Error(err)
 	}

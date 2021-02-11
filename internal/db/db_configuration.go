@@ -8,8 +8,8 @@ import (
 	"log"
 )
 
-const maxIdleCons = 100
-const maxOpenCons = 10
+const MaxIdleCons = 100
+const MaxOpenCons = 10
 
 var DB sqlx.DB
 
@@ -19,8 +19,8 @@ func CreateDBConnection(url string) *sqlx.DB {
 		log.Fatalf("postgres.Setup err: %v\n", err)
 	}
 	DB = *db
-	DB.SetMaxIdleConns(maxIdleCons)
-	DB.SetMaxOpenConns(maxOpenCons)
+	DB.SetMaxIdleConns(MaxIdleCons)
+	DB.SetMaxOpenConns(MaxOpenCons)
 
 	return &DB
 }

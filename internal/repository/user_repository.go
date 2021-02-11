@@ -59,3 +59,22 @@ func (repo *UserRepository) GetUsers() ([]models.User, error) {
 
 	return users, err
 }
+
+func (repo *UserRepository) CreateUser(user *models.User) error {
+	query := repo.
+		baseQuery.
+		Insert().
+		Into("users").
+		Cols("user_name", "password_hash", "state", "created_at").
+		Vals(goqu.Vals{user.Username, user.Password, user.State, user.CreatedAt})
+
+	err := repo.execInsert(query)
+
+	if err != nil {
+		logging.Error(err)
+
+		return err
+	}
+
+	return nil
+}
