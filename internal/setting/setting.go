@@ -47,12 +47,10 @@ type Setting struct {
 	App          App
 }
 
-var AppSetting = &Setting{}
-
 // LoadSetting loads configuration from env variables
 func LoadSetting() *Setting {
 	// TODO: Try use go-env for easy unmarshalling https://github.com/Netflix/go-env
-	AppSetting = &Setting{
+	return &Setting{
 		ServerConfig: ServerSetting{
 			Host: getEnv("HOST"),
 			Port: getEnv("PORT"),
@@ -73,8 +71,6 @@ func LoadSetting() *Setting {
 			getEnv(""),
 		},
 	}
-
-	return AppSetting
 }
 
 // Simple helper function to read an environment or return a default value

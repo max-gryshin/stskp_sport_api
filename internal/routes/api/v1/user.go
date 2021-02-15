@@ -9,7 +9,7 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/routes/api"
 	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 )

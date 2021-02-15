@@ -37,11 +37,14 @@ func main() {
 		log.Print("No .env file found")
 	}
 	settings := setting.LoadSetting()
-	logging.Setup()
 
-	dbContext, err := db.CreateDatabaseContext(setting.AppSetting.DBConfig)
+	logging.Setup(&settings.App)
+	defer logging.Close()
+
+	dbContext, err := db.CreateDatabaseContext(settings.DBConfig)
 	if err != nil {
-		log.Fatal(err)
+		log.Print(err)
+		panic(err)
 	}
 
 	userRepo := repository.NewUserRepository(dbContext.Connection, dbContext.QueryBuilder)
