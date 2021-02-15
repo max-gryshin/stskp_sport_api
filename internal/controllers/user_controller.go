@@ -54,7 +54,7 @@ func (ctr *UserController) GetUserByID(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
-// @Summary Get Auth
+// @Summary Authenticate
 // @Description user authorization
 // @Produce  json
 // @Param username query string true "userName"
@@ -63,7 +63,7 @@ func (ctr *UserController) GetUserByID(c *gin.Context) {
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]
-func (ctr *UserController) GetAuth(c *gin.Context) {
+func (ctr *UserController) Authenticate(c *gin.Context) {
 	valid := validation.Validation{}
 
 	username, _ := c.GetQuery("username")

@@ -52,11 +52,12 @@ func (repo *UserRepository) GetByID(id int) (models.User, error) {
 func (repo *UserRepository) GetUsers() (models.Users, error) {
 	var users = models.Users{}
 	query := repo.baseQuery.Limit(maxItemsPerPage)
-	sql, p, errSQL := query.ToSQL()
-	if errSQL != nil {
-		return users, errSQL
+	sql, p, err := query.ToSQL()
+	if err != nil {
+		return users, err
 	}
-	err := repo.db.Select(&users, sql, p...)
+
+	err = repo.db.Select(&users, sql, p...)
 
 	return users, err
 }
@@ -69,13 +70,5 @@ func (repo *UserRepository) CreateUser(user *models.User) error {
 		Cols("user_name", "password_hash", "state", "created_at").
 		Vals(goqu.Vals{user.Username, user.Password, user.State, user.CreatedAt})
 
-	err := repo.execInsert(query)
-
-	if err != nil {
-		logging.Error(err)
-
-		return err
-	}
-
-	return nil
+	return repo.execInsert(query)
 }

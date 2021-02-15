@@ -20,7 +20,6 @@ func (repo *UserRepository) GetByUsername(username string) (models.User, error) 
 	user := models.User{}
 	sql, _, err := repo.
 		baseQuery.
-		WithDialect("postgres").
 		Where(exp.Ex{"user_name": username}).
 		ToSQL()
 	if err != nil {
