@@ -36,18 +36,6 @@ func (repo *UserRepository) GetByUsername(username string) (models.User, error) 
 	return user, nil
 }
 
-func CreateUser(user *models.User) error {
-	_, err := db.NamedExec(
-		"INSERT INTO \"user\" (user_name, password_hash, state, created_at, email) VALUES (:Username,:Password,:State,:CreatedAt,:Email)",
-		structs.Map(user), // FIXME: think about how to user struct instead map
-	)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
 // get user by conditions
 func FindUserBy(criteria map[string][2]string, order map[string]string, limit, offset int, selectFields []string) (models.Users, error) {
 	var (

@@ -110,6 +110,7 @@ func (ctr *UserController) GetAuth(c *gin.Context) {
 func (ctr *UserController) GetUsers(c *gin.Context) {
 	users, err := ctr.repo.GetUsers()
 	if err != nil {
+		logging.Error(err)
 		c.AbortWithStatus(http.StatusInternalServerError)
 
 		return

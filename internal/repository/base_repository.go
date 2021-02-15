@@ -12,15 +12,6 @@ type BaseRepository struct {
 	queryBuilder goqu.DialectWrapper
 }
 
-func (repo *BaseRepository) execSelect(dest interface{}, data *goqu.SelectDataset) error {
-	sql, params, err := data.ToSQL()
-	if err != nil {
-		return err
-	}
-
-	return db.Select(dest, sql, params...)
-}
-
 func (repo *BaseRepository) execInsert(data *goqu.InsertDataset) error {
 	sql, params, err := data.ToSQL()
 	if err != nil {

@@ -6,6 +6,6 @@ import "github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 type UserRepository interface {
 	GetByID(id int) (models.User, error)
 	GetByUsername(username string) (models.User, error)
-	GetUsers() ([]models.User, error)
+	GetUsers() (models.Users, error)
 	CreateUser(user *models.User) error
 }

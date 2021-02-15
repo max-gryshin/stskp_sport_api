@@ -49,13 +49,14 @@ func (repo *UserRepository) GetByID(id int) (models.User, error) {
 	return user, nil
 }
 
-func (repo *UserRepository) GetUsers() ([]models.User, error) {
-	users := []models.User{}
+func (repo *UserRepository) GetUsers() (models.Users, error) {
+	var users = models.Users{}
 	query := repo.baseQuery.Limit(maxItemsPerPage)
-	err := repo.execSelect(&users, query)
-	if err != nil {
-		logging.Error(err)
+	sql, p, errSQL := query.ToSQL()
+	if errSQL != nil {
+		return users, errSQL
 	}
+	err := repo.db.Select(&users, sql, p...)
 
 	return users, err
 }
