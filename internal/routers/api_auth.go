@@ -10,9 +10,10 @@ import (
 )
 
 // RegisterAuth initialize routing information
-func RegisterAuth(router gin.IRoutes, conf *setting.Setting) {
+func RegisterAuth(router gin.IRoutes) {
 	queryBuilder := goqu.Dialect("postgres")
-	userRepo := repository.NewUserRepository(db.CreateDBConnection(setting.LoadSetting().DBConfig.URL), queryBuilder)
+	userRepo := repository.NewUserRepository(db.CreateDBConnection(&setting.AppSetting.DBConfig), queryBuilder)
 	userController := controllers.NewUserController(userRepo)
 	router.POST("/api/user/auth", userController.GetAuth)
+	router.POST("/api/user/create", userController.CreateUser)
 }

@@ -1,8 +1,6 @@
 package setting
 
 import (
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
-
 	"os"
 )
 
@@ -27,8 +25,8 @@ type DBSetting struct {
 	Password         string
 	PostgresPassword string
 	URL              string
-	MaxIdleCons      int
-	MaxOpenCons      int
+	MaxIdleCons      string
+	MaxOpenCons      string
 }
 
 // ServerSetting is a structure for storage server configuration
@@ -63,8 +61,8 @@ func LoadSetting() *Setting {
 			Password:         getEnv("POSTGRESQL_PASSWORD"),
 			PostgresPassword: getEnv("POSTGRESQL_POSTGRES_PASSWORD"),
 			URL:              getEnv("DATABASE_URL"),
-			MaxIdleCons:      db.MaxIdleCons,
-			MaxOpenCons:      db.MaxOpenCons,
+			MaxIdleCons:      getEnv("MAX_OPEN_IDLE_CONNECTIONS"),
+			MaxOpenCons:      getEnv("MAX_OPEN_CONNECTIONS"),
 		},
 		App: App{
 			getEnv("JWT_SECRET"),

@@ -4,7 +4,6 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/routers/api"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/astaxie/beego/validation"
 
@@ -69,7 +68,7 @@ func (ctr *UserController) GetAuth(c *gin.Context) {
 
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
-	a := api.Auth{Username: username, Password: password}
+	a := models.Auth{Username: username, Password: password}
 	ok, _ := valid.Valid(&a)
 
 	if !ok {
@@ -131,7 +130,7 @@ func (ctr *UserController) CreateUser(c *gin.Context) {
 	valid := validation.Validation{}
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
-	a := api.Auth{Username: username, Password: password}
+	a := models.Auth{Username: username, Password: password}
 	ok, _ := valid.Valid(&a)
 	if !ok {
 		if valid.HasErrors() {
