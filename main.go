@@ -58,6 +58,7 @@ func main() {
 	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	routes.RegisterAPIV1(app.Group("/api/v1"), userController)
+	routes.RegisterAuth(app, userController)
 
 	if err := app.Run(":" + settings.ServerConfig.Port); err != nil {
 		logging.Error(err)

@@ -20,13 +20,13 @@ func (repo *UserRepository) GetByUsername(username string) (models.User, error) 
 	user := models.User{}
 	sql, _, err := repo.
 		baseQuery.
-		Where(exp.Ex{"user_name": username}).
+		Where(exp.Ex{"username": username}).
 		ToSQL()
 	if err != nil {
 		logging.Error(err)
 		return user, err
 	}
-	err = repo.db.Get(&user, sql, username) // "select * from users where user_name = $1"
+	err = repo.db.Get(&user, sql, username)
 	if err != nil {
 		logging.Error(err)
 		return user, err
