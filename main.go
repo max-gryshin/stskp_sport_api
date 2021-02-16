@@ -39,7 +39,13 @@ func main() {
 	settings := setting.LoadSetting()
 
 	logging.Setup(&settings.App)
-	defer logging.Close()
+	defer func() {
+		err := logging.Close()
+		if err != nil {
+			log.Print(err)
+			panic(err)
+		}
+	}()
 
 	dbContext, err := db.CreateDatabaseContext(settings.DBConfig)
 	if err != nil {

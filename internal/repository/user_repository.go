@@ -32,14 +32,13 @@ func NewUserRepository(db *sqlx.DB, queryBuilder goqu.DialectWrapper) *UserRepos
 
 func (repo *UserRepository) GetByID(id int) (models.User, error) {
 	user := models.User{}
-	sql, params, err := repo.baseQuery.Where(exp.Ex{"id": id}).ToSQL()
+	sql, _, err := repo.baseQuery.Where(exp.Ex{"id": id}).ToSQL()
 	if err != nil {
 		logging.Error(err)
 
 		return user, err
 	}
-
-	err = db.Get(&user, sql, params...)
+	err = repo.db.Get(&user, sql, id)
 	if err != nil {
 		logging.Error(err)
 
@@ -71,4 +70,9 @@ func (repo *UserRepository) CreateUser(user *models.User) error {
 		Vals(goqu.Vals{user.Username, user.Password, user.State, user.CreatedAt})
 
 	return repo.execInsert(query)
+}
+
+func (repo *UserRepository) UpdateUser(user *models.User) error {
+	expr := repo.baseQuery.Update().Set(user).Where(exp.Ex{"id": user.ID})
+	return repo.execUpdate(expr)
 }

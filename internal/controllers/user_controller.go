@@ -155,7 +155,35 @@ func (ctr *UserController) CreateUser(c *gin.Context) {
 }
 
 func (ctr *UserController) UpdateUser(c *gin.Context) {
-	c.String(http.StatusInternalServerError, notImplemented)
+	id, idError := strconv.Atoi(c.Param("id"))
+	if idError != nil {
+		c.AbortWithStatus(http.StatusInternalServerError)
+
+		return
+	}
+	user, err := ctr.repo.GetByID(id)
+	if err != nil {
+		c.AbortWithStatus(http.StatusInternalServerError)
+		return
+	}
+	if errBindingUserToJSON := c.ShouldBindJSON(&user); errBindingUserToJSON != nil {
+		logging.Error(errBindingUserToJSON)
+		c.AbortWithStatus(http.StatusInternalServerError)
+		return
+	}
+	valid := validation.Validation{}
+	b, err := valid.Valid(user)
+	if err != nil || !b {
+		app.MarkErrors(valid.Errors)
+		c.AbortWithStatus(http.StatusInternalServerError)
+		return
+	}
+	if errUpdate := ctr.repo.UpdateUser(&user); errUpdate != nil {
+		logging.Error(errUpdate)
+		c.AbortWithStatus(http.StatusInternalServerError)
+		return
+	}
+	c.JSON(http.StatusOK, user)
 }
 
 func (ctr *UserController) DeleteUser(c *gin.Context) {

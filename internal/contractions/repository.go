@@ -8,4 +8,5 @@ type UserRepository interface {
 	GetByUsername(username string) (models.User, error)
 	GetUsers() (models.Users, error)
 	CreateUser(user *models.User) error
+	UpdateUser(user *models.User) error
 }

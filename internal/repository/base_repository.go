@@ -22,3 +22,14 @@ func (repo *BaseRepository) execInsert(data *goqu.InsertDataset) error {
 
 	return err
 }
+
+func (repo *BaseRepository) execUpdate(data *goqu.UpdateDataset) error {
+	sql, params, err := data.ToSQL()
+	if err != nil {
+		return err
+	}
+
+	_, err = repo.db.Exec(sql, params...)
+
+	return err
+}
