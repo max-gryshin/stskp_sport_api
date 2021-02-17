@@ -17,13 +17,13 @@
     },
     "host": "localhost:8081",
     "paths": {
-        "/api/user/auth": {
+        "/api/v1/auth": {
             "post": {
                 "description": "user authorization",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Get Auth",
+                "summary": "Authenticate",
                 "parameters": [
                     {
                         "type": "string",
@@ -56,7 +56,7 @@
                 }
             }
         },
-        "/api/user/create": {
+        "/api/v1/create": {
             "post": {
                 "description": "Create user",
                 "produces": [
@@ -107,62 +107,6 @@
                     "application/json"
                 ],
                 "summary": "List users",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "user_name[=]=name",
-                        "name": "user_name",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "integer"
-                        },
-                        "description": "state[\u003e | \u003c | \u003e= | \u003c= | =]=1",
-                        "name": "state",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "email[=]=email@mail.com",
-                        "name": "email",
-                        "in": "query"
-                    },
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "created_at[\u003e | \u003c | \u003e= | \u003c= | =]=2020-09-01",
-                        "name": "created_at",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "order[fieldName]=ASC|DESC",
-                        "name": "order",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "1",
-                        "name": "limit",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "2",
-                        "name": "offset",
-                        "in": "query"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -223,23 +167,18 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/v1/users/{id}/update": {
-            "patch": {
+            },
+            "put": {
                 "security": [
                     {
                         "JWT": []
                     }
                 ],
-                "description": "Update user",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "Update user by id",
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Update user",
+                "summary": "Update a user",
                 "parameters": [
                     {
                         "type": "integer",
@@ -247,15 +186,47 @@
                         "name": "id",
                         "in": "path",
                         "required": true
-                    },
-                    {
-                        "description": "update user_name, state, email",
-                        "name": "user",
-                        "in": "body",
-                        "required": true,
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.User"
+                        },
+                        "headers": {
+                            "X-AUTH-TOKEN": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "description": "Delete user by id",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Delete a user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -312,6 +283,7 @@
                     "type": "integer"
                 },
                 "password": {
+                    "description": "valid:\"MaxSize(50)\"",
                     "type": "string"
                 },
                 "state": {

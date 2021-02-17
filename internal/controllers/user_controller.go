@@ -61,7 +61,7 @@ func (ctr *UserController) GetUserByID(c *gin.Context) {
 // @Header 200 {string} Access-Control-Allow_origin "*"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
-// @Router /api/user/auth [post]
+// @Router /api/v1/auth [post]
 func (ctr *UserController) Authenticate(c *gin.Context) {
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
@@ -123,7 +123,7 @@ func (ctr *UserController) GetUsers(c *gin.Context) {
 // @Param password query string true "password"
 // @Success 200 {object} app.Response
 // @Failure 500 {object} app.Response
-// @Router /api/user/create [post]
+// @Router /api/v1/create [post]
 func (ctr *UserController) CreateUser(c *gin.Context) {
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
@@ -150,6 +150,16 @@ func (ctr *UserController) CreateUser(c *gin.Context) {
 	c.JSON(e.Success, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
 }
 
+// UpdateUser return user by id
+// @Summary Update a user
+// @Description Update user by id
+// @Produce  json
+// @Security JWT
+// @Param id path int true "User ID"
+// @Success 200 {object} models.User
+// @Header 200 {string} X-AUTH-TOKEN "qwerty"
+// @Failure 500 {object} app.Response
+// @Router /api/v1/users/{id}/ [put]
 func (ctr *UserController) UpdateUser(c *gin.Context) {
 	id, idError := strconv.Atoi(c.Param("id"))
 	if idError != nil {
@@ -181,6 +191,16 @@ func (ctr *UserController) UpdateUser(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
+// DeleteUser return user by id
+// @Summary Delete a user
+// @Description Delete user by id
+// @Produce  json
+// @Security JWT
+// @Param id path int true "User ID"
+// @Success 200 {object} models.User
+// @Header 200 {string} X-AUTH-TOKEN "qwerty"
+// @Failure 500 {object} app.Response
+// @Router /api/v1/users/{id}/ [delete]
 func (ctr *UserController) DeleteUser(c *gin.Context) {
 	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
 	if err != nil {
