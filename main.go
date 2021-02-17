@@ -43,7 +43,6 @@ func main() {
 		err := logging.Close()
 		if err != nil {
 			log.Print(err)
-			panic(err)
 		}
 	}()
 
