@@ -6,14 +6,16 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/file"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 )
 
 type Level int
 
 var (
-	F *os.File
+	f *os.File
 
 	DefaultPrefix      = ""
 	DefaultCallerDepth = 2
@@ -32,16 +34,25 @@ const (
 )
 
 // Setup initialize the log instance
-func Setup() {
+func Setup(config *setting.App) {
 	var err error
-	filePath := getLogFilePath()
-	fileName := getLogFileName()
-	F, err = file.MustOpen(fileName, filePath)
+	filePath := filepath.Join(config.RuntimeRootPath, config.LogSavePath)
+	fileName := strings.Join([]string{config.LogSaveName, config.LogFileExt}, ".")
+	f, err = file.MustOpen(fileName, filePath)
 	if err != nil {
 		log.Fatalf("logging.Setup err: %v", err)
 	}
 
-	logger = log.New(F, DefaultPrefix, log.LstdFlags)
+	logger = log.New(f, DefaultPrefix, log.LstdFlags)
+}
+
+// Close closes output file
+func Close() error {
+	if f != nil {
+		return f.Close()
+	}
+
+	return nil
 }
 
 // Debug output logs at debug level

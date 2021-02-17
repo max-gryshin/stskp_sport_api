@@ -17,17 +17,17 @@ const (
 type Users []User
 
 var userFields = map[string][]string{
-	"get":    {"id", "user_name", "state", "created_at", "email"},
+	"get":    {"id", "username", "state", "created_at", "email"},
 	"update": {"user_name", "state", "email"},
 }
 
 type User struct {
 	ID        int       `json:"id" db:"id" binding:"required"`
-	Username  string    `json:"username"   valid:"MaxSize(50)" db:"user_name"`
+	Username  string    `json:"username"   db:"username" valid:"MaxSize(50)" `
 	Password  string    `json:"password"   db:"password_hash"` // valid:"MaxSize(50)"
-	State     int8      `json:"state"      valid:"Range(1, 5)"`
+	State     int8      `json:"state"      db:"state" valid:"Range(1, 5)"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	Email     string    `json:"email"      valid:"Email"`
+	Email     string    `json:"email"      db:"email" valid:"Email"`
 }
 
 // SetPassword sets a new password stored as hash.

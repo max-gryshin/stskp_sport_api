@@ -2,6 +2,8 @@ package setting
 
 import (
 	"os"
+
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
 )
 
 // App is a structure for storage app configuration
@@ -25,6 +27,8 @@ type DBSetting struct {
 	Password         string
 	PostgresPassword string
 	URL              string
+	MaxIdleCons      string
+	MaxOpenCons      string
 }
 
 // ServerSetting is a structure for storage server configuration
@@ -39,26 +43,23 @@ type ServerSetting struct {
 
 type Setting struct {
 	ServerConfig ServerSetting
-	DBConfig     DBSetting
+	DBConfig     db.ConnectionSettions
 	App          App
 }
-
-var AppSetting = &Setting{}
 
 // LoadSetting loads configuration from env variables
 func LoadSetting() *Setting {
 	// TODO: Try use go-env for easy unmarshalling https://github.com/Netflix/go-env
-	AppSetting = &Setting{
+	return &Setting{
 		ServerConfig: ServerSetting{
 			Host: getEnv("HOST"),
 			Port: getEnv("PORT"),
 		},
-		DBConfig: DBSetting{
-			Database:         getEnv("POSTGRESQL_DATABASE"),
-			Username:         getEnv("POSTGRESQL_USERNAME"),
-			Password:         getEnv("POSTGRESQL_PASSWORD"),
-			PostgresPassword: getEnv("POSTGRESQL_POSTGRES_PASSWORD"),
-			URL:              getEnv("DATABASE_URL"),
+		DBConfig: db.ConnectionSettions{
+			Database:    "postgres",
+			URL:         getEnv("DATABASE_URL"),
+			MaxIdleCons: 100,
+			MaxOpenCons: 10,
 		},
 		App: App{
 			getEnv("JWT_SECRET"),
@@ -70,8 +71,6 @@ func LoadSetting() *Setting {
 			getEnv(""),
 		},
 	}
-
-	return AppSetting
 }
 
 // Simple helper function to read an environment or return a default value
