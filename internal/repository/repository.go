@@ -9,6 +9,8 @@ import (
 
 var db *sqlx.DB
 
+const tagName = "db"
+
 const (
 	OrderAsc   = "ASC"
 	OrderDesc  = "DESC"

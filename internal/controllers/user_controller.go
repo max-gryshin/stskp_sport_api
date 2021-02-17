@@ -16,16 +16,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const notImplemented = "Not implemented"
-
 // UserController is HTTP controller for manage users
 type UserController struct {
-	repo contractions.UserRepository
+	repo       contractions.UserRepository
+	validation validation.Validation
 }
 
 // NewUserController return new instance of UserController
-func NewUserController(repo contractions.UserRepository) *UserController {
-	return &UserController{repo}
+func NewUserController(repo contractions.UserRepository, v validation.Validation) *UserController {
+	return &UserController{repo, v}
 }
 
 // GetUserByID return user by id
@@ -64,17 +63,15 @@ func (ctr *UserController) GetUserByID(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/user/auth [post]
 func (ctr *UserController) Authenticate(c *gin.Context) {
-	valid := validation.Validation{}
-
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
 	a := models.Auth{Username: username, Password: password}
-	ok, _ := valid.Valid(&a)
+	ok, _ := ctr.validation.Valid(&a)
 
 	if !ok {
-		if valid.HasErrors() {
+		if ctr.validation.HasErrors() {
 			// maybe c.Error(valid.Errors)
-			app.MarkErrors(valid.Errors)
+			app.MarkErrors(ctr.validation.Errors)
 		}
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
@@ -128,14 +125,13 @@ func (ctr *UserController) GetUsers(c *gin.Context) {
 // @Failure 500 {object} app.Response
 // @Router /api/user/create [post]
 func (ctr *UserController) CreateUser(c *gin.Context) {
-	valid := validation.Validation{}
 	username, _ := c.GetQuery("username")
 	password, _ := c.GetQuery("password")
 	a := models.Auth{Username: username, Password: password}
-	ok, _ := valid.Valid(&a)
+	ok, _ := ctr.validation.Valid(&a)
 	if !ok {
-		if valid.HasErrors() {
-			app.MarkErrors(valid.Errors)
+		if ctr.validation.HasErrors() {
+			app.MarkErrors(ctr.validation.Errors)
 		}
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
@@ -171,10 +167,9 @@ func (ctr *UserController) UpdateUser(c *gin.Context) {
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
-	valid := validation.Validation{}
-	b, err := valid.Valid(user)
+	b, err := ctr.validation.Valid(user)
 	if err != nil || !b {
-		app.MarkErrors(valid.Errors)
+		app.MarkErrors(ctr.validation.Errors)
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	}
@@ -187,5 +182,19 @@ func (ctr *UserController) UpdateUser(c *gin.Context) {
 }
 
 func (ctr *UserController) DeleteUser(c *gin.Context) {
-	c.String(http.StatusInternalServerError, notImplemented)
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	user, err := ctr.repo.GetByID(int(id))
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, err.Error())
+		return
+	}
+	if errDelete := ctr.repo.DeleteUser(&user); errDelete != nil {
+		c.AbortWithStatus(http.StatusInternalServerError)
+	}
+	c.JSON(http.StatusOK, "OK")
 }

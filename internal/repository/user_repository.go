@@ -48,6 +48,25 @@ func (repo *UserRepository) GetByID(id int) (models.User, error) {
 	return user, nil
 }
 
+func (repo *UserRepository) GetByUsername(username string) (models.User, error) {
+	user := models.User{}
+	sql, _, err := repo.
+		baseQuery.
+		Where(exp.Ex{"username": username}).
+		ToSQL()
+	if err != nil {
+		logging.Error(err)
+		return user, err
+	}
+	err = repo.db.Get(&user, sql, username)
+	if err != nil {
+		logging.Error(err)
+		return user, err
+	}
+
+	return user, nil
+}
+
 func (repo *UserRepository) GetUsers() (models.Users, error) {
 	var users = models.Users{}
 	query := repo.baseQuery.Limit(maxItemsPerPage)
@@ -75,4 +94,9 @@ func (repo *UserRepository) CreateUser(user *models.User) error {
 func (repo *UserRepository) UpdateUser(user *models.User) error {
 	expr := repo.baseQuery.Update().Set(user).Where(exp.Ex{"id": user.ID})
 	return repo.execUpdate(expr)
+}
+
+func (repo *UserRepository) DeleteUser(user *models.User) error {
+	expr := repo.baseQuery.Delete().Where(exp.Ex{"id": user.ID})
+	return repo.execDelete(expr)
 }

@@ -33,3 +33,14 @@ func (repo *BaseRepository) execUpdate(data *goqu.UpdateDataset) error {
 
 	return err
 }
+
+func (repo *BaseRepository) execDelete(data *goqu.DeleteDataset) error {
+	sql, params, err := data.ToSQL()
+	if err != nil {
+		return err
+	}
+
+	_, err = repo.db.Exec(sql, params...)
+
+	return err
+}

@@ -8,6 +8,7 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/routes"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+	"github.com/astaxie/beego/validation"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -53,7 +54,7 @@ func main() {
 	}
 
 	userRepo := repository.NewUserRepository(dbContext.Connection, dbContext.QueryBuilder)
-	userController := controllers.NewUserController(userRepo)
+	userController := controllers.NewUserController(userRepo, validation.Validation{})
 
 	app := gin.New()
 	app.Use(gin.Logger())
