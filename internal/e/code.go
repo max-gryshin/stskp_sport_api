@@ -14,4 +14,6 @@ const (
 	ErrorUploadSaveImageFail    = 30001
 	ErrorUploadCheckImageFail   = 30002
 	ErrorUploadCheckImageFormat = 30003
+
+	UserExists = 409
 )

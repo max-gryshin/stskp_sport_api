@@ -12,6 +12,7 @@ var MsgFlags = map[int]string{
 	ErrorUploadSaveImageFail:      "Failed to save picture",
 	ErrorUploadCheckImageFail:     "Check image failed",
 	ErrorUploadCheckImageFormat:   "Check picture error, picture format or size problem",
+	UserExists:                    "user already exists",
 }
 
 // GetMsg get error information based on Code

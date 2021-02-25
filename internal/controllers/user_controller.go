@@ -18,13 +18,14 @@ import (
 
 // UserController is HTTP controller for manage users
 type UserController struct {
-	repo       contractions.UserRepository
-	validation validation.Validation
+	repo         contractions.UserRepository
+	validation   validation.Validation
+	errorHandler e.ErrorHandler
 }
 
 // NewUserController return new instance of UserController
-func NewUserController(repo contractions.UserRepository, v validation.Validation) *UserController {
-	return &UserController{repo, v}
+func NewUserController(repo contractions.UserRepository, v validation.Validation, errorHandler e.ErrorHandler) *UserController {
+	return &UserController{repo, v, errorHandler}
 }
 
 // GetUserByID return user by id
@@ -136,15 +137,26 @@ func (ctr *UserController) CreateUser(c *gin.Context) {
 		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
+	userExist, err := ctr.repo.GetByUsername(a.Username)
+	if err != nil {
+		logging.Error(err)
+		c.AbortWithStatus(e.Error)
+		return
+	}
+	if userExist.ID != 0 {
+		c.JSON(e.UserExists, map[string]string{"message": e.GetMsg(e.UserExists), "details": a.Username})
+		return
+	}
 	user := models.User{Username: a.Username, State: models.StateHalfRegistration, CreatedAt: time.Now()}
 	if err := user.SetPassword(a.Password); err != nil {
 		logging.Error(err)
-		c.AbortWithStatus(http.StatusBadRequest) // OR: use c.AbortWithError()
+		c.AbortWithStatus(http.StatusBadRequest)
 		return
 	}
 	if errSave := ctr.repo.CreateUser(&user); errSave != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 		logging.Error(errSave)
+		ctr.errorHandler.Handle(c, errSave)
 		return
 	}
 	c.JSON(e.Success, map[string]string{"id": strconv.Itoa(user.ID), "username": user.Username})
