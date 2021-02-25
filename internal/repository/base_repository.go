@@ -18,7 +18,7 @@ func (repo *BaseRepository) execInsert(data *goqu.InsertDataset) error {
 		return err
 	}
 
-	_, err = repo.db.Exec(sql, params...) // todo: solve the problem with duplicate keys
+	_, err = repo.db.Exec(sql, params...)
 
 	return err
 }
