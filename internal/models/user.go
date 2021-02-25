@@ -27,7 +27,7 @@ type User struct {
 	Password  string    `json:"password"   db:"password_hash"` // valid:"MaxSize(50)"
 	State     int8      `json:"state"      db:"state" valid:"Range(1, 5)"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	Email     string    `json:"email"      db:"email" valid:"Email"`
+	Email     *string   `json:"email"      db:"email" valid:"Email"`
 }
 
 // SetPassword sets a new password stored as hash.
