@@ -22,6 +22,11 @@ func (eh *ErrorHandler) Handle(c *gin.Context, e error) {
 	}
 }
 
+// @see https://habr.com/ru/company/mailru/blog/473658/
+// var pge *pgconn.PgError
+// if errors.Is(e, pge) {
+//   return e
+// }
 func handlePgError(e error) *pgconn.PgError {
 	if err, ok := e.(*pgconn.PgError); ok {
 		return err

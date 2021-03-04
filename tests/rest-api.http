@@ -12,25 +12,24 @@ Content-Type: application/json
 
 ####
 
-PUT http://localhost:8081/api/v1/users/3
+PUT http://localhost:8081/api/v1/users/43
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk2ZDk2MzJmMzYzNTY0Y2MzMDMyNTIxNDA5Y2YyMmE4NTJmMjAzMmVlYzA5OWVkNTk2N2MwZDAwMGNlYzYwN2EiLCJwYXNzd29yZCI6Ijk2Y2FlMzVjZThhOWIwMjQ0MTc4YmYyOGU0OTY2YzJjZTFiODM4NTcyM2E5NmE2YjgzODg1OGNkZDZjYTBhMWUiLCJleHAiOjE2MTY4Mjg2MjMsImlzcyI6InN0c2twLWFwaSJ9.vaqY-LBIAh8zR2aNVYPE3AtZG__sfaes6bqrj2E6C6M
 
 {
   "email": "john@mail.com",
-  "state": 3,
-  "username": "John"
+  "state": 3
 }
 
 ###
 
-GET http://localhost:8081/api/v1/users/3
+GET http://localhost:8081/api/v1/users/43
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk2ZDk2MzJmMzYzNTY0Y2MzMDMyNTIxNDA5Y2YyMmE4NTJmMjAzMmVlYzA5OWVkNTk2N2MwZDAwMGNlYzYwN2EiLCJwYXNzd29yZCI6Ijk2Y2FlMzVjZThhOWIwMjQ0MTc4YmYyOGU0OTY2YzJjZTFiODM4NTcyM2E5NmE2YjgzODg1OGNkZDZjYTBhMWUiLCJleHAiOjE2MTY4Mjg2MjMsImlzcyI6InN0c2twLWFwaSJ9.vaqY-LBIAh8zR2aNVYPE3AtZG__sfaes6bqrj2E6C6M
 
 ###
 
@@ -38,7 +37,7 @@ GET http://localhost:8081/api/v1/users
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk2ZDk2MzJmMzYzNTY0Y2MzMDMyNTIxNDA5Y2YyMmE4NTJmMjAzMmVlYzA5OWVkNTk2N2MwZDAwMGNlYzYwN2EiLCJwYXNzd29yZCI6Ijk2Y2FlMzVjZThhOWIwMjQ0MTc4YmYyOGU0OTY2YzJjZTFiODM4NTcyM2E5NmE2YjgzODg1OGNkZDZjYTBhMWUiLCJleHAiOjE2MTY4Mjg2MjMsImlzcyI6InN0c2twLWFwaSJ9.vaqY-LBIAh8zR2aNVYPE3AtZG__sfaes6bqrj2E6C6M
 
 ###
 
@@ -46,6 +45,6 @@ DELETE http://localhost:8081/api/v1/users/39
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk2ZDk2MzJmMzYzNTY0Y2MzMDMyNTIxNDA5Y2YyMmE4NTJmMjAzMmVlYzA5OWVkNTk2N2MwZDAwMGNlYzYwN2EiLCJwYXNzd29yZCI6Ijk2Y2FlMzVjZThhOWIwMjQ0MTc4YmYyOGU0OTY2YzJjZTFiODM4NTcyM2E5NmE2YjgzODg1OGNkZDZjYTBhMWUiLCJleHAiOjE2MTY4Mjg2MjMsImlzcyI6InN0c2twLWFwaSJ9.vaqY-LBIAh8zR2aNVYPE3AtZG__sfaes6bqrj2E6C6M
 
 ###

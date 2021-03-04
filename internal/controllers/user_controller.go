@@ -156,6 +156,7 @@ func (ctr *UserController) CreateUser(c *gin.Context) {
 	if errSave := ctr.repo.CreateUser(&user); errSave != nil {
 		c.AbortWithStatus(http.StatusBadRequest)
 		logging.Error(errSave)
+		c.Handler()
 		ctr.errorHandler.Handle(c, errSave)
 		return
 	}
