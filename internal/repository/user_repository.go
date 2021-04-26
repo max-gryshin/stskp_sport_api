@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"strings"
+
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
@@ -60,6 +62,9 @@ func (repo *UserRepository) GetByUsername(username string) (models.User, error) 
 	}
 	err = repo.db.Get(&user, sql, username)
 	if err != nil {
+		if strings.Contains(err.Error(), "no rows in result set") {
+			return user, nil
+		}
 		logging.Error(err)
 		return user, err
 	}
