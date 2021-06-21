@@ -12,9 +12,10 @@ func RegisterAPIV1(router *echo.Group, userController *controllers.UserControlle
 
 	router.POST("/auth", userController.Authenticate)
 	router.POST("/create", userController.CreateUser)
-	router.GET("/users/", userController.GetUsers, jwt) // jwt do not work
-	router.POST("/users/", userController.CreateUser, jwt)
-	router.GET("/users/:id", userController.GetUserByID, jwt)
-	router.PUT("/users/:id", userController.UpdateUser)
-	router.DELETE("/users/:id", userController.DeleteUser, jwt)
+	user := router.Group("/users")
+	user.GET("/", userController.GetUsers, jwt) // jwt do not work
+	user.POST("/", userController.CreateUser, jwt)
+	user.GET("/:id", userController.GetUserByID, jwt)
+	user.PUT("/:id", userController.UpdateUser)
+	user.DELETE("/:id", userController.DeleteUser, jwt)
 }

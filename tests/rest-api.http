@@ -29,10 +29,8 @@ X-AUTH-TOKEN: token
 ###
 
 GET https://localhost:1323/api/v1/users/2
-Accept: */*
-Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
 
 ###
 
@@ -40,7 +38,7 @@ GET https://localhost:1323/api/v1/users/
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
 
 ###
 

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="fix readme" />
+    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="fix import">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routes/api_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/api_v1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/utils/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rest-api.http" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -290,7 +295,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api#3">
+  <component name="RunManager" selected="HTTP Request.rest-api#5">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -308,11 +313,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api#3" />
         <item itemvalue="HTTP Request.rest-api#5" />
         <item itemvalue="HTTP Request.rest-api#4" />
-        <item itemvalue="HTTP Request.rest-api#2" />
         <item itemvalue="HTTP Request.rest-api#1" />
+        <item itemvalue="HTTP Request.rest-api#2" />
+        <item itemvalue="HTTP Request.rest-api#3" />
       </list>
     </recent_temporary>
   </component>
@@ -347,7 +352,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="switch from gin to echo: routes, controller, (jwt do not work)" />
     <MESSAGE value="fix readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix readme" />
+    <MESSAGE value="fix import" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix import" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
