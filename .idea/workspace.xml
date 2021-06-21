@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="handle &quot;no rows in result set&quot;">
-      <change afterPath="$PROJECT_DIR$/cert.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/key.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/request.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/response.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controllers/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/e/error_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/e/error_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/middleware/cors/cors.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/middleware/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/middleware/jwt/jwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routes/api/v1/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/api/v1/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routes/api_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/api_v1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rest-api.http" afterDir="false" />
-    </list>
+    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="fix readme" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -361,7 +345,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="switch from gin to echo: routes, controller, (jwt do not work)" />
+    <MESSAGE value="fix readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix readme" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
