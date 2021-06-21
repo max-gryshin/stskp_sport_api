@@ -7,8 +7,14 @@ import (
 )
 
 // MarkErrors logs error logs
-func MarkErrors(errors []*validation.Error) {
+func MarkErrors(errors []*validation.Error, returnErrors bool) string {
+	var result string
 	for _, err := range errors {
+		if returnErrors {
+			result += err.Key + " " + err.Message + " "
+		}
 		logging.Error(err.Key, err.Message)
 	}
+
+	return result
 }
