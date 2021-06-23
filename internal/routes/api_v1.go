@@ -11,11 +11,15 @@ func RegisterAPIV1(router *echo.Group, userController *controllers.UserControlle
 	jwt := middleware.JWT([]byte("get_key_from_env"))
 
 	router.POST("/auth", userController.Authenticate)
-	router.POST("/create", userController.CreateUser)
+	router.POST("/create", userController.Create)
 	user := router.Group("/users")
-	user.GET("/", userController.GetUsers, jwt) // jwt do not work
-	user.POST("/", userController.CreateUser, jwt)
-	user.GET("/:id", userController.GetUserByID, jwt)
-	user.PUT("/:id", userController.UpdateUser)
-	user.DELETE("/:id", userController.DeleteUser, jwt)
+	user.GET("/", userController.GetUsers, jwt)
+	user.POST("/", userController.Create, jwt)
+	user.GET("/:id", userController.GetByID)
+	user.PUT("/:id", userController.Update)
+	user.DELETE("/:id", userController.Delete, jwt)
+
+	workout := router.Group("/workout")
+
+	workout.Group("/")
 }

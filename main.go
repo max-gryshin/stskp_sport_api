@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 
+	"github.com/go-playground/validator"
+
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/controllers"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
 	errorhandler "github.com/ZmaximillianZ/stskp_sport_api/internal/e"
@@ -10,7 +12,6 @@ import (
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/routes"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
-	"github.com/astaxie/beego/validation"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 )
@@ -50,8 +51,11 @@ func main() {
 		panic(err)
 	}
 	userRepo := repository.NewUserRepository(dbContext.Connection, dbContext.QueryBuilder)
-	userController := controllers.NewUserController(userRepo, validation.Validation{}, errorhandler.ErrorHandler{})
+	eHandler := errorhandler.ErrorHandler{}
+	userController := controllers.NewUserController(userRepo, eHandler, validator.New())
 	eco := echo.New()
-	routes.RegisterAPIV1(eco.Group("/api/v1"), userController)
+	router := eco.Group("/api/v1")
+	router.Use(eHandler.Handle)
+	routes.RegisterAPIV1(router, userController)
 	eco.Logger.Fatal(eco.StartTLS(":1323", "cert.pem", "key.pem"))
 }

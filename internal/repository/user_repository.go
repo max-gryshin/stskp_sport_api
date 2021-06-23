@@ -101,7 +101,7 @@ func (repo *UserRepository) UpdateUser(user *models.User) error {
 	return repo.execUpdate(expr)
 }
 
-func (repo *UserRepository) DeleteUser(user *models.User) error {
+func (repo *UserRepository) Delete(user *models.User) error {
 	expr := repo.baseQuery.Delete().Where(exp.Ex{"id": user.ID})
 	return repo.execDelete(expr)
 }

@@ -3,6 +3,8 @@ package e
 import (
 	"net/http"
 
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+
 	"github.com/jackc/pgconn"
 	"github.com/labstack/echo/v4"
 )
@@ -10,18 +12,25 @@ import (
 type ErrorHandler struct {
 }
 
-func (eh *ErrorHandler) Handle(c echo.Context, e error) error {
-	if pg := handlePgError(e); pg != nil {
-		return c.JSON(
-			http.StatusUnprocessableEntity,
-			map[string]string{
-				"detail":  pg.Detail,
-				"message": pg.Message,
-				"code":    pg.Code,
-			},
-		)
+func (eh *ErrorHandler) Handle(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		e := next(c)
+		if e == nil {
+			return nil
+		}
+		if pg := handlePgError(e); pg != nil {
+			return echo.NewHTTPError(
+				http.StatusUnprocessableEntity,
+				map[string]string{
+					"detail":  pg.Detail,
+					"message": pg.Message,
+					"code":    pg.Code,
+				},
+			)
+		}
+		logging.Error(e)
+		return echo.NewHTTPError(http.StatusBadRequest, e.Error())
 	}
-	return nil
 }
 
 func handlePgError(e error) *pgconn.PgError {
