@@ -24,3 +24,14 @@ func (ctr *BaseController) GetID(c echo.Context) (int64, error) {
 
 	return id, nil
 }
+
+func (ctr *BaseController) BindAndValidate(c echo.Context, model interface{}) error {
+	if errBinding := c.Bind(&model); errBinding != nil {
+		return errBinding
+	}
+	if errValidate := ctr.validator.Struct(model); errValidate != nil { //todo: fix for workout
+		return errValidate
+	}
+
+	return nil
+}
