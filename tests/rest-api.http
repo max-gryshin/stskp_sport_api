@@ -7,30 +7,30 @@ Content-Type: application/json
 
 ###
 
-POST https://localhost:1323/api/v1/create?username=den&password=123123
+POST https://localhost:1323/api/v1/create?username=some_test_6&password=123123
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 ####
 
-PUT https://localhost:1323/api/v1/users/3
+PUT https://localhost:1323/api/v1/users/4
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
 
 {
-  "email": "john@mail.com",
-  "state": 3,
-  "username": "John"
+  "email": "test0624@mail.com",
+  "state": 6,
+  "username": "new edit"
 }
 
 ###
 
-GET https://localhost:1323/api/v1/users/2
+GET https://localhost:1323/api/v1/users/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
 
 ###
 
@@ -42,10 +42,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrc
 
 ###
 
-DELETE http://localhost:8081/api/v1/users/39
+DELETE https://localhost:1323/api/v1/users/4
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-X-AUTH-TOKEN: token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
+
+############# WORKOUT #############
+
+POST https://localhost:1323/api/v1/workout/create
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "description": "My first workout",
+  "user_id": 2
+}
+
+####
+
+GET https://localhost:1323/api/v1/workout/all
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
 
 ###
