@@ -4,6 +4,8 @@ import (
 	"errors"
 	"strconv"
 
+	"github.com/dgrijalva/jwt-go"
+
 	"github.com/go-playground/validator"
 
 	"github.com/labstack/echo/v4"
@@ -26,12 +28,28 @@ func (ctr *BaseController) GetID(c echo.Context) (int64, error) {
 }
 
 func (ctr *BaseController) BindAndValidate(c echo.Context, model interface{}) error {
+	testM := model
 	if errBinding := c.Bind(&model); errBinding != nil {
 		return errBinding
 	}
-	if errValidate := ctr.validator.Struct(model); errValidate != nil { //todo: fix for workout
+	if errValidate := ctr.validator.Struct(testM); errValidate != nil { //todo: fix for workout
 		return errValidate
 	}
 
 	return nil
+}
+
+func (ctr *BaseController) GetUserIDFromToken(c echo.Context) (int, error) {
+	user := c.Get("user").(*jwt.Token)
+	claims := user.Claims.(jwt.MapClaims)
+	idFromClaim := claims["ID"].(string)
+	var (
+		ID  int
+		err error
+	)
+	if ID, err = strconv.Atoi(idFromClaim); err != nil {
+		return ID, err
+	}
+
+	return ID, nil
 }

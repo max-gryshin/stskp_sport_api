@@ -7,19 +7,24 @@ import (
 )
 
 // RegisterAPIV1 initialize routing information
-func RegisterAPIV1(router *echo.Group, userController *controllers.UserController) {
+func RegisterAPIV1(router *echo.Group, userController *controllers.UserController, workoutController *controllers.WorkoutController) {
 	jwt := middleware.JWT([]byte("get_key_from_env"))
 
 	router.POST("/auth", userController.Authenticate)
 	router.POST("/create", userController.Create)
 	user := router.Group("/users")
 	user.GET("/", userController.GetUsers, jwt)
-	user.POST("/", userController.Create, jwt)
-	user.GET("/:id", userController.GetByID)
-	user.PUT("/:id", userController.Update)
+	user.POST("/", userController.Create)
+	user.GET("/:id", userController.GetByID, jwt)
+	user.PUT("/:id", userController.Update, jwt)
 	user.DELETE("/:id", userController.Delete, jwt)
 
-	workout := router.Group("/workout")
+	workout := router.Group("/workout", jwt)
+	workout.GET("/all", workoutController.GetWorkouts)
+	workout.POST("/create", workoutController.Create)
+	workout.GET("/:id", workoutController.GetByID)
+	workout.PUT("/:id", workoutController.Update)
+	workout.DELETE("/:id", workoutController.Delete)
 
 	workout.Group("/")
 }

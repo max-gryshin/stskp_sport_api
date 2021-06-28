@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="fix jwt">
-      <change afterPath="$PROJECT_DIR$/internal/contractions/controller.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/contractions/user_repotory.go" afterDir="false" />
+    <list default="true" id="27535ece-723d-4b9a-9611-42e4a7cb7955" name="Default Changelist" comment="workout CRUD">
       <change afterPath="$PROJECT_DIR$/internal/contractions/workout_repository.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/controllers/base_controller.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/internal/controllers/workout_controller.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/dto/workout.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/internal/repository/workout_repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/app/request.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/contractions/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/contractions/repository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/controllers/base_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controllers/base_controller.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/controllers/user_controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/db/migrations/000001_create_users_table.down.sql" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/migrations/000001_create_users_table.down.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/db/migrations/000001_create_users_table.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/migrations/000001_create_users_table.up.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/e/error_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/e/error_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/models/user_auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user_auth.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/models/workout.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/workout.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/models/workout_type.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/workout_type.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/models/workout_value.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/workout_value.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/repository/user_repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/repository/user_repository.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/routes/api_v1.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routes/api_v1.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/utils/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/utils/jwt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/tests/rest-api.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,24 +49,31 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/internal/e/error_handler.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo/v4@v4.2.2/echo.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/tests/rest-api.http" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/repository/workout_repository.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/controllers/base_controller.go" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/go-playground/validator@v9.31.0+incompatible/validator_instance.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/internal/contractions/user_repotory.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/go.mod" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/utils/reflection_test.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/models/user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/controllers/workout_controller.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/internal/contractions/workout_repository.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/repository/workout_repository.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/internal/middleware/jwt/jwt.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.gitignore" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Taskfile.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/controllers/user_controller.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/e/error_handler.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/controllers/base_controller.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/go/pkg/mod/github.com/go-playground/validator@v9.31.0+incompatible/validator_instance.go" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/internal/utils/reflection_test.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/dto/user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/utils/jwt.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/models/user.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/models/workout.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/models/user_auth.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/routes/api_v1.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/dto/workout.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/var/log/api_log.log" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/internal/repository/user_repository.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/controllers/workout_controller.go" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo/v4@v4.2.2/context.go" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/internal/contractions/repository.go" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -324,29 +322,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api#2">
+  <component name="RunManager" selected="HTTP Request.rest-api#7">
     <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="2" runType="Run single request">
+    <configuration name="rest-api#10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="10" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="3" runType="Run single request">
+    <configuration name="rest-api#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="7" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="4" runType="Run single request">
+    <configuration name="rest-api#8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="8" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="rest-api#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="5" runType="Run single request">
+    <configuration name="rest-api#9" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/tests/rest-api.http" index="9" runType="Run single request">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api#2" />
+        <item itemvalue="HTTP Request.rest-api#7" />
+        <item itemvalue="HTTP Request.rest-api#10" />
+        <item itemvalue="HTTP Request.rest-api#9" />
+        <item itemvalue="HTTP Request.rest-api#8" />
         <item itemvalue="HTTP Request.rest-api#1" />
-        <item itemvalue="HTTP Request.rest-api#3" />
-        <item itemvalue="HTTP Request.rest-api#5" />
-        <item itemvalue="HTTP Request.rest-api#4" />
       </list>
     </recent_temporary>
   </component>
@@ -383,7 +381,11 @@
     <MESSAGE value="fix readme" />
     <MESSAGE value="fix import" />
     <MESSAGE value="fix jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix jwt" />
+    <MESSAGE value="error handling in controller" />
+    <MESSAGE value="adding validation, dto" />
+    <MESSAGE value="change access rights" />
+    <MESSAGE value="workout CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="workout CRUD" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

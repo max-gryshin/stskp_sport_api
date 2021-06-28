@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
@@ -20,12 +21,13 @@ const (
 )
 
 // GenerateToken generate tokens used for auth
-func GenerateToken(username, password string) (string, error) {
+func GenerateToken(username, password string, id int) (string, error) {
 	nowTime := time.Now()
 	// Create token
 	token := jwt.New(jwt.SigningMethodHS256)
 	// Set claims
 	claims := token.Claims.(jwt.MapClaims)
+	claims["id"] = strconv.Itoa(id)
 	claims["name"] = username
 	claims["Issuer"] = "stskp-api"
 	claims["admin"] = true

@@ -67,7 +67,7 @@ func (ctr *UserController) Authenticate(c echo.Context) error {
 	if user.InvalidPassword(password) {
 		return errors.New("invalid password")
 	}
-	if token, err = utils.GenerateToken(a.Username, a.Password); err != nil {
+	if token, err = utils.GenerateToken(a.Username, a.Password, user.ID); err != nil {
 		return err
 	}
 	return c.JSON(http.StatusOK, map[string]string{"token": token})
