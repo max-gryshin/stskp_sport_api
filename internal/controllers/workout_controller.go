@@ -42,7 +42,7 @@ func (ctr *WorkoutController) GetByID(c echo.Context) error {
 }
 
 // GetWorkouts return list of workouts
-// example: /api/v1/workout
+// example: /api/v1/workout/all
 func (ctr *WorkoutController) GetWorkouts(c echo.Context) error {
 	var (
 		workouts models.Workouts

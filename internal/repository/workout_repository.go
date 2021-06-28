@@ -58,13 +58,13 @@ func (repo *WorkoutRepository) GetAll() (models.Workouts, error) {
 	return workouts, err
 }
 
-func (repo *WorkoutRepository) Create(user *models.Workout) error {
+func (repo *WorkoutRepository) Create(workout *models.Workout) error {
 	query := repo.
 		baseQuery.
 		Insert().
 		Into("workout").
 		Cols("user_id", "description", "created_at").
-		Vals(goqu.Vals{user.UserID, user.Description, user.CreatedAt})
+		Vals(goqu.Vals{workout.UserID, workout.Description, workout.CreatedAt})
 
 	return repo.execInsert(query)
 }
