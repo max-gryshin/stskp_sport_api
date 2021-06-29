@@ -53,13 +53,15 @@ func main() {
 	userRepo := repository.NewUserRepository(dbContext.Connection, dbContext.QueryBuilder)
 	workoutRepo := repository.NewWorkoutRepository(dbContext.Connection, dbContext.QueryBuilder)
 	workoutTypeRepo := repository.NewWorkoutTypeRepository(dbContext.Connection, dbContext.QueryBuilder)
+	workoutValueRepo := repository.NewWorkoutValueRepository(dbContext.Connection, dbContext.QueryBuilder)
 	eHandler := errorhandler.ErrorHandler{}
 	userController := controllers.NewUserController(userRepo, eHandler, validator.New())
 	workoutController := controllers.NewWorkoutController(workoutRepo, eHandler, validator.New())
 	workoutTypeController := controllers.NewWorkoutTypeController(workoutTypeRepo, eHandler, validator.New())
+	workoutValueController := controllers.NewWorkoutValueController(workoutValueRepo, eHandler, validator.New())
 	eco := echo.New()
 	router := eco.Group("/api/v1")
 	router.Use(eHandler.Handle)
-	routes.RegisterAPIV1(router, userController, workoutController, workoutTypeController)
+	routes.RegisterAPIV1(router, userController, workoutController, workoutTypeController, workoutValueController)
 	eco.Logger.Fatal(eco.StartTLS(":1323", "cert.pem", "key.pem"))
 }

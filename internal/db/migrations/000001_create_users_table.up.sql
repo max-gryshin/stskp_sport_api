@@ -38,5 +38,7 @@ create table workout_value
     workout_id      int NOT NULL CONSTRAINT workout_value_workout_id_fk REFERENCES workout ON UPDATE CASCADE ON DELETE CASCADE,
     workout_type_id int NOT NULL CONSTRAINT workout_value_workout_type_id_fk REFERENCES workout_type ON UPDATE CASCADE ON DELETE CASCADE,
     value           double precision null,
-    unit            smallint         not null
+    unit            smallint         not null,
+    started_at      timestamp,
+    ended_at        timestamp,
 );

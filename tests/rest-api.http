@@ -14,14 +14,14 @@ Content-Type: application/json
 
 ####
 
-PUT https://localhost:1323/api/v1/users/4
+PUT https://localhost:1323/api/v1/users/3
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
+Authorization: Bearer token
 
 {
-  "email": "test0624@mail.com",
+  "email": "test06241827222@mail.com",
   "state": 6,
   "username": "new edit"
 }
@@ -30,7 +30,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrc
 
 GET https://localhost:1323/api/v1/users/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
+Authorization: Bearer token
 
 ###
 
@@ -38,7 +38,7 @@ GET https://localhost:1323/api/v1/users/
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
+Authorization: Bearer token
 
 ###
 
@@ -46,7 +46,7 @@ DELETE https://localhost:1323/api/v1/users/4
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI2ODgxODk0LCJuYW1lIjoiam9obiJ9.CG3e8NAiSgVNs1jgnQXJROSztbS3M_hKMexvfQHLQaA
+Authorization: Bearer token
 
 ############# WORKOUT #############
 
@@ -54,9 +54,10 @@ POST https://localhost:1323/api/v1/workout/create
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
+Authorization: Bearer token
 
 {
-  "description": "My first workout",
+  "description": "My pretty train",
   "user_id": 2
 }
 
@@ -66,6 +67,115 @@ GET https://localhost:1323/api/v1/workout/all
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjI3MDI3OTI5LCJuYW1lIjoiam9obiJ9.yW_fTlSEg0GgJhn2mav9InpgLu1aFe92wQOBIgbnPbo
+Authorization: Bearer token
+
+####
+
+PUT https://localhost:1323/api/v1/workout/2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "description": "My fffucking workout"
+}
 
 ###
+
+DELETE https://localhost:1323/api/v1/workout/2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+######### WORKOUT #############
+
+######### WORKOUT TYPE #############
+
+POST https://localhost:1323/api/v1/workout-type/create
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "name": "workout type child",
+  "parent_id": 1,
+  "type": 4
+}
+
+####
+
+GET https://localhost:1323/api/v1/workout-type/all
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+####
+
+PUT https://localhost:1323/api/v1/workout-type/3
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "name": "My fffucking workout type"
+}
+
+###
+
+DELETE https://localhost:1323/api/v1/workout-type/3
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+######### WORKOUT TYPE #############
+
+######### WORKOUT VALUE #############
+
+POST https://localhost:1323/api/v1/workout-value/create
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "workout_id": 4,
+  "workout_type_id": 1,
+  "value": 144.0,
+  "unit": 7
+}
+
+####
+
+GET https://localhost:1323/api/v1/workout-value/all
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+###
+
+PUT https://localhost:1323/api/v1/workout-value/2
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
+
+{
+  "value": 5200.0,
+  "started_at": "2021-06-29T20:00:00Z",
+  "ended_at": "2021-06-29T21:00:00Z"
+}
+
+###
+
+DELETE https://localhost:1323/api/v1/workout-value/3
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+Authorization: Bearer token
