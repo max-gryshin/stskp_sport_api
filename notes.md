@@ -42,7 +42,7 @@
 - in FindBy - set flexible field selection (deprecated)
 - parser query parameters (deprecated)
 #Business logic
-### basic entities
+### basic CRUD
  - user
  - workout
  - workout type
@@ -60,30 +60,6 @@ have a finite set of values that can be stored in the cache (redis).
  - http 2.0
  
 # In progress
- - CRUD
-   - elements to make CRUD
-      - entities
-         - workout
-         - workout_type 
-         - workout_value
-      - controllers
-         - workout
-         - workout_type
-         - workout_value
-      - routes
-         - GET
-         - POST
-         - PUT
-         - DELETE
-      - repositories
-         - workout
-         - workout_type
-         - workout_value
-      - migration
-         - create tables
-            - workout
-            - workout_type
-            - workout_value
  - JWT
    - create secret key in env
  - Logging
