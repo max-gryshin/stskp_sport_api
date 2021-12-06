@@ -13,7 +13,7 @@ import (
 
 const maxItemsPerPage = 100
 
-// UserRepository is repository implementation for models.User
+// UserRepository is repository implementation for models.Users
 type UserRepository struct {
 	BaseRepository
 }

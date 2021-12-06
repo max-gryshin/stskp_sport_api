@@ -22,7 +22,7 @@ import (
 // @Description Get users with params
 // @Produce  json
 // @Security JWT
-// @Success 200 {array} models.User
+// @Success 200 {array} models.Users
 // @Failure 500 {object} app.Response
 // @Router /api/v1/users [get]
 func GetUsers(c echo.Context) error {

@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db:
-    image: postgres:10-alpine # "bitnami/postgresql:10"
+    image: postgres:14.1-alpine
     container_name: stskp_api_db
     volumes:
       - backend-db-volume:/var/lib/postgresql/data
