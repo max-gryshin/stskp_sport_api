@@ -42,7 +42,7 @@ func (ctr *BaseController) BindAndValidate(c echo.Context, model interface{}) er
 func (ctr *BaseController) GetUserIDFromToken(c echo.Context) (int, error) {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
-	idFromClaim := claims["ID"].(string)
+	idFromClaim := claims["id"].(string)
 	var (
 		ID  int
 		err error
