@@ -40,5 +40,5 @@ create table workout_value
     value           double precision null,
     unit            smallint         not null,
     started_at      timestamp,
-    ended_at        timestamp,
+    ended_at        timestamp
 );
