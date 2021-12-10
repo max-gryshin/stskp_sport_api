@@ -1,24 +1,26 @@
-POST https://localhost:1323/api/v1/auth?username=john&password=123123
+POST https://localhost:1323/api/v1/auth?username=john&password=Stskp12345
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
-###
+> {% client.global.set("auth_token", response.body.token); %}
 
 ###
 
-POST https://localhost:1323/api/v1/create?username=some_test_6&password=123123
+###
+
+POST https://localhost:1323/api/v1/create?username=john&password=Stskp12345
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 ####
 
-PUT https://localhost:1323/api/v1/users/3
+PUT https://localhost:1323/api/v1/users/1
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "email": "test06241827222@mail.com",
@@ -28,9 +30,9 @@ Authorization: Bearer token
 
 ###
 
-GET https://localhost:1323/api/v1/users/4
+GET https://localhost:1323/api/v1/users/1
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ###
 
@@ -38,7 +40,7 @@ GET https://localhost:1323/api/v1/users/
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ###
 
@@ -46,7 +48,7 @@ DELETE https://localhost:1323/api/v1/users/4
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ############# WORKOUT #############
 
@@ -54,7 +56,7 @@ POST https://localhost:1323/api/v1/workout/create
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "description": "My pretty train",
@@ -67,7 +69,7 @@ GET https://localhost:1323/api/v1/workout/all
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ####
 
@@ -75,7 +77,7 @@ PUT https://localhost:1323/api/v1/workout/2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "description": "My fffucking workout"
@@ -87,7 +89,7 @@ DELETE https://localhost:1323/api/v1/workout/2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ######### WORKOUT #############
 
@@ -97,7 +99,7 @@ POST https://localhost:1323/api/v1/workout-type/create
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "name": "workout type child",
@@ -111,7 +113,7 @@ GET https://localhost:1323/api/v1/workout-type/all
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ####
 
@@ -119,7 +121,7 @@ PUT https://localhost:1323/api/v1/workout-type/3
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "name": "My fffucking workout type"
@@ -131,7 +133,7 @@ DELETE https://localhost:1323/api/v1/workout-type/3
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ######### WORKOUT TYPE #############
 
@@ -141,7 +143,7 @@ POST https://localhost:1323/api/v1/workout-value/create
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "workout_id": 4,
@@ -156,7 +158,7 @@ GET https://localhost:1323/api/v1/workout-value/all
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 ###
 
@@ -164,7 +166,7 @@ PUT https://localhost:1323/api/v1/workout-value/2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
 
 {
   "value": 5200.0,
@@ -178,4 +180,4 @@ DELETE https://localhost:1323/api/v1/workout-value/3
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer {{auth_token}}
