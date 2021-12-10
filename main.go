@@ -33,9 +33,7 @@ import (
 // @name X-AUTH-TOKEN
 // @host localhost:8081
 func main() {
-	if err := godotenv.Load(); err != nil {
-		log.Print("No .env file found")
-	}
+	_ = godotenv.Load()
 	settings := setting.LoadSetting()
 
 	logging.Setup(&settings.App)

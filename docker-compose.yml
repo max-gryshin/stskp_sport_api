@@ -7,7 +7,9 @@ services:
     volumes:
       - backend-db-volume:/var/lib/postgresql/data
     environment:
-     - POSTGRES_PASSWORD=postgres
+     - POSTGRES_PASSWORD=stskp
+     - POSTGRES_USER=stskp
+     - POSTGRES_DB=stskp_sport_api
     ports:
       - "5432:5432"
 

@@ -1,11 +1,9 @@
-
 .idea
 .idea/workspace.xml
-.env
 var
 bin
 *.exe
 __debug_bin
-
 cert.pem
 key.pem
+logs
