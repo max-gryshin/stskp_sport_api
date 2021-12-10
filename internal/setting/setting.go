@@ -17,7 +17,6 @@ type App struct {
 	LogSavePath string
 	LogSaveName string
 	LogFileExt  string
-	TimeFormat  string
 }
 
 // DBSetting is a structure for storage db configuration
@@ -43,7 +42,7 @@ type ServerSetting struct {
 
 type Setting struct {
 	ServerConfig ServerSetting
-	DBConfig     db.ConnectionSettions
+	DBConfig     db.ConnectionSettings
 	App          App
 }
 
@@ -55,20 +54,19 @@ func LoadSetting() *Setting {
 			Host: getEnv("HOST"),
 			Port: getEnv("PORT"),
 		},
-		DBConfig: db.ConnectionSettions{
+		DBConfig: db.ConnectionSettings{
 			Database:    "postgres",
 			URL:         getEnv("DATABASE_URL"),
 			MaxIdleCons: 100,
 			MaxOpenCons: 10,
 		},
 		App: App{
-			getEnv("JWT_SECRET"),
-			getEnv("ROOT_PATH"),
-			getEnv("SAVE_PATH"),
-			getEnv("LOG_PATH"),
-			getEnv("LOG_NAME"),
-			getEnv("LOG_EXT"),
-			getEnv(""),
+			JwtSecret:       getEnv("JWT_SECRET"),
+			RuntimeRootPath: getEnv("ROOT_PATH"),
+			ExportSavePath:  getEnv("SAVE_PATH"),
+			LogSavePath:     getEnv("LOG_PATH"),
+			LogSaveName:     getEnv("LOG_NAME"),
+			LogFileExt:      getEnv("LOG_EXT"),
 		},
 	}
 }
@@ -79,5 +77,5 @@ func getEnv(key string) string {
 		return value
 	}
 
-	return ""
+	panic("variable '%s' is not provided")
 }

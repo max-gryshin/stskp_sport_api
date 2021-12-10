@@ -8,7 +8,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type ConnectionSettions struct {
+type ConnectionSettings struct {
 	Database    string
 	URL         string
 	MaxIdleCons int
@@ -34,7 +34,7 @@ var drivers = map[string]string{
 	"sqlserver": "sqlserver",
 }
 
-func CreateDatabaseContext(setting ConnectionSettions) (DatabaseContext, error) {
+func CreateDatabaseContext(setting ConnectionSettings) (DatabaseContext, error) {
 	db, err := sqlx.Connect(getValue(drivers, setting.Database), setting.URL)
 	if err != nil {
 		return DatabaseContext{}, err
