@@ -45,4 +45,5 @@ func RegisterAPIV1(
 	workoutValue.GET("/:id", workoutValueController.GetByID)
 	workoutValue.PUT("/:id", workoutValueController.Update)
 	workoutValue.DELETE("/:id", workoutValueController.Delete)
+
 }

@@ -1,9 +1,15 @@
 package main
 
 import (
-	"log"
-
+	"context"
+	"fmt"
+	"github.com/ZmaximillianZ/stskp_sport_api/internal/grpc/user_grpc/pb"
 	"github.com/go-playground/validator"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
+	"log"
+	"net"
+	"time"
 
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/controllers"
 	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
@@ -19,7 +25,7 @@ import (
 // init is invoked before main()
 // @title Swagger Example API
 // @version 1.0
-// @description This is a sample server Petstore server.
+// @description This is a sample user_protobuf Petstore user_protobuf.
 // @termsOfService http://swagger.io/terms/
 
 // @contact.name API Support
@@ -63,5 +69,44 @@ func main() {
 	router := eco.Group("/api/v1")
 	router.Use(eHandler.Handle)
 	routes.RegisterAPIV1(router, userController, workoutController, workoutTypeController, workoutValueController)
+
+	lis, errLis := net.Listen("tcp", ":8081")
+	if errLis != nil {
+		fmt.Println(errLis.Error())
+		log.Fatalln("can't listen port", errLis)
+	}
+	userGrpc := pb.NewGrpcServer(
+		grpc.UnaryInterceptor(authInterceptor),
+		//grpc.InTapHandle(rateLimiter),
+	)
+	userGrpc.Register()
+	err = userGrpc.Server.Serve(lis)
+	if err != nil {
+		if err != nil {
+			log.Print(err)
+			fmt.Println(err.Error())
+		}
+	}
+
 	eco.Logger.Fatal(eco.StartTLS(":1323", "cert.pem", "key.pem"))
+}
+
+func authInterceptor(
+	ctx context.Context,
+	req interface{},
+	info *grpc.UnaryServerInfo,
+	handler grpc.UnaryHandler,
+) (interface{}, error) {
+	start := time.Now()
+	md, _ := metadata.FromIncomingContext(ctx)
+	reply, err := handler(ctx, req)
+	fmt.Printf(`--
+	after incoming call=%v
+	req=%#v
+	reply=%#v
+	time=%v
+	md=%v
+	err=%v
+	`, info.FullMethod, req, reply, time.Since(start), md, err)
+	return reply, err
 }

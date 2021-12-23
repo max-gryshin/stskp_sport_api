@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+// run in the root of the project
+// protoc --proto_path=internal/grpc/proto/ --go_out=internal/grpc internal/grpc/proto/user.proto
+// protoc --proto_path=internal/grpc/proto/ --go-grpc_out=internal/grpc internal/grpc/proto/user.proto
+
+package proto;
+
+option go_package = "user_grpc/pb";
+
+service User {
+  rpc Create(RequestCreate) returns (ResponseCreate) {}
+  rpc Get(Request) returns (Response) {}
+  rpc Edit(RequestEdit) returns (ResponseCreate) {}
+}
+
+message RequestCreate {
+  string username = 1;
+  string password = 2;
+}
+
+message RequestEdit {
+  string email = 1;
+  int64 state = 2;
+  string username = 3;
+}
+
+message Request {
+  int64 ID = 1;
+}
+
+message ResponseCreate {
+  int64 id = 1;
+  string username = 2;
+  string password = 3;
+  int64 state = 4;
+  string created_at = 5;
+}
+
+message Response {
+  int64 ID = 1;
+  string Username = 2;
+  string email = 3;
+  int64 state = 4;
+  string created_at = 5;
+}

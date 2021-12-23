@@ -1,4 +1,4 @@
-POST https://localhost:1323/api/v1/auth?username=john&password=123123
+POST https://localhost:1323/api/v1/auth?username=some_test_6&password=123123
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
@@ -7,30 +7,30 @@ Content-Type: application/json
 
 ###
 
-POST https://localhost:1323/api/v1/create?username=some_test_6&password=123123
+POST https://localhost:1323/api/v1/create?username=some_test_7&password=123123
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 ####
 
-PUT https://localhost:1323/api/v1/users/3
+PUT https://localhost:1323/api/v1/users/1
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjQyNjk5NjA1LCJpZCI6IjIiLCJuYW1lIjoic29tZV90ZXN0XzYifQ.Us6rKkEIIWYrdifgDOVjNupwX59-d561QU4-n-3NdUM
 
 {
   "email": "test06241827222@mail.com",
-  "state": 6,
-  "username": "new edit"
+  "state": 3,
+  "username": "Maxim"
 }
 
 ###
 
-GET https://localhost:1323/api/v1/users/4
+GET https://localhost:1323/api/v1/users/1
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjQyNjk5NjA1LCJpZCI6IjIiLCJuYW1lIjoic29tZV90ZXN0XzYifQ.Us6rKkEIIWYrdifgDOVjNupwX59-d561QU4-n-3NdUM
 
 ###
 
@@ -38,7 +38,7 @@ GET https://localhost:1323/api/v1/users/
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJzdHNrcC1hcGkiLCJhZG1pbiI6dHJ1ZSwiZXhwIjoxNjQyNjk5NjA1LCJpZCI6IjIiLCJuYW1lIjoic29tZV90ZXN0XzYifQ.Us6rKkEIIWYrdifgDOVjNupwX59-d561QU4-n-3NdUM
 
 ###
 

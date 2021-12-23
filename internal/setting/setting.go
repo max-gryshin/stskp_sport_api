@@ -31,7 +31,7 @@ type DBSetting struct {
 	MaxOpenCons      string
 }
 
-// ServerSetting is a structure for storage server configuration
+// ServerSetting is a structure for storage user_protobuf configuration
 type ServerSetting struct {
 	RunMode string
 	Host    string
