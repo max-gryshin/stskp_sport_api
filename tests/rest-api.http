@@ -1,20 +1,18 @@
-POST https://localhost:1323/api/v1/auth?username=john&password=123123
+POST http://localhost:1323/api/v1/auth?email=sonya&password=maxim1234
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 ###
 
-###
-
-POST https://localhost:1323/api/v1/create?username=some_test_6&password=123123
+POST http://localhost:1323/api/v1/create?email=kolya&password=maxim1234
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
 ####
 
-PUT https://localhost:1323/api/v1/users/3
+PUT https://localhost:1323/api/v1/users/2
 Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
@@ -28,9 +26,9 @@ Authorization: Bearer token
 
 ###
 
-GET https://localhost:1323/api/v1/users/4
+GET http://localhost:1323/api/v1/users/2
 Content-Type: application/json
-Authorization: Bearer token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJsb2NhbC1jaGFpbiIsImFkbWluIjp0cnVlLCJleHAiOjE2NDgwMjA5NjIsImlkIjoiMiIsIm5hbWUiOiJzb255YSJ9.67EwXgWtExnWqW0E3obfoFN1Hw5x9tJmRqC2PmQkMLM
 
 ###
 
