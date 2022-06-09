@@ -3,7 +3,7 @@ package dto
 import (
 	"time"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
 )
 
 type Workouts []Workout

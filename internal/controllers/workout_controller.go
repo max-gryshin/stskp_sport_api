@@ -4,13 +4,13 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/dto"
+	"github.com/max-gryshin/stskp_sport_api/internal/dto"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/contractions"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
 	"github.com/go-playground/validator"
 	"github.com/labstack/echo/v4"
+	"github.com/max-gryshin/stskp_sport_api/internal/contractions"
+	"github.com/max-gryshin/stskp_sport_api/internal/e"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
 )
 
 type WorkoutController struct {

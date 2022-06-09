@@ -1,6 +1,6 @@
 package contractions
 
-import "github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+import "github.com/max-gryshin/stskp_sport_api/internal/models"
 
 type WorkoutValueRepository interface {
 	GetByID(id int) (models.WorkoutValue, error)

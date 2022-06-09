@@ -1,6 +1,6 @@
 package dto
 
-import "github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+import "github.com/max-gryshin/stskp_sport_api/internal/models"
 
 const (
 	WorkoutTypeCycle           = 1

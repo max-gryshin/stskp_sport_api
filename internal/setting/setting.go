@@ -3,7 +3,7 @@ package setting
 import (
 	"os"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
+	"github.com/max-gryshin/stskp_sport_api/internal/db"
 )
 
 // App is a structure for storage app configuration

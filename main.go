@@ -5,15 +5,15 @@ import (
 
 	"github.com/go-playground/validator"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/controllers"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/db"
-	errorhandler "github.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/routes"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
+	"github.com/max-gryshin/stskp_sport_api/internal/controllers"
+	"github.com/max-gryshin/stskp_sport_api/internal/db"
+	errorhandler "github.com/max-gryshin/stskp_sport_api/internal/e"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/repository"
+	"github.com/max-gryshin/stskp_sport_api/internal/routes"
+	"github.com/max-gryshin/stskp_sport_api/internal/setting"
 )
 
 // init is invoked before main()

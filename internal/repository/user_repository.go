@@ -3,12 +3,12 @@ package repository
 import (
 	"strings"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/doug-martin/goqu/v9"
 	"github.com/doug-martin/goqu/v9/exp"
 	"github.com/jmoiron/sqlx"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
+	"github.com/max-gryshin/stskp_sport_api/internal/utils"
 )
 
 const maxItemsPerPage = 100

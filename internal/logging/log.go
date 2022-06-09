@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/file"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/setting"
+	"github.com/max-gryshin/stskp_sport_api/internal/file"
+	"github.com/max-gryshin/stskp_sport_api/internal/setting"
 )
 
 type Level int

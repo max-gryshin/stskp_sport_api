@@ -3,8 +3,8 @@ package repository
 import (
 	"fmt"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
 
 	_ "github.com/doug-martin/goqu/v9/dialect/postgres" // import the dialect
 )

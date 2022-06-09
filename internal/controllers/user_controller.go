@@ -3,18 +3,18 @@ package controllers
 import (
 	"errors"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/dto"
 	"github.com/go-playground/validator"
+	"github.com/max-gryshin/stskp_sport_api/internal/dto"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/e"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
 	"github.com/labstack/echo/v4"
+	"github.com/max-gryshin/stskp_sport_api/internal/e"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
+	"github.com/max-gryshin/stskp_sport_api/internal/utils"
 
 	"net/http"
 	"time"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/contractions"
+	"github.com/max-gryshin/stskp_sport_api/internal/contractions"
 )
 
 // UserController is HTTP controller for manage users

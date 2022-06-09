@@ -1,9 +1,9 @@
 package routes
 
 import (
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/controllers"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/max-gryshin/stskp_sport_api/internal/controllers"
 )
 
 // RegisterAPIV1 initialize routing information

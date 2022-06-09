@@ -1,8 +1,8 @@
 package api
 
 import (
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/repository"
 )
 
 type QueryParams struct {

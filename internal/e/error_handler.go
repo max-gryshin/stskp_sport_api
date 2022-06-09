@@ -3,7 +3,7 @@ package e
 import (
 	"net/http"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
 
 	"github.com/jackc/pgconn"
 	"github.com/labstack/echo/v4"

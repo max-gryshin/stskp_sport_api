@@ -1,11 +1,11 @@
 package v1
 
 import (
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/logging"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/models"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/repository"
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/routes/api"
 	"github.com/labstack/echo/v4"
+	"github.com/max-gryshin/stskp_sport_api/internal/logging"
+	"github.com/max-gryshin/stskp_sport_api/internal/models"
+	"github.com/max-gryshin/stskp_sport_api/internal/repository"
+	"github.com/max-gryshin/stskp_sport_api/internal/routes/api"
 
 	"net/http"
 )

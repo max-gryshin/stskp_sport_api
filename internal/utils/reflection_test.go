@@ -3,7 +3,7 @@ package utils_test
 import (
 	"testing"
 
-	"github.com/ZmaximillianZ/stskp_sport_api/internal/utils"
+	"github.com/max-gryshin/stskp_sport_api/internal/utils"
 	"github.com/stretchr/testify/assert"
 )
 
